@@ -10,6 +10,7 @@ import {
 } from "react-router-dom"
 import { getContacts, createContact } from "../contacts";
 import { useEffect } from "react"; //manipulates form's state in DOM directly
+import {default as AppBar} from "../AppBar";
 
 export async function action() {
     const contact = await createContact();
@@ -43,7 +44,7 @@ export default function Root() {
     return (
       <>
         <div id="appbar">
-            <p>This is a future menu bar...I hope</p>
+            <AppBar className = "logobar"/>
         </div>
         <div id = "content-area">
             <div id="sidebar">
