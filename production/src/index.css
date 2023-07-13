@@ -102,7 +102,7 @@ form[action$="destroy"] button {
   width: 100%;
 }
 
-#appbar {
+/* #appbar {
   display: flex;
   flex-direction:row;
   max-height:5vh;
@@ -113,6 +113,10 @@ form[action$="destroy"] button {
 
 #appbar h1 {
   margin-top:0;
+} */
+
+.appbar {
+  background-color: rgb(132, 199, 238);
 }
 
 #content-area {
