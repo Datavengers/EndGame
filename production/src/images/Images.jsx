@@ -11,6 +11,7 @@ const IMAGES = {
     layer10 : new URL('./layer10-trees.png',import.meta.url).href,
     layer11 : new URL('./layer11-forest2.png',import.meta.url).href,
     layer12 : new URL('./layer12-fence.png',import.meta.url).href,
+    layer13: new URL('./layer13-bridge.png', import.meta.url).href
 };
 
 export default IMAGES
