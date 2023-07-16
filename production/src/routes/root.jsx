@@ -115,6 +115,24 @@ export default function Root() {
                 </p>
             )}
             </nav>
+            <nav>
+                <ul>
+                    <li>
+                        <NavLink 
+                        to={`game_map`}
+                        className={({ isActive, isPending })=>
+                        //   make the nav links highlight if active
+                                isActive 
+                            ? "active"
+                            : isPending
+                            ? "pending"
+                            : ""
+                        }
+                        >Map
+                        </NavLink>
+                    </li>
+                </ul>
+            </nav>
             </div>
             <div 
                 id="detail" 

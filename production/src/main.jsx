@@ -15,6 +15,7 @@ import EditContact, {
 } from "./routes/edit";
 import { action as destroyAction } from "./routes/destroy";
 import Index from "./routes/index";
+import Game_Map from "./routes/game_map";
 
 const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ const router = createBrowserRouter([
             // putting an error redirect here lets the user continue interacting with usable pieces
             errorElement:<div>Oops, an error there was</div>,
           },
+          {
+            path: "game_map",
+            element:<Game_Map />,
+          }
         ],
       },
     ],
