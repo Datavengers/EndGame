@@ -11,6 +11,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 // import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { MuiDrawer } from './Drawer';
 
 /* Change the color of the appbar using the .appbar section of index.css*/
 
@@ -46,15 +47,7 @@ export default function MenuAppBar() {
       </FormGroup> */}
       <AppBar position="static">
         <Toolbar className="appbar">
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            sx={{ mr: 2 }}
-          >
-            <MenuIcon />
-          </IconButton>
+          <MuiDrawer />
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             DSA EndGame
           </Typography>
