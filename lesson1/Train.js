@@ -1,4 +1,4 @@
-
+const prompt = require("prompt-sync")({sigint:true});
 const ticketBackSize = 10;
 
 function showInstructions()
