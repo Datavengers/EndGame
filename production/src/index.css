@@ -114,9 +114,22 @@ form[action$="destroy"] button {
   z-index:2;
 }
 
+.mapImg{
+  width:92vw;
+  height:94vh;
+  margin-top:-5rem;
+  /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
+}
+
 .appbar {
-  background-color: #2ba3f5;
+  background-color: #5ebcfa;
+  /* background-color: #2ba3f5; */ /*maybe too plain?*/
+  /* background-color: #073452; */ /*maybe too dark?*/
   border-bottom:1px solid #9fd9ff;
+}
+
+.hidden{
+  visibility:hidden;
 }
 
 #content-area {

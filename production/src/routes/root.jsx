@@ -48,7 +48,8 @@ export default function Root() {
             <AppBar className = "logobar"/>
         </div>
         <div id = "content-area">
-            <div id="sidebar">
+            {/* add className="hidden" to sidebar div to hide */}
+            <div id="sidebar" > 
             <h1>React Router Contacts</h1>
             <div>
                 <Form id="search-form" role="search">
