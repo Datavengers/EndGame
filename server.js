@@ -5,6 +5,7 @@ const cors = require("cors");
 const mysql = require("mysql");
 const bodyParser = require("body-parser"); 
 
+
 import contactRouter from "./routes/Contact";
 
 app.use(express.json());
