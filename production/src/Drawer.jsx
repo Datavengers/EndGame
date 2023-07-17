@@ -1,5 +1,7 @@
+import React from 'react';
 import { useState } from 'react';
 import { Drawer, Box, Typography, IconButton } from '@mui/material';
+import { Link } from 'react-router-dom'; // Import the Link component
 import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -12,7 +14,7 @@ import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import InfoIcon from '@mui/icons-material/Info';
 
 export const MuiDrawer = () => {
-    const [isDrawerOpen, setIsDrawerOpen] = useState(false)
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     return (
         <>
             <IconButton size='large' edge='start' color='inherit' aria-label='logo' onClick={() => setIsDrawerOpen(true)}>
@@ -29,18 +31,29 @@ export const MuiDrawer = () => {
                     </Typography>
                     <List>
                         {['Map', 'Lessons', 'Prizes', 'Resources', 'Profile'].map((text, index) => (
-                        <ListItem key={text} disablePadding>
-                            <ListItemButton>
-                                <ListItemIcon>
-                                    {index % 2 === 0 ? <MapIcon /> : <InfoIcon />}
-                                </ListItemIcon>
-                                <ListItemText primary={text} />
-                            </ListItemButton>
-                        </ListItem>
+                            <ListItem key={text} disablePadding>
+                                {text === 'Map' ? (
+                                    <Link to="game_map" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <ListItemButton>
+                                            <ListItemIcon>
+                                                {index % 2 === 0 ? <MapIcon /> : <InfoIcon />}
+                                            </ListItemIcon>
+                                            <ListItemText primary={text} />
+                                        </ListItemButton>
+                                    </Link>
+                                ) : (
+                                    <ListItemButton>
+                                        <ListItemIcon>
+                                            {index % 2 === 0 ? <MapIcon /> : <InfoIcon />}
+                                        </ListItemIcon>
+                                        <ListItemText primary={text} />
+                                    </ListItemButton>
+                                )}
+                            </ListItem>
                         ))}
                     </List>
                 </Box>
             </Drawer>
         </>
-    )
-}
+    );
+};
