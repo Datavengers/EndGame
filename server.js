@@ -1,6 +1,11 @@
 const express = require("express");
+const path = require("path");
 const app = express();
 const cors = require("cors");
+const mysql = require("mysql");
+const bodyParser = require("body-parser"); 
+
+import contactRouter from "./routes/Contact";
 
 app.use(express.json());
 app.use(cors());
