@@ -16,7 +16,7 @@ function showInstructions()
 function showStatus() {
     // Print the player's current status
     console.log("------------------------");
-    console.log("You are in the " + currentCar + "car.");
+    console.log("You are in the " + currentCar + " car.");
     // Print the current inventory
     console.log("Inventory: " + inventory.join(", "));
     console.log("------------------------");
@@ -27,27 +27,27 @@ var inventory = [];
 var cars = {
     Caboose: {
         Description : "Last car of the train. There are 3 people who have boarded the train in this car since you last checked.",
-        Forward : "Coach Car 1",
+        forward : "Coach Car 1",
         items : ["ticket 1", "ticket 2", "ticket 3"]
         },
     CoachCar1: {
         Description : "It is a full car with several families.  Look for 2 new passangers and check their tickets.",
-        Forward : "Coach Car 2",
+        forward : "Coach Car 2",
         items : ["ticket 4", "ticket 5"]
         },
     CoachCar2: {
         Description : "Another full car with several families. Look for 1 new passenger and check their ticket.",
-        Forward : "Cafe Car",
+        forward : "Cafe Car",
         items : ["ticket 6"]
         },
     CafeCar: {
         Description : "Several tables and the option for food.  Look for 2 new passengers and check their tickets.",
-        Forward : "Business Class Car",
+        forward : "Business Class Car",
         items : ["ticket 7, ticket 8"]
         },
     BusinessClassCar: {
         Description : "A quiet car with several empty seats.  Look for 2 new passengers and check their tickets.",
-        Forward : "Front of Train",
+        forward : "Front of Train",
         items : ["ticket 9", "ticket 10"]
     },
 };
