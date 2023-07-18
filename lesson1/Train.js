@@ -16,7 +16,12 @@ function showInstructions()
 function showStatus() {
     // Print the player's current status
     console.log("------------------------");
-    console.log("You are in the " + currentCar + " car.");
+    console.log("You are in the " + currentCar + ".");
+
+    // Print the description of the current car
+    if (currentCar in cars && "description" in cars[currentCar]) {
+        console.log("Car description: " + cars[currentCar].description);
+      }
 
     // Print the available tickets in the current car
     if (currentCar in cars && "items" in cars[currentCar]) {
@@ -31,27 +36,27 @@ var inventory = [];
 
 var cars = {
     "Caboose": {
-        Description : "Last car of the train. There are 3 people who have boarded the train in this car since you last checked.",
+        description : "Last car of the train. There are 3 people who have boarded this car since you last checked.",
         forward : "Coach Car 1",
         items : ["ticket 1", "ticket 2", "ticket 3"],
         },
     "Coach Car 1": {
-        Description : "It is a full car with several families.  Look for 2 new passangers and check their tickets.",
+        description : "It is a full car with several families.  Look for 2 new passangers and check their tickets.",
         forward : "Coach Car 2",
         items : ["ticket 4", "ticket 5"],
         },
     "Coach Car 2": {
-        Description : "Another full car with several families. Look for 1 new passenger and check their ticket.",
+        description : "Another full car with several families. Look for 1 new passenger and check their ticket.",
         forward : "Cafe Car",
         items : ["ticket 6"],
         },
     "Cafe Car": {
-        Description : "Several tables and the option for food.  Look for 2 new passengers and check their tickets.",
-        forward : "Business Class",
+        description : "Several tables and the option for food.  Look for 2 new passengers and check their tickets.",
+        forward : "Business Class Car",
         items : ["ticket 7", "ticket 8"],
         },
-    "Business Class": {
-        Description : "A quiet car with several empty seats.  Look for 2 new passengers and check their tickets.",
+    "Business Class Car": {
+        description : "A quiet car with several empty seats.  Look for 2 new passengers and check their tickets.",
         forward : "Front of Train",
         items : ["ticket 9", "ticket 10"],
     },
