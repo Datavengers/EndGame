@@ -6,8 +6,9 @@ function showInstructions()
     // Print a main menu and the commands
     console.log(`
         TRAIN GAME 
-        You are the conductor on a busy train on your final walk-though.
-        Check each car and collect the remaining tickets.
+        - You are the conductor on a busy train on your final walk-though.
+        - Check each car and collect the remaining tickets.
+        - You MUST collect the tickets whilst in the car. 
         ===========
         Commands:
         go [direction]
@@ -100,20 +101,20 @@ while (currentCar !== "Front of Train") {
       inventory.push(item);
       // Display a helpful message
       console.log(item + " taken!");
-      // Delete the item from the car
+      // Remove the item from items available in the car
       cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
     } else {
       console.log("Can't get " + item + "!");
     }
   }
 }
-
+console.log("------------------------");
 console.log("You have reached the front of the train");
 
 // Display the final inventory
 
 if (inventory.length == 10) {
-    console.log("You have collected all of the tickets! YOU WIN!\n\n");
+    console.log("YOU WIN!!! \nYou have collected all of the tickets! YOU WIN!\n\n");
     process.exit();
 }
 else
