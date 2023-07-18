@@ -6,6 +6,8 @@ function showInstructions()
     // Print a main menu and the commands
     console.log(`
         TRAIN GAME 
+        You are the conductor on a busy train on your final walk-though.
+        Check each car and collect the remaining tickets.
         ===========
         Commands:
         go [direction]
