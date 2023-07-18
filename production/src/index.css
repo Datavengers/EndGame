@@ -136,6 +136,13 @@ form[action$="destroy"] button {
 
 .hidden{
   visibility:hidden;
+  margin-left:-22rem;
+}
+
+.presentation{
+  font-weight:600;
+  font-size:larger;
+  color:white;
 }
 
 #content-area {

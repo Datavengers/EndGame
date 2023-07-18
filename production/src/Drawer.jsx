@@ -34,7 +34,7 @@ export const MuiDrawer = () => {
                             <ListItem key={text} disablePadding>
                                 {text === 'Map' ? (
                                     <Link to="game_map" style={{ textDecoration: 'none', color: 'inherit' }}>
-                                        <ListItemButton>
+                                        <ListItemButton onClick={() => setIsDrawerOpen(false)}>
                                             <ListItemIcon>
                                                 {index % 2 === 0 ? <MapIcon /> : <InfoIcon />}
                                             </ListItemIcon>
