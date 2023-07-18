@@ -113,11 +113,12 @@ console.log("You have reached the front of the train");
 // Display the final inventory
 
 if (inventory.length == 10) {
-    console.log("You have collected all of the tickets! YOU WIN!\n");
-    return;
+    console.log("You have collected all of the tickets! YOU WIN!\n\n");
+    process.exit();
 }
 else
 {
     console.log("Whilst you have reached the front of the train, you did not collect all of the tickets.  \nYou lose this round.\n\n");
-    return;
+    process.exit();
 }
+  
