@@ -9,7 +9,7 @@ const IMAGES = {
     layer8 : new URL('./layer8-library.png',import.meta.url).href,
     train : new URL('./layer9-train.png',import.meta.url).href,
     layer10 : new URL('./layer10-forest_middle.png',import.meta.url).href,
-    layer11 : new URL('./layer11-diner',import.meta.url).href,
+    layer11 : new URL('./layer11-diner.png',import.meta.url).href,
     layer12 : new URL('./layer12-station1.png',import.meta.url).href,
     layer13: new URL('./layer13-tries.png', import.meta.url).href,
     layer14: new URL('./layer14-school.png', import.meta.url).href,
