@@ -82,11 +82,16 @@ export default function Game_Map() {
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer6}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer7}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer8}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer9}/></div>
+                <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer10}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer11}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer12}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer13}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer14}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer15}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer16}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer17}/></div>
+                
             </div>
         </div>
     );
