@@ -17,6 +17,11 @@ function showStatus() {
     // Print the player's current status
     console.log("------------------------");
     console.log("You are in the " + currentCar + " car.");
+
+    // Print the available tickets in the current car
+    if (currentCar in cars && "items" in cars[currentCar]) {
+        console.log("Available Tickets: " + cars[currentCar].items.join(", "));
+      }
     // Print the current inventory
     console.log("Inventory: " + inventory.join(", "));
     console.log("------------------------");
@@ -25,80 +30,87 @@ function showStatus() {
 var inventory = [];
 
 var cars = {
-    Caboose: {
+    "Caboose": {
         Description : "Last car of the train. There are 3 people who have boarded the train in this car since you last checked.",
         forward : "Coach Car 1",
-        items : ["ticket 1", "ticket 2", "ticket 3"]
+        items : ["ticket 1", "ticket 2", "ticket 3"],
         },
-    CoachCar1: {
+    "Coach Car 1": {
         Description : "It is a full car with several families.  Look for 2 new passangers and check their tickets.",
         forward : "Coach Car 2",
-        items : ["ticket 4", "ticket 5"]
+        items : ["ticket 4", "ticket 5"],
         },
-    CoachCar2: {
+    "Coach Car 2": {
         Description : "Another full car with several families. Look for 1 new passenger and check their ticket.",
         forward : "Cafe Car",
-        items : ["ticket 6"]
+        items : ["ticket 6"],
         },
-    CafeCar: {
+    "Cafe Car": {
         Description : "Several tables and the option for food.  Look for 2 new passengers and check their tickets.",
-        forward : "Business Class Car",
-        items : ["ticket 7, ticket 8"]
+        forward : "Business Class",
+        items : ["ticket 7", "ticket 8"],
         },
-    BusinessClassCar: {
+    "Business Class": {
         Description : "A quiet car with several empty seats.  Look for 2 new passengers and check their tickets.",
         forward : "Front of Train",
-        items : ["ticket 9", "ticket 10"]
+        items : ["ticket 9", "ticket 10"],
     },
+    "Front of Train": {
+        items: [],
+    }
 };
+
 
 var currentCar = "Caboose";
 
 showInstructions();
 
-// Loop forever
-while (true) {
-    showStatus();
+// Loop until reaching the front of the train
+while (currentCar !== "Front of Train") {
+  showStatus();
 
-    // Get the player's next move
-    var move = prompt(">");
-    move = move.toLowerCase().split(" ");
+  // Get the player's next move
+  var move = prompt("> ");
+  move = move.toLowerCase().split(" ");
 
-    // If they type 'go' first
-    if (move[0] === "go") {
-        // Check that they are allowed wherever they want to go
-        if (move[1] in cars[currentCar]) {
-            // Set the current car to the new car
-            currentCar = cars[currentCar][move[1]];
-        }
-        else {
-            console.log("You can't go that way!");
-        }
+  // If they type 'go' first
+  if (move[0] === "go") {
+    // Check that they are allowed wherever they want to go
+    if (move[1] in cars[currentCar]) {
+        // Set the current car to the new car
+        currentCar = cars[currentCar][move[1]];
+      } else {
+        console.log("You can't go that way!");
+      }
     }
 
-    // If they type 'get' first
-    if (move[0] === "get") {
-        // If the car contains an item and the item in the one they want to get
-        for (item in "items" ) {
-            if (
-                "item" in cars[currentCar] &&
-                move[1] === cars[currentCar]["item"]
-            ) {
-                // Add the item to the inventory
-                inventory.push(move[1]);
-                // Display a helpful message
-                console.log(move[1] + " got!");
-                // Delete the item from the car
-                delete cars[currentCar]["item"];
-            }
-            else {
-                console.log("Can't get " + move[1] + "!");
-            }
-        }
+  // If they type 'take' first
+  if (move[0] === "take") {
+    // If the car contains an item and the item is the one they want to get
+    const item = move.slice(1).join(" ");
+    if (currentCar in cars && "items" in cars[currentCar] && cars[currentCar].items.includes(item)) {
+      // Add the item to the inventory
+      inventory.push(item);
+      // Display a helpful message
+      console.log(item + " taken!");
+      // Delete the item from the car
+      cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
+    } else {
+      console.log("Can't get " + item + "!");
     }
-
-
-
-
+  }
 }
 
+console.log("You have reached the front of the train");
+
+// Display the final inventory
+
+if (inventory.length == 10) {
+    console.log("You have collected all of the tickets! YOU WIN!\n");
+    return;
+}
+else
+{
+    console.log("Whilst you have reached the front of the train, you did not collect all of the tickets.  \nYou lose this round.\n\n");
+    return;
+}
