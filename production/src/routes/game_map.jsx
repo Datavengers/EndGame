@@ -1,6 +1,7 @@
 import IMAGES from '../images/Images';
 import Particles from "react-tsparticles"
 import {loadFull} from "tsparticles"
+import SvgComponent from "../images/mapSVG"
 
 export default function Game_Map() {
     {/*required stuff to make the waves exist*/}
@@ -91,7 +92,9 @@ export default function Game_Map() {
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer15}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer16}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer17}/></div>
-                
+                <div className="childLayer">
+                    <div className="svgContainer"><SvgComponent/></div>
+                </div>
             </div>
         </div>
     );
