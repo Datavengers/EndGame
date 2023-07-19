@@ -1,13 +1,12 @@
 export default function Index() {
     return (
       <p id="zero-state">
-        This is a demo for React Router.
-        <br />
-        Check out{" "}
-        <a href="https://reactrouter.com">
-          the docs at reactrouter.com
-        </a>
-        .
+        Welcome to the home of Datavengers' Project 3!
+        <br/>
+        You'll eventully be asked to login here.
+        <br/>
+        We don't intend for use without an account.
+        <br/><br/><br/>
       </p>
     );
   }

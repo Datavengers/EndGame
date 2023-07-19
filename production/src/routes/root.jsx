@@ -11,6 +11,7 @@ import {
 import { getContacts, createContact } from "../contacts";
 import { useEffect } from "react"; //manipulates form's state in DOM directly
 import {default as AppBar} from "../AppBar";
+import { MuiDrawer } from "../Drawer";
 
 export async function action() {
     const contact = await createContact();
@@ -47,7 +48,8 @@ export default function Root() {
             <AppBar className = "logobar"/>
         </div>
         <div id = "content-area">
-            <div id="sidebar">
+            {/* add className="hidden" to sidebar div to hide */}
+            <div id="sidebar"> 
             <h1>React Router Contacts</h1>
             <div>
                 <Form id="search-form" role="search">
@@ -113,6 +115,24 @@ export default function Root() {
                 <i>No contacts</i>
                 </p>
             )}
+            </nav>
+            <nav>
+                <ul>
+                    <li>
+                        <NavLink 
+                        to={`game_map`}
+                        className={({ isActive, isPending })=>
+                        //   make the nav links highlight if active
+                                isActive 
+                            ? "active"
+                            : isPending
+                            ? "pending"
+                            : ""
+                        }
+                        >Map
+                        </NavLink>
+                    </li>
+                </ul>
             </nav>
             </div>
             <div 
