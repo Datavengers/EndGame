@@ -2,11 +2,11 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const cors = require("cors");
-const mysql = require("mysql");
-const bodyParser = require("body-parser"); 
+// const mysql = require("mysql");
+// const bodyParser = require("body-parser"); 
 
 
-import contactRouter from "./routes/Contact";
+// import contactRouter from "./routes/Contact";
 
 app.use(express.json());
 app.use(cors());
@@ -19,7 +19,7 @@ const db = require("./models");
 const userRouter = require("./routes/User");
 app.use("/user", userRouter);
 
-const contactRouter = require("./routes/Contact");
+const contactRouter = require("./routes/login");
 app.use("/contacts", contactRouter);
 
 

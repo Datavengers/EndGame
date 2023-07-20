@@ -21,6 +21,7 @@ import Sll_Home from "./routes/sll_home";
 import Dll_Home from "./routes/dll_home";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
+import Login from './routes/login';
 
 const router = createBrowserRouter([
   {
@@ -81,6 +82,10 @@ const router = createBrowserRouter([
           {
             path: "resources",
             element:<Resources_Home />,
+          },
+          {
+            path:"login",
+            element: <Login/>
           }
         ],
       },
