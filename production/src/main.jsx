@@ -19,6 +19,8 @@ import Index from "./routes/index";
 import Game_Map from "./routes/game_map";
 import Sll_Home from "./routes/sll_home";
 import Dll_Home from "./routes/dll_home";
+import Prizes_Home from './routes/prize_home';
+import Resources_Home from './routes/resource_home';
 
 const router = createBrowserRouter([
   {
@@ -71,6 +73,14 @@ const router = createBrowserRouter([
               {path:"doubly-linked-lists/games",},
               {path:"doubly-linked-lists/quizzes",}
             ]
+          },
+          {
+            path: "prizes",
+            element:<Prizes_Home />,
+          },
+          {
+            path: "resources",
+            element:<Resources_Home />,
           }
         ],
       },
