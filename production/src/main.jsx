@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import './gameMapStyles.css'
+import './loginStyles.css'
 import Root, { 
     loader as rootLoader,
     action as rootAction } from "./routes/root"
@@ -19,6 +20,7 @@ import Index from "./routes/index";
 import Game_Map from "./routes/game_map";
 import Sll_Home from "./routes/sll_home";
 import Dll_Home from "./routes/dll_home";
+import Login from "./routes/login";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 
@@ -73,6 +75,10 @@ const router = createBrowserRouter([
               {path:"doubly-linked-lists/games",},
               {path:"doubly-linked-lists/quizzes",}
             ]
+          },
+          {
+            path:"login",
+            element:<Login/>,
           },
           {
             path: "prizes",
