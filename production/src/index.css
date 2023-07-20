@@ -102,30 +102,6 @@ form[action$="destroy"] button {
   width: 100%;
 }
 
-.parentLayer{
-  position:relative;
-  z-index:1;
-}
-
-.childLayer{
-  position:absolute;
-  top: 0;
-  left: 0;
-  z-index:2;
-}
-
-#mapWrapper{
-  width:100%;
-  height:100%;
-}
-
-.mapImg{
-  width: 100%;
-  height:auto;
-  /* margin-top:-5vw; */
-  /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
-}
-
 .appbar {
   background-color: #5ebcfa;
   /* background-color: #2ba3f5; */ /*maybe too plain?*/
