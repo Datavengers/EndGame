@@ -16,11 +16,14 @@ const PORT = 3000;
 const db = require("./models");
 
 // ROUTERS
-const userRouter = require("./routes/User");
+const userRouter = require("./routes/apiUser");
 app.use("/user", userRouter);
 
-const contactRouter = require("./routes/login");
+const contactRouter = require("./routes/apiContacts");
 app.use("/contacts", contactRouter);
+
+const loginRouter = require("./routes/apiLogin");
+app.use("/login", loginRouter);
 
 
 db.sequelize.sync().then(() => {
