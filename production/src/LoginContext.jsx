@@ -18,11 +18,11 @@ const LoginContextProvider = (props) => {
     console.log("login context user effect")
 		const token = localStorage.getItem('token')
 		if (token) {
-			  setIsLoggedIn(true);
-        getUsername();
-			} else {
-        setIsLoggedIn(false);
-			}
+      setIsLoggedIn(true);
+      getUsername();
+    } else {
+      setIsLoggedIn(false);
+    }
   }, []);
 
 
@@ -75,4 +75,36 @@ const LoginContextProvider = (props) => {
       }
     }
   }
+
+  console.log("loginContext rendered")
+  console.log(isLoggedIn)
+
+  return (
+    <LoginContext.Provider
+      value={{
+        isLoggedIn,
+        setIsLoggedIn,
+        handleLogin,
+        handleLogout,
+        username,
+        setUsername,
+        getUsername,
+      }}
+    >
+      {props.children}
+
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+      />
+    </LoginContext.Provider>
+  );
 };
+
+export { LoginContextProvider, LoginContext };

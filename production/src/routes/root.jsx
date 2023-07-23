@@ -12,6 +12,7 @@ import { getContacts, createContact } from "../contacts";
 import { useEffect } from "react"; //manipulates form's state in DOM directly
 import {default as AppBar} from "../AppBar";
 import { MuiDrawer } from "../Drawer";
+import { LoginContextProvider } from '../LoginContext'
 
 export async function action() {
     const contact = await createContact();
@@ -43,7 +44,7 @@ export default function Root() {
     }, [q]);
 
     return (
-      <>
+      <LoginContextProvider >
         <div id="appbar">
             <AppBar className = "logobar"/>
         </div>
@@ -143,6 +144,6 @@ export default function Root() {
                 <Outlet />
             </div>
         </div>
-      </>
+      </LoginContextProvider>
     );
   }

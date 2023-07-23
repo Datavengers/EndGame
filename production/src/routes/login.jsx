@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
-// import { LoginContext } from './LoginContext'; //this will be very useful when we're ready
+import { LoginContext } from '../LoginContext'; //this will be very useful when we're ready
 import Particles from 'react-tsparticles';
 import {loadFull} from "tsparticles"
 
