@@ -22,7 +22,6 @@ import Dll_Home from "./routes/dll_home";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 import Login from './routes/login';
-import Signup from './routes/signup';
 
 const router = createBrowserRouter([
   {
@@ -87,10 +86,6 @@ const router = createBrowserRouter([
           {
             path:"login",
             element: <Login />
-          },
-          {
-            path:"signup",
-            element: <Signup />
           }
         ],
       },
