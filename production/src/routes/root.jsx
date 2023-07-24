@@ -9,10 +9,12 @@ import {
     useSubmit, // updates search results with every stroke
 } from "react-router-dom"
 import { getContacts, createContact } from "../contacts";
-import { useEffect } from "react"; //manipulates form's state in DOM directly
+import { useEffect, useState } from "react"; //manipulates form's state in DOM directly
 import {default as AppBar} from "../AppBar";
 import { MuiDrawer } from "../Drawer";
 import { LoginContextProvider } from '../LoginContext'
+import axios from "axios";
+
 
 export async function action() {
     const contact = await createContact();
@@ -40,8 +42,14 @@ export default function Root() {
 
     // clears the  search bar if you hit back button
     useEffect(() => {
-        document.getElementById("q").value=q;
-    }, [q]);
+    //     document.getElementById("q").value=q;
+    // }, [q]);
+        // api call for login
+
+        // axios.get("http://localhost:3000/login").then((response) => {
+        //     console.log(response.data);
+        // });
+    }, []);
 
     return (
       <LoginContextProvider >
@@ -147,3 +155,4 @@ export default function Root() {
       </LoginContextProvider>
     );
   }
+
