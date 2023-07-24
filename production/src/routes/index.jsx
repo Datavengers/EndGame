@@ -1,5 +1,12 @@
+import Skeleton from '@mui/material/Skeleton'
+import { useState } from 'react'
+
 export default function Index() {
-    return (
+  const [loaded, setLoaded] = useState(false);
+  
+  return (
+      <>
+      {loaded?null:<Skeleton onLoad={setLoaded(true)}/>}
       <p id="zero-state">
         Welcome to the home of Datavengers' Project 3!
         <br/>
@@ -8,5 +15,6 @@ export default function Index() {
         We don't intend for use without an account.
         <br/><br/><br/>
       </p>
+      </>
     );
   }
