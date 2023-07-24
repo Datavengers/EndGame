@@ -2,11 +2,11 @@ const express = require("express");
 const path = require("path");
 const app = express();
 const cors = require("cors");
-const mysql = require("mysql");
-const bodyParser = require("body-parser"); 
+// const mysql = require("mysql");
+// const bodyParser = require("body-parser"); 
 
 
-import contactRouter from "./routes/Contact";
+// import contactRouter from "./routes/Contact";
 
 app.use(express.json());
 app.use(cors());
@@ -16,11 +16,14 @@ const PORT = 3000;
 const db = require("./models");
 
 // ROUTERS
-const userRouter = require("./routes/User");
+const userRouter = require("./routes/apiUser");
 app.use("/user", userRouter);
 
-const contactRouter = require("./routes/Contact");
+const contactRouter = require("./routes/apiContacts");
 app.use("/contacts", contactRouter);
+
+const loginRouter = require("./routes/apiLogin");
+app.use("/login", loginRouter);
 
 
 db.sequelize.sync().then(() => {
