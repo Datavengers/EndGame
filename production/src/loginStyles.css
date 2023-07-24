@@ -10,3 +10,16 @@
     margin:auto;
     outline:white 5px dotted;    
 }
+
+.signupDiv{
+    align-items:center;
+    text-align:center;
+    color:white;
+    background-color: #78e261;
+    border-bottom: 40px #73634c groove;
+    border-radius:40%;
+    width:45%;
+    padding:30px;
+    margin:auto;
+    outline:white 5px dotted;    
+}
