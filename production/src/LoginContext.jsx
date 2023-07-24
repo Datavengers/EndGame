@@ -17,9 +17,7 @@ const LoginContextProvider = (props) => {
 
   useEffect(() => {
     // console.log("login context user effect")
-    axios.get("http://localhost:3000/login").then((response) => {
-            console.log(response.data);
-        });
+
 
 		const token = localStorage.getItem('token')
 		if (token) {
