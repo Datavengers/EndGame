@@ -185,7 +185,7 @@ export const Signup = (props) => {
                     textAlign: 'center', 
                 }}>
                     Psst... Already a member?<br/> 
-                    Log in <Link to="login">here!</Link>
+                    Log in <Link to="/login">here!</Link>
                 </p>
             </div>
             {/* <Snackbar
