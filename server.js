@@ -6,7 +6,6 @@ const cors = require("cors");
 // const bodyParser = require("body-parser"); 
 
 
-// import contactRouter from "./routes/Contact";
 
 app.use(express.json());
 app.use(cors());
@@ -16,13 +15,13 @@ const PORT = 3000;
 const db = require("./models");
 
 // ROUTERS
-const userRouter = require("./routes/apiUser");
+const userRouter = require("./api_routes/apiUser");
 app.use("/user", userRouter);
 
-const contactRouter = require("./routes/apiContacts");
+const contactRouter = require("./api_routes/apiContacts");
 app.use("/contacts", contactRouter);
 
-const loginRouter = require("./routes/apiLogin");
+const loginRouter = require("./api_routes/apiLogin");
 app.use("/login", loginRouter);
 
 
