@@ -4,6 +4,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 
 const apiUrl = 'http://localhost:3000'; // Your backend server URL
@@ -17,6 +18,10 @@ const Login = () => {
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
+
+  axios.get("http://localhost:3000/login").then((response) => {
+    console.log(response.data);
+});
 
   async function loginUser(event) {
     event.preventDefault();
@@ -46,7 +51,8 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <div className="loginDiv">
+      <p>Hey friend, let's log you in!</p>
       <form onSubmit={loginUser}>
         <Box>
           <TextField
@@ -56,6 +62,7 @@ const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
         </Box>
+        <br/>
         <Box>
           <TextField
             required
@@ -65,6 +72,7 @@ const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
+        <br/>
         <Box>
           <Button type="submit" variant="contained" color="primary">
             Sign In
@@ -81,6 +89,8 @@ const Login = () => {
         onClose={handleSnackbarClose}
         message={snackbarMessage}
       />
+      <p>Psst... Don't have a login yet? <br/>
+        Sign up <Link to="/signup">here!</Link></p>
     </div>
   );
 };

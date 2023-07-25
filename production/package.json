@@ -7,8 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "start": "concurrently \"npx vite\" \"node ../server.js\""
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -18,11 +17,11 @@
     "@mui/material": "^5.14.0",
     "@mui/styled-engine-sc": "^5.12.0",
     "axios": "^1.4.0",
-    "concurrently": "^8.2.0",
     "localforage": "^1.10.0",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loading-skeleton": "^3.3.1",
     "react-router-dom": "^6.14.1",
     "react-tsparticles": "^2.11.0",
     "sort-by": "^0.0.2",
