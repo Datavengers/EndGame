@@ -1,9 +1,7 @@
-import IMAGES from '../assets/images/Images';
+import IMAGES from '../images/Images';
 import Particles from "react-tsparticles"
 import {loadFull} from "tsparticles"
-import SvgComponent from "../assets/images/mapSVG"
-import Skeleton from '@mui/material/Skeleton';
-import { useState } from 'react';
+import SvgComponent from "../images/mapSVG"
 
 export default function Game_Map() {
     {/*required stuff to make the waves exist*/}
@@ -16,10 +14,7 @@ export default function Game_Map() {
         console.log(container);
       }
 
-      const [loaded, setLoaded] = useState(false);
-
     return (
-        <> 
         <div id="mapWrapper">
             {/* ocean waves */}
             <div id="particles-js">
@@ -80,33 +75,27 @@ export default function Game_Map() {
             </div>
             {/*island*/}
             <div className="parentLayer">
-            {loaded ? null : 
-                <div id="loadingDiv" style={{marginLeft:150}}>
-                    <Skeleton variant="circular" width={700} height={400}/>
-                </div>
-            }
-                <img className="mapImg" src={IMAGES.layer1 } style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer2} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer3} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer4} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer5} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer6} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer7} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer8} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer10} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer11} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer12} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer13} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer14} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer15} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer16} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer17} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                <img className="mapImg" src={IMAGES.layer1}/>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer2}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer3}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer4}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer5}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer6}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer7}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer8}/></div>
+                <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer10}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer11}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer12}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer13}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer14}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer15}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer16}/></div>
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer17}/></div>
                 <div className="childLayer">
-                    <div className="svgContainer"><SvgComponent style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                    <div className="svgContainer"><SvgComponent/></div>
                 </div>
             </div>
         </div>
-        </>
     );
 }

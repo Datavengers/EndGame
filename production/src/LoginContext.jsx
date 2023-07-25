@@ -1,9 +1,8 @@
-import { useEffect, useState, createContext } from "react";
+import React, { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
-import axios from "axios";
 
 
-const LoginContext = createContext();
+const LoginContext = React.createContext();
 
 
 const LoginContextProvider = (props) => {
@@ -12,13 +11,11 @@ const LoginContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState({});
 
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState("");
 
-  useEffect(() => {
-    // console.log("login context user effect")
-
-
+  React.useEffect(() => {
+    console.log("login context user effect")
 		const token = localStorage.getItem('token')
 		if (token) {
       setIsLoggedIn(true);
@@ -58,7 +55,7 @@ const LoginContextProvider = (props) => {
   
     // if token, makes get request
     if (token) {
-      const res = await axios.get(`http://localhost:3000/login`, {
+      const res = await fetch(`localhost:3000/login`, {
         method: 'GET',
         headers: {
           // passes the access token grabbing from local storage
@@ -79,8 +76,8 @@ const LoginContextProvider = (props) => {
     }
   }
 
-  // console.log("loginContext rendered")
-  // console.log(isLoggedIn)
+  console.log("loginContext rendered")
+  console.log(isLoggedIn)
 
   return (
     <LoginContext.Provider
@@ -111,4 +108,3 @@ const LoginContextProvider = (props) => {
 };
 
 export { LoginContextProvider, LoginContext };
-

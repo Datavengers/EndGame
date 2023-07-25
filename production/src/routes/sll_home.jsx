@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-
 export default function Sll_Home() {
     return (
     <>
@@ -9,7 +7,6 @@ export default function Sll_Home() {
         <br/>
         This page will hold sublinks to articles, quizzes, and games.
         <br/>
-        <Link to="train-game">Play the train game!</Link>
       </p>
     </>
     );
