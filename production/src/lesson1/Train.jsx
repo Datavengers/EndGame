@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 // const prompt = require("prompt-sync")({sigint:true});
 // const ticketBackSize = 10;
-// var currentCar = "Caboose";
+let currentCar;
 
 
 var cars = {
@@ -42,10 +42,7 @@ var cars = {
 var inventory = [];
 
 export default function TrainGUI(){
-
-  // choice = "";
-  const [currentCar, setCar] = useState("Caboose");
-  
+  var [isStarted, setStarted] = useState(false);
   // Print a main menu and the commands
   var [textToShow, setText] = useState(
     `TRAIN GAME 
@@ -54,124 +51,153 @@ export default function TrainGUI(){
         - You MUST collect the tickets whilst in the car. 
         ===========
         Commands:
-        start
-        go [direction]
-        take [item]
+        go [forward, back, etc]
+        take [item name]
+
+        Type "start" to begin
     `);
 
-
-  // // Loop until reaching the front of the train
-  // // while (currentCar != "Front of Train") {
-  //   ShowStatus();
-
-  //   // while(currentCar !== "Front of Train"){
-  //   if()  
-  //   console.log(choice);
-  //     setCar("Coach Car 1");
-  //     console.log(currentCar);
-    
-    
-  //   if(choice == "start"){
-  //     // Get the player's next move
-  //     var move = choice.toLowerCase().split(" ");
-
-  //     // If they type 'go' first
-  //     if (move[0] === "go") {
-  //       // Check that they are allowed wherever they want to go
-  //       if (move[1] in cars[currentCar]) {
-  //           // Set the current car to the new car
-  //           currentCar = cars[currentCar][move[1]];
-  //       } else {
-  //           textToShow="You can't go that way!";
-  //       }
-  //     }
-        
-  //     // If they type 'take' first
-  //     if (move[0] === "take") {
-  //       // If the car contains an item and the item is the one they want to get
-  //       const item = move.slice(1).join(" ");
-  //       if (currentCar in cars && "items" in cars[currentCar] && cars[currentCar].items.includes(item)) {
-  //         // Add the item to the inventory
-  //         inventory.push(item);
-  //         // Display a helpful message
-  //         textToShow = item + " taken!";
-  //         // Remove the item from items available in the car
-  //         cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
-  //       } else {
-  //         textToShow = "Can't get " + item + "!";
-  //       }
-  //     }
-  //   }
-  // }
-  
-  // if(currentCar == "Front of Train"){
-  //   textToShow = `------------------------
-  //           You have reached the front of the train`;
-  //   // Display the final inventory
-  //   if (inventory.length == 10) {
-  //       textToShow=
-  //       `YOU WIN!!!
-  //       You have collected all of the tickets!
-  //       YOU WIN!`;
-  //   }
-  //   else
-  //   {
-  //       textToShow=
-  //       `Whilst you have reached the front of the train, you did not collect all of the tickets.
-  //       You lose this round.`;
-  //   }
-  //   textToShow += `
-  //   Play again? (y / n)`;
-  // }
-
-  //   if(choice.toLowerCase().startsWith('y')){
-  //     location.reload();
+  // function moveCar(input){
+  //   if (currentCar == "Front of Train"){
+  //     setText("You reached the front of the train!");
   //   }
   //   else{
-  //     redirect('/singly-linked-lists');
+  //     showStatus();
+  //     console.log(currentCar);
   //   }
+  // }
+    
+      // If they type 'go' first
+      // if (input[0] === "go") {
+      //   // Check that they are allowed wherever they want to go
+      //   if (input[1] in cars[currentCar]) {
+      //       // Set the current car to the new car
+      //       currentCar = cars[currentCar][move[1]];
+      //   } else {
+      //       textToShow="You can't go that way!";
+      //   }
+      // }
+
+  function takeItem(input){
+        
+      // If the car contains an item and the item is the one they want to get
+      const item = input.slice(1).join(" ");
+      if (currentCar in cars && "items" in cars[currentCar] && cars[currentCar].items.includes(item)) {
+        // Add the item to the inventory
+        inventory.push(item);
+        // Display a helpful message
+        textToShow = item + " taken!";
+        // Remove the item from items available in the car
+        cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
+      } else {
+        textToShow = "Can't get " + item + "!";
+      }
+      console.log("Current car from takeItem:" + currentCar);
+      showStatus();
+    }
+  
+  function checkScore(){
+    var stringBuilder = "";
+    // Display the final inventory
+    if (inventory.length == 10) {
+        stringBuilder += 
+        `YOU WIN!!!
+        You have collected all of the tickets!
+        YOU WIN!`;
+    }
+    else
+    {
+        stringBuilder += 
+        `Whilst you have reached the front of the train, you did not collect all of the tickets.
+        You lose this round.`;
+    }
+    stringBuilder += `
+    Play again? (y / n)`;
+
+    setText(stringBuilder);
+  }
+  
 
 function showStatus() {  
   // Print the player's current status
-    let stringBuilder = `------------------------  
-            You are in the ` + currentCar +".";
+    if (currentCar != "Front of Train"){
+      let stringBuilder = `------------------------  
+              You are in the ` + currentCar +".";
 
-    // Print the description of the current car
-    if (currentCar in cars && "description" in cars[currentCar]) {
-       stringBuilder += `
-        Car description: ` + cars[currentCar].description;
-      }
-
-    // Print the available tickets in the current car
-    if (currentCar in cars && "items" in cars[currentCar]) {
+      // Print the description of the current car
+      if (currentCar in cars && "description" in cars[currentCar]) {
         stringBuilder += `
-        Available Tickets: ` + cars[currentCar].items.join(", ");
-      }
-    // Print the current inventory
-    stringBuilder += `
-    Inventory: ` + inventory.join(", ") + `
-    ------------------------`;
-    setText(stringBuilder);
+          Car description: ` + cars[currentCar].description;
+        }
+
+      // Print the available tickets in the current car
+      if (currentCar in cars && "items" in cars[currentCar]) {
+          stringBuilder += `
+          Available Tickets: ` + cars[currentCar].items.join(", ");
+        }
+      // Print the current inventory
+      stringBuilder += `
+      Inventory: ` + inventory.join(", ") + `
+      ------------------------`;
+      setText(stringBuilder);
+    }
+    else{
+      setText( "You've reached the front of the train!");
+      setTimeout(function(){checkScore()}, 1000);
+    }
 }
 
 function HandleInput(e){
   e.preventDefault();
-  let userInput = document.getElementById("userInput").value;
+  let userInput = document.getElementById("userInput").value.toLowerCase().split(" ");
 
-  switch(userInput){
+  switch(userInput[0]){
     case "start":
-      setText("You submitted start");
+      if(!isStarted){
+        setStarted(true);
+        // setCar(cars[currentCar]["forward"]); //req'd to fix some weird latency
+        currentCar = "Caboose";
+        showStatus();
+      }
       break;
     case "go":
-      // setText("You submitted go");
-      showStatus();
+    case "move":
+      if (isStarted){
+        if(userInput[1] == "forward" && currentCar != "Front of Train"){
+          // setCar(cars[currentCar]["forward"]);
+          currentCar = (cars[currentCar]["forward"]);
+          showStatus();
+        }
+        else{
+            setText("Can't go that way!");
+            setTimeout(showStatus(), 1000);
+        }
+      }
       break;
     case "take":
-      setText("You submitted take");
+      if(isStarted){
+        setTimeout(function(){takeItem(userInput)}, 1000);
+      }
+      break;
+    case "y":
+    case "yes":
+      if (currentCar == "Front of Train"){
+        location.reload();
+      }
+      break;
+    case "n":
+    case "no":
+      if (currentCar == "Front of Train"){
+        window.open("/singly-linked-lists", "_self");
+      }
       break;
     default:
-      setText("This is not the command you're looking for.");
+      if (isStarted){
+        setText("I don't recognize that command.");
+        setTimeout(function(){showStatus()},1000);
+      }
   }
+  document.getElementById("userInput").value = "";
 }
     
     return(
