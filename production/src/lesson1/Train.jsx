@@ -42,12 +42,23 @@ var cars = {
 var inventory = [];
 
 export default function TrainGUI(){
-  var [textToShow, setText] = useState("initial state");
-  var [choice, setChoice] = useState("");
-  // choice = "";
-  // const [currentCar, setCar] = useState("Caboose");
 
-  ShowInstructions();
+  // choice = "";
+  const [currentCar, setCar] = useState("Caboose");
+  
+  // Print a main menu and the commands
+  var [textToShow, setText] = useState(
+    `TRAIN GAME 
+        - You are the conductor on a busy train on your final walk-though.
+        - Check each car and collect the remaining tickets.
+        - You MUST collect the tickets whilst in the car. 
+        ===========
+        Commands:
+        start
+        go [direction]
+        take [item]
+    `);
+
 
   // // Loop until reaching the front of the train
   // // while (currentCar != "Front of Train") {
@@ -120,58 +131,46 @@ export default function TrainGUI(){
   //     redirect('/singly-linked-lists');
   //   }
 
-    function ShowInstructions()
-    {
-      // Print a main menu and the commands
-      setText( 
-      `TRAIN GAME 
-          - You are the conductor on a busy train on your final walk-though.
-          - Check each car and collect the remaining tickets.
-          - You MUST collect the tickets whilst in the car. 
-          ===========
-          Commands:
-          start
-          go [direction]
-          take [item]
-      `);
-  }
+function showStatus() {  
+  // Print the player's current status
+    let stringBuilder = `------------------------  
+            You are in the ` + currentCar +".";
 
-// function showStatus() {
-//     // Print the player's current status
-//     textToShow = `------------------------  
-//                 You are in the ` + currentCar +".";
+    // Print the description of the current car
+    if (currentCar in cars && "description" in cars[currentCar]) {
+       stringBuilder += `
+        Car description: ` + cars[currentCar].description;
+      }
 
-//     // Print the description of the current car
-//     if (currentCar in cars && "description" in cars[currentCar]) {
-//         textToShow += `
-//         Car description: ` + cars[currentCar].description;
-//       }
-
-//     // Print the available tickets in the current car
-//     if (currentCar in cars && "items" in cars[currentCar]) {
-//         textToShow += `
-//         Available Tickets: ` + cars[currentCar].items.join(", ");
-//       }
-//     // Print the current inventory
-//     textToShow += `
-//     Inventory: ` + inventory.join(", ") + `
-//     ------------------------`;
-// }
+    // Print the available tickets in the current car
+    if (currentCar in cars && "items" in cars[currentCar]) {
+        stringBuilder += `
+        Available Tickets: ` + cars[currentCar].items.join(", ");
+      }
+    // Print the current inventory
+    stringBuilder += `
+    Inventory: ` + inventory.join(", ") + `
+    ------------------------`;
+    setText(stringBuilder);
+}
 
 function HandleInput(e){
   e.preventDefault();
   let userInput = document.getElementById("userInput").value;
-  setChoice(userInput);
 
-  switch(choice.startsWith()){
+  switch(userInput){
     case "start":
-      return  '';
+      setText("You submitted start");
+      break;
     case "go":
-      return '';
+      // setText("You submitted go");
+      showStatus();
+      break;
     case "take":
-      return '';
+      setText("You submitted take");
+      break;
     default:
-      return "That's not a valid command";
+      setText("This is not the command you're looking for.");
   }
 }
     
