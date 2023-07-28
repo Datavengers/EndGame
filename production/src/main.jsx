@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './index.css'
 import './gameMapStyles.css'
 import './loginStyles.css'
+import './lesson1/trainStyles.css'
 import Root from "./routes/root"
 import ErrorPage from "./error-page";
 import Index from "./routes/index";
@@ -14,7 +15,7 @@ import Login from "./routes/login";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 import Signup from './routes/siginup';
-import TrainGame from './routes/traingame';
+import TrainGUI from './lesson1/Train'
 
 const router = createBrowserRouter([
   {
@@ -35,11 +36,12 @@ const router = createBrowserRouter([
             element:<Sll_Home />,
             children:[
               {path:"singly-linked-lists/articles"},
-              {path:"singly-linked-lists/train-game",
-              element:<TrainGame />,
-              },
               {path:"singly-linked-lists/quizzes",}
             ]
+          },
+          {
+            path:"singly-linked-lists/train-game",
+            element:<TrainGUI />
           },
           {
             path: "doubly-linked-lists",

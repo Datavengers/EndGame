@@ -29,15 +29,15 @@ export const MuiDrawer = () => {
                 onClick={() => setIsDrawerOpen(false)}
             >
                 <Box p={2} width='250px' textAlign='center' role='presentation'>
-                    <Typography variant='h4' component='div'>
-                        EndGame Menu
+                    <Typography variant='h4' component='div' sx={{fontFamily:'Slackey'}}>
+                        Menu
                     </Typography>
                     <List>
                         <ListItem>
                             <Link to="game_map" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><MapIcon /></ListItemIcon>
-                                    <ListItemText>Map</ListItemText>
+                                    <ListItemText primaryTypographyProps={{fontSize:1.4+'em',fontFamily:'Architects Daughter'}}>Map</ListItemText>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
@@ -48,7 +48,7 @@ export const MuiDrawer = () => {
                             <Link to="singly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><ArrowForwardIcon /></ListItemIcon>
-                                    <ListItemText>Singly Linked Lists</ListItemText>
+                                    <ListItemText primaryTypographyProps={{fontSize:1.4 +'em',fontFamily:'Architects Daughter'}}>Singly Linked Lists</ListItemText>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
@@ -56,7 +56,7 @@ export const MuiDrawer = () => {
                             <Link to="doubly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><SyncAltIcon /></ListItemIcon>
-                                    <ListItemText>Doubly Linked Lists</ListItemText>
+                                    <ListItemText primaryTypographyProps={{fontSize:1.4 +'em',fontFamily:'Architects Daughter'}}>Doubly Linked Lists</ListItemText>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
@@ -66,7 +66,7 @@ export const MuiDrawer = () => {
                             <Link to="prizes" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><EmojiEventsIcon /></ListItemIcon>
-                                    <ListItemText>Prizes</ListItemText>
+                                    <ListItemText primaryTypographyProps={{fontSize:1.4 +'em',fontFamily:'Architects Daughter'}}>Prizes</ListItemText>
                                 </ListItemButton>
                             </Link>
                         </ListItem>
@@ -74,7 +74,7 @@ export const MuiDrawer = () => {
                             <Link to="resources" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><InfoIcon /></ListItemIcon>
-                                    <ListItemText>Resources</ListItemText>
+                                    <ListItemText primaryTypographyProps={{fontSize:1.4 +'em',fontFamily:'Architects Daughter'}}>Resources</ListItemText>
                                 </ListItemButton>
                             </Link>
                         </ListItem>

@@ -48,7 +48,7 @@ export default function MenuAppBar() {
       <AppBar position="static">
         <Toolbar className="appbar">
           <MuiDrawer />
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize:2+'em', fontFamily:'Slackey' }}>
             DSA EndGame
           </Typography>
           {auth && (
