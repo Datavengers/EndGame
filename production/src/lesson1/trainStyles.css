@@ -17,14 +17,12 @@ body{
 #computerScreen{
     width:625px;
     height:625px;
-    background-color:black;
     border-radius: 15px;
     position: absolute;
     margin-left:75px;
     margin-top:75px;
 }
 #trainText{
-    color:lime;
     font-family:monospace;
     font-size:1.4em;
     padding-left:20px;
@@ -44,14 +42,13 @@ body{
 }
 
 #userInput{
-    background-color:black;
-    color:lime;
     font-family:monospace;
     outline:none;
     position:absolute;
     width:100%;
     margin-top: 550px;
     padding-left:25px;
+    box-shadow:none;
 }
 
 #btnDiv{
@@ -63,7 +60,7 @@ body{
     margin-top:700px;
 }
 
-#offButton{
+#colorButton{
     border-radius:250px;
     width:50px;
     height:50px;
