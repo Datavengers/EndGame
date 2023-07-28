@@ -6,72 +6,163 @@ body{
     overflow: hidden;
 }
 
-#computerBezel{
-    width:775px;
-    height:775px;
-    margin:auto;
-    background:linear-gradient(135deg, rgb(199, 196, 181) 50%, rgb(170, 167, 153) 50%);
-    position:relative;
+/* Bigger screens*/
+@media only screen and (min-width:990px){
+    #computerBezel{
+        width:575px;
+        height:575px;
+        margin:auto;
+        background:linear-gradient(135deg, rgb(199, 196, 181) 50%, rgb(170, 167, 153) 50%);
+        position:relative;
+        border-radius:5px;
+    }
+    #computerScreen{
+        width:80%;
+        height:80%;
+        border-radius: 15px;
+        position: absolute;
+        margin-left:10%;
+        margin-top:10%;
+    }
+    #trainText{
+        font-family:monospace;
+        font-size:1.1em;
+        padding-left:20px;
+        padding-right:20px;
+        width:100%;
+        height:100%;
+        white-space:pre-line;
+        position:absolute;
+    }
+    #computerBase{
+        width:50%;
+        height:40px;
+        margin:auto;
+        background-color:rgb(126, 122, 117);
+        border-top-left-radius: 250px;
+        border-top-right-radius: 250px;
+    }
 
-}
-#computerScreen{
-    width:625px;
-    height:625px;
-    border-radius: 15px;
-    position: absolute;
-    margin-left:75px;
-    margin-top:75px;
-}
-#trainText{
-    font-family:monospace;
-    font-size:1.4em;
-    padding-left:20px;
-    padding-right:20px;
-    width:100%;
-    height:100%;
-    white-space:pre-line;
-    position:absolute;
-}
-#computerBase{
-    width:500px;
-    height:50px;
-    margin:auto;
-    background-color:rgb(126, 122, 117);
-    border-top-left-radius: 250px;
-    border-top-right-radius: 250px;
+    #userInput{
+        font-family:monospace;
+        outline:none;
+        position:absolute;
+        width:100%;
+        margin-top: 85%;
+        padding-left:25px;
+        box-shadow:none;
+    }
+
+    #btnDiv{
+        width:100%;
+        height:50px;
+        display:flex;
+        flex-direction:row-reverse;
+        position:absolute;
+        margin-top:90%;
+    }
+
+    #colorButton{
+
+        font-size:0.8em;
+        border-radius:250px;
+        width:35px;
+        height:35px;
+        background-color:rgb(199, 196, 181);
+        margin-right:30px;
+    }
+
+    #logo{
+        font-size:1.4em;
+        font-weight:bold;
+        color: rgb(31, 31, 122);
+        margin-top:6px;
+        margin-right:10px;
+    }
 }
 
-#userInput{
-    font-family:monospace;
-    outline:none;
-    position:absolute;
-    width:100%;
-    margin-top: 550px;
-    padding-left:25px;
-    box-shadow:none;
+/* Bigger screens*/
+@media only screen and (min-width:1365px){
+    #computerBezel{
+        width:650px;
+        height:650px;
+    }
+    #computerScreen{
+        width:80%;
+        height:80%;
+        margin-left:60px;
+        margin-top:60px;
+    }
+    #trainText{
+        font-family:monospace;
+        font-size:1.3em;
+    }
+    #computerBase{
+        width:40%;
+        height:50px;
+    }
+
+    #userInput{
+        margin-top: 450px;
+    }
+
+    #btnDiv{
+        margin-top:585px;
+    }
+
+    #colorButton{
+        width:40px;
+        height:40px;
+        margin-right:40px;
+    }
+
+    #logo{
+        font-size:1.5em;
+        margin-top:6px;
+    }
 }
 
-#btnDiv{
-    width:100%;
-    height:50px;
-    display:flex;
-    flex-direction:row-reverse;
-    position:absolute;
-    margin-top:700px;
-}
+@media only screen and (min-width:1500px){
+    #computerBezel{
+        width:900px;
+        height:900px;
+    }
+    #computerScreen{
+        width:80%;
+        height:80%;
+        margin-left:10%;
+        margin-top:10%;
+    }
+    #trainText{
+        font-family:monospace;
+        font-size:1.65em;
+        padding-left:25px;
+        padding-right:25px;
+    }
+    #computerBase{
+        width:35%;
+        height:60px;
+    }
 
-#colorButton{
-    border-radius:250px;
-    width:50px;
-    height:50px;
-    background-color:rgb(199, 196, 181);
-    margin-right:30px;
-}
+    #userInput{
+        font-size: 1.8em;
+        margin-top: 625px;
+    }
 
-#logo{
-    font-size:1.5em;
-    font-weight:bold;
-    color: rgb(31, 31, 122);
-    margin-top:8px;
-    margin-right:10px;
+    #btnDiv{
+        margin-top:91%;
+    }
+
+    #colorButton{
+        width:60px;
+        height:60px;
+        margin-right:50px;
+        font-size:1.3em;
+    }
+
+    #logo{
+        font-size:1.7em;
+        margin-top:12px;
+        margin-right:15px;
+    }
 }

@@ -244,7 +244,6 @@ function HandleInput(e){
     
   return(
     <>
-      <body id="trainBody">
         <div id="computerBezel">
           <div id="computerScreen" style={{backgroundColor: bgColor}}>
             <div id="textArea">
@@ -262,7 +261,6 @@ function HandleInput(e){
         </div>
         </div>
         <div id="computerBase"></div>
-      </body>
     </>
   )
 }
