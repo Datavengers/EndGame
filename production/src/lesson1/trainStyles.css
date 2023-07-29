@@ -9,8 +9,8 @@ body{
 /* Bigger screens*/
 @media only screen and (min-width:990px){
     #computerBezel{
-        width:575px;
-        height:575px;
+        width:80vh;
+        height:80vh;
         margin:auto;
         background:linear-gradient(135deg, rgb(199, 196, 181) 50%, rgb(170, 167, 153) 50%);
         position:relative;
@@ -26,17 +26,18 @@ body{
     }
     #trainText{
         font-family:monospace;
-        font-size:1.1em;
-        padding-left:20px;
-        padding-right:20px;
+        font-size:2vh;
+        padding-left:2vh;
+        padding-right:2vh;
         width:100%;
         height:100%;
+        margin-top:2vh;
         white-space:pre-line;
         position:absolute;
     }
     #computerBase{
-        width:50%;
-        height:40px;
+        width:50vh;
+        height:6vh;
         margin:auto;
         background-color:rgb(126, 122, 117);
         border-top-left-radius: 250px;
@@ -45,124 +46,39 @@ body{
 
     #userInput{
         font-family:monospace;
+        font-size:2vh;
         outline:none;
         position:absolute;
         width:100%;
-        margin-top: 85%;
-        padding-left:25px;
+        margin-top: 57vh;
+        padding-left:2.5vh;
         box-shadow:none;
     }
 
     #btnDiv{
         width:100%;
-        height:50px;
+        height:10vh;
         display:flex;
         flex-direction:row-reverse;
         position:absolute;
-        margin-top:90%;
+        margin-top:73vh;
     }
 
     #colorButton{
-
-        font-size:0.8em;
+        padding:0;
+        font-size:2vh;
         border-radius:250px;
-        width:35px;
-        height:35px;
+        width:5vh;
+        height:5vh;
         background-color:rgb(199, 196, 181);
-        margin-right:30px;
+        margin-right:5vh;
     }
 
     #logo{
-        font-size:1.4em;
+        font-size:3vh;
         font-weight:bold;
         color: rgb(31, 31, 122);
-        margin-top:6px;
-        margin-right:10px;
-    }
-}
-
-/* Bigger screens*/
-@media only screen and (min-width:1365px){
-    #computerBezel{
-        width:650px;
-        height:650px;
-    }
-    #computerScreen{
-        width:80%;
-        height:80%;
-        margin-left:60px;
-        margin-top:60px;
-    }
-    #trainText{
-        font-family:monospace;
-        font-size:1.3em;
-    }
-    #computerBase{
-        width:40%;
-        height:50px;
-    }
-
-    #userInput{
-        margin-top: 450px;
-    }
-
-    #btnDiv{
-        margin-top:585px;
-    }
-
-    #colorButton{
-        width:40px;
-        height:40px;
-        margin-right:40px;
-    }
-
-    #logo{
-        font-size:1.5em;
-        margin-top:6px;
-    }
-}
-
-@media only screen and (min-width:1500px){
-    #computerBezel{
-        width:900px;
-        height:900px;
-    }
-    #computerScreen{
-        width:80%;
-        height:80%;
-        margin-left:10%;
-        margin-top:10%;
-    }
-    #trainText{
-        font-family:monospace;
-        font-size:1.65em;
-        padding-left:25px;
-        padding-right:25px;
-    }
-    #computerBase{
-        width:35%;
-        height:60px;
-    }
-
-    #userInput{
-        font-size: 1.8em;
-        margin-top: 625px;
-    }
-
-    #btnDiv{
-        margin-top:91%;
-    }
-
-    #colorButton{
-        width:60px;
-        height:60px;
-        margin-right:50px;
-        font-size:1.3em;
-    }
-
-    #logo{
-        font-size:1.7em;
-        margin-top:12px;
-        margin-right:15px;
+        margin-top:0.8vh;
+        margin-right:2vh;
     }
 }

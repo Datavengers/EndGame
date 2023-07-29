@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 export default function Index() {
   const [loaded, setLoaded] = useState(false);
-  
+
   return (
       <>
       {loaded?null:<Skeleton onLoad={setLoaded(true)}/>}

@@ -37,7 +37,7 @@ export default function MenuAppBar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" style={{marginBottom:'none'}}>
         <Toolbar className="appbar">
           {auth &&
             <MuiDrawer />
