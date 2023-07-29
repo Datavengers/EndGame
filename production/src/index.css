@@ -84,8 +84,8 @@ form[action$="destroy"] button {
 
 .appbar {
   background-color: #5ebcfa; /*original blue*/
-  /* background-color: #cc1d2d; superhero red */
-  border-bottom:1px solid #9fd9ff;
+  /* background-color: #aa121f; superhero red */
+  /* border-bottom:1px solid #9fd9ff; /*original*/
   z-index:10;
 }
 
@@ -270,6 +270,7 @@ i {
 #zero-state {
   margin: 2rem auto;
   text-align: center;
+  font-size:2vh;
 }
 
 #zero-state a {
@@ -292,4 +293,30 @@ i {
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+#biggest{
+  font-family:'slackey';
+  font-size: 2em;
+  font-weight:bolder;
+}
+
+#bigger{
+  font-family: 'slackey';
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+#big{
+  font-family: 'slackey';
+  font-weight: bolder;
+}
+
+.articleDiv{
+  width:75vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:rgba(255,255,255,0.3);
+  border:1px solid white;
+  padding:3vh;
 }

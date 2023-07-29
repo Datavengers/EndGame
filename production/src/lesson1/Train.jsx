@@ -241,6 +241,8 @@ function HandleInput(e){
     }
 
   }
+
+  document.body.style.overflow = "hidden";
     
   return(
     <>
