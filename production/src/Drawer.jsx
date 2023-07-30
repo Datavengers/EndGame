@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Drawer, Box, Typography, IconButton, Divider } from '@mui/material';
 import { Link } from 'react-router-dom'; // Import the Link component
 import MenuIcon from '@mui/icons-material/Menu';
@@ -14,9 +14,11 @@ import SyncAltIcon from '@mui/icons-material/SyncAlt';
 import MapIcon from '@mui/icons-material/Map';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import InfoIcon from '@mui/icons-material/Info';
+import { LoginContext } from './LoginContext';
 
 export const MuiDrawer = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+    const { username, isLoggedIn } = useContext(LoginContext);
     return (
         <>
             <IconButton size='large' edge='start' color='inherit' aria-label='logo' onClick={() => setIsDrawerOpen(true)}>

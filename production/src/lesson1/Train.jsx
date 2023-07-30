@@ -15,7 +15,7 @@ var cars = {
       items : ["ticket 1", "ticket 2", "ticket 3"],
       },
   "Coach Car 1": {
-      description : "It is a full car with several families.  Look for 2 new passangers and check their tickets.",
+      description : "It is a full car with several families.  Look for 2 new passengers and check their tickets.",
       forward : "Coach Car 2",
       items : ["ticket 4", "ticket 5"],
       },
@@ -43,6 +43,10 @@ var inventory = [];
 
 export default function TrainGUI(){
   var [isStarted, setStarted] = useState(false);
+  var [bgColor, setBgColor] = useState("black");
+  var [textColor, setTextColor] = useState("lime");
+  var [inputColor, setInputColor] = useState("black");
+  
   // Print a main menu and the commands
   var [textToShow, setText] = useState(
     `TRAIN GAME 
@@ -86,14 +90,15 @@ export default function TrainGUI(){
         // Add the item to the inventory
         inventory.push(item);
         // Display a helpful message
-        textToShow = item + " taken!";
+        setText(item + " taken!");
         // Remove the item from items available in the car
         cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
-      } else {
-        textToShow = "Can't get " + item + "!";
+      } else if (input.includes("ticket")){ 
+        setText("Hmm, which ticket?");
+      }else {
+        setText("Can't get " + item + "!");
       }
-      console.log("Current car from takeItem:" + currentCar);
-      showStatus();
+      setTimeout(function(){showStatus()}, 1000);
     }
   
   function checkScore(){
@@ -107,9 +112,9 @@ export default function TrainGUI(){
     }
     else
     {
-        stringBuilder += 
-        `Whilst you have reached the front of the train, you did not collect all of the tickets.
-        You lose this round.`;
+      stringBuilder += 
+      `Whilst you have reached the front of the train, you did not collect all of the tickets.
+      You lose this round.`;
     }
     stringBuilder += `
     Play again? (y / n)`;
@@ -169,14 +174,30 @@ function HandleInput(e){
           showStatus();
         }
         else{
-            setText("Can't go that way!");
-            setTimeout(showStatus(), 1000);
+            setText(`You can't go that way...
+            This is a singly-linked train, you can only go forward!`);
+            setTimeout(function(){showStatus()}, 2000);
         }
       }
       break;
+    case "get":
+    case "collect":
     case "take":
       if(isStarted){
-        setTimeout(function(){takeItem(userInput)}, 1000);
+        if (userInput.includes("ticket")){
+          takeItem(userInput);
+        }
+        else{
+          setText("I can't seem to find that, hmm... ")
+          setTimeout(function(){showStatus()}, 1500);
+        }
+      }
+      break;
+    case "jump":
+      if(isStarted){
+        setText(`You jumped. Everybody is looking at you. 
+        That was a rather silly thing for a conductor to do, wasn't it?`);
+        setTimeout(function(){showStatus()}, 4000);
       }
       break;
     case "y":
@@ -196,29 +217,52 @@ function HandleInput(e){
         setText("I don't recognize that command.");
         setTimeout(function(){showStatus()},1000);
       }
+    }
+    document.getElementById("userInput").value = "";
   }
-  document.getElementById("userInput").value = "";
-}
+
+  function setGUIStyle(){
+    switch (textColor){
+      case("lime"):
+        setBgColor("blue");
+        setTextColor("white");
+        setInputColor("blue");
+        break;
+      case("white"):
+        setBgColor("black");
+        setTextColor("orange");
+        setInputColor("black");
+        break;
+      case("orange"):
+        setBgColor("black");
+        setTextColor("lime");
+        setInputColor("black");
+        break;
+    }
+
+  }
+
+  document.body.style.overflow = "hidden";
     
-    return(
-      <>
+  return(
+    <>
         <div id="computerBezel">
-          <div id="computerScreen">
+          <div id="computerScreen" style={{backgroundColor: bgColor}}>
             <div id="textArea">
-              <p id="trainText">{textToShow}</p>
+              <p id="trainText" style={{color:textColor}}>{textToShow}</p>
             </div>
             <div id="inputArea">
               <form autoComplete="off" onSubmit={HandleInput}>
-                <input id="userInput" type="text" onBlur={({target })=>target.focus()} autoFocus={true}/>
+                <input id="userInput" type="text" onBlur={({target })=>target.focus()} autoFocus={true} style = {{backgroundColor: inputColor, color: textColor}}/>
               </form>
             </div>
           </div>
           <div id="btnDiv">
-              <button id="offButton" />
+              <button id="colorButton" onClick={()=>{setGUIStyle()}} style={{color:textColor}}>O</button>
             <p id="logo" style={{fontFamily:'fantasy', userSelect:'none'}}>TrainGame</p>
         </div>
         </div>
         <div id="computerBase"></div>
-      </>
-    )
-  }
+    </>
+  )
+}
