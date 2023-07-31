@@ -16,7 +16,8 @@ import Login from "./routes/login";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 import Signup from './routes/siginup';
-import TrainGUI from './lesson1/Train'
+import TrainGUI from './lesson1/Train';
+import SinglyLinkedListQuiz from './routes/singlyLinkedListQuiz';
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
           {
             path: "prizes",
             element:<Prizes_Home />,
+          },
+          {
+            path: "sllq",
+            element:<SinglyLinkedListQuiz />,
           },
           {
             path: "resources",
