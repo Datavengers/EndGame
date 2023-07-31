@@ -8,9 +8,11 @@ html {
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: 'Architects Daughter', cursive;
+  
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   
@@ -42,6 +44,7 @@ button {
   margin: 0;
 }
 button {
+  font-family: 'Slackey', cursive;
   color: #3992ff;
   font-weight: 500;
 }
@@ -80,21 +83,21 @@ form[action$="destroy"] button {
 }
 
 .appbar {
-  background-color: #5ebcfa;
-  /* background-color: #2ba3f5; */ /*maybe too plain?*/
-  /* background-color: #073452; */ /*maybe too dark?*/
-  border-bottom:1px solid #9fd9ff;
+  background-color: #5ebcfa; /*original blue*/
+  /* background-color: #aa121f; superhero red */
+  /* border-bottom:1px solid #9fd9ff; /*original*/
   z-index:10;
 }
 
 #detail {
   /* display: flex; */
-  color:white;
-  background-color:#2ba3f5; 
+  background-color:#2ba3f5; /*original blue*/
+  /*background-color: #4ebdcf;*/ /*superhero blue*/
   min-height: 95vh;
 }
 
 #sidebar {
+  font-family: 'Slackey', cursive;
   z-index:5;
   width: 22rem;
   background-color: #f7f7f7;
@@ -109,6 +112,7 @@ form[action$="destroy"] button {
 }
 
 #sidebar h1 {
+  font-family: 'Slackey', cursive;
   font-size: 1rem;
   font-weight: 500;
   display: flex;
@@ -266,6 +270,7 @@ i {
 #zero-state {
   margin: 2rem auto;
   text-align: center;
+  font-size:2vh;
 }
 
 #zero-state a {
@@ -282,9 +287,36 @@ i {
 }
 
 #error-page {
+  font-family: 'Slackey', cursive;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   width: 100%;
+}
+
+#biggest{
+  font-family:'slackey';
+  font-size: 2em;
+  font-weight:bolder;
+}
+
+#bigger{
+  font-family: 'slackey';
+  font-size: 1.5em;
+  font-weight: bolder;
+}
+
+#big{
+  font-family: 'slackey';
+  font-weight: bolder;
+}
+
+.articleDiv{
+  width:75vw;
+  margin-left: auto;
+  margin-right: auto;
+  background-color:rgba(255,255,255,0.3);
+  border:1px solid white;
+  padding:3vh;
 }
