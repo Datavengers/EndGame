@@ -1,4 +1,4 @@
-// Creates table LOGIN in database
+// Creates table Login in database
 
 module.exports = (sequelize, DataTypes) => {
 

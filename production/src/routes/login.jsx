@@ -19,9 +19,6 @@ const Login = () => {
     setSnackbarOpen(false);
   };
 
-  axios.get("http://localhost:3000/login").then((response) => {
-    console.log(response.data);
-});
 
   async function loginUser(event) {
     event.preventDefault();
@@ -35,6 +32,10 @@ const Login = () => {
       if (response.status === 200) {
         setSnackbarMessage("Login successful");
         setSnackbarOpen(true);
+        
+        axios.get("http://localhost:3000/login").then((response) => {
+          console.log(response.data);
+      });
 
         // Redirect to a different page after successful login if needed
         // For example, using React Router:
