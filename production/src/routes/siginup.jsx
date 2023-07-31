@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef, useState} from "react";
 import TextField from "@mui/material/TextField";
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
@@ -7,20 +7,59 @@ import { Link } from 'react-router-dom';
 // import Dialog from '@mui/material/Dialog';
 // import { LoginContext } from '../hooks/LoginContext';
 import Snackbar from '@mui/material/Snackbar';
+import axios from 'axios';
 
-export const Signup = (props) => {
+const apiUrl = 'http://localhost:3000';
 
-    const [username, setUsername] = React.useState('')
-    const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const [confirmPassword, setConfirmPassword] = React.useState('')
-    const [snackbarOpen, setSnackbarOpen] = React.useState(false);
-    const [snackbarMessage, setSnackbarMessage] = React.useState("");
+// const USER_REGEX = `/^[a-zA-Z][a-ZA-Z0-9-_]{3,23}$/`;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8, 24}$/;
+
+export const SignUpUser = (props) => {
+    const userRef = useRef();
+    const errRef = useRef();
+
+    const [username, setUsername] = useState('');
+    const [validName, setValidName] = useState(false);
+    const [userFocus, setUserFocus] = useState(false);
+
+    const [email, setEmail] = useState('');
+    const [validEmail, setValidEmail] = useState(false);
+    const [emailFocus, setEmailFocus] = useState(false);
+
+    const [password, setPassword] = useState('');
+    const [validPwd, setValidPwd] = useState(false);
+    const [pwdFocus, setPwdFocus] = useState(false);
+
+    const [confirmPassword, setConfirmPassword] = useState('');
+    const [confirmMatch, setConfirmMatch] = useState(false);
+    const [matchFocus, setMatchFocus] = useState(false);
+
+    const [snackbarOpen, setSnackbarOpen] = useState(false);
+    const [snackbarMessage, setSnackbarMessage] = useState('');
+
+    const [errMsg, setErrMsg] = useState('');
+    const [success, setSuccess] = useState(false);
 
     // const { handleLogin, getUsername } = React.useContext(LoginContext);
-    // const [ message, setMessage ] = React.useState('')
+    const [ message, setMessage ] = useState('');
 
-    // const emailRegex = /^\S+@\S+\.\S+$/
+    // const emailRegex = /^\S+@\S+\.\S+$/;
+
+    useEffect(() => {
+        userRef.current.focus();
+    }, []);
+
+
+    useEffect(() => {
+        const result = PWD_REGEX.test(password);
+        console.log(result);
+        console.log(password);
+        setValidPwd(result);
+        const match = password === confirmPassword;
+        setConfirmMatch(match);
+    }, [password, confirmPassword]);
+
+
 
 
     // function handleSnackbarClose() {
@@ -28,26 +67,26 @@ export const Signup = (props) => {
     //   }
 
     // async function registerUser(event) {
-    //     event.preventDefault() 
-    //     console.log("user registering")
+    //     event.preventDefault() ;
+    // //     console.log("user registering")
 
     //     if (!username || !email || !password || !confirmPassword) {
-    //         setMessage('Please fill in all the fields')
+    //         setMessage('Please fill in all the fields');
     //         return;
     //     }
 
     //     if (!emailRegex.test(email)) {
-    //         setMessage('Please enter a valid email address')
+    //         setMessage('Please enter a valid email address');
     //         return;
     //     }
 
     //     if (password !== confirmPassword) {
-    //         setMessage('Passwords do not match')
+    //         setMessage('Passwords do not match');
     //         return;
     //     }
 
     //     setMessage('')
-    //     const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/signup`, {
+    //     const response = await axios.get(`${apiUrl}/signup`, {
     //         //directions
     //         method: 'POST',
     //         headers: {
@@ -83,12 +122,17 @@ export const Signup = (props) => {
     //     )
     // }
 
-    // sends login data
+    // //sends login data
     // async function loginUser(event) {
 
     //     event.preventDefault() 
     
-    //     const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/login`, {
+    //     const response = await axios.post(`${apiUrl}/signup`, {
+    //         username,
+    //         email,
+    //         password,
+    //         confirmPassword
+    //     });
     //         method: 'POST',
     //         headers: {
     //             'Content-Type': 'application/json',
@@ -104,14 +148,14 @@ export const Signup = (props) => {
 
         
     //     //confirms user exists
-	// 	if (data.user) {
-    //         console.log(data.user)
-    //         console.log(data.user._id)
-	// 		localStorage.setItem('token', data.user)
-    //         getUsername()
-    //         handleLogin()
-    //         // navigate('/');
-	// 	} else {
+		// if (data.user) {
+        //     console.log(data.user)
+        //     console.log(data.user._id)
+		// 	localStorage.setItem('token', data.user)
+        //     getUsername()
+        //     handleLogin()
+        //     // navigate('/');
+		// } else {
     //         console.log(data)
     //         setSnackbarMessage("Something went wrong. Please try again.");
     //         setSnackbarOpen(true);
@@ -142,14 +186,24 @@ export const Signup = (props) => {
                     label="Username"
                     className="account-textfield"
                     type="text"
+                    ref={userRef}
+                    value={username}
+                    autoComplete="off"
                     onChange={(e) => setUsername(e.target.value)}
+                    onFocus={() => setUserFocus(true)}
+                    onBlur={() => setUserFocus(false)}
                 />
                 <TextField
                     required
                     label="Email"
                     className="account-textfield"
                     type="email"
+                    value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    aria-invalid={validEmail ? "false" : "true"}
+                    onFocus={() => setEmailFocus(true)}
+                    onBlur={() => setEmailFocus(false)}
+
                 />
                 <br/>
                 <TextField
@@ -157,14 +211,24 @@ export const Signup = (props) => {
                     label="Password"
                     className="account-textfield"
                     type="password"
+                    value={password}
                     onChange={(e) => setPassword(e.target.value)}
+                    aria-invalid={validPwd ? "false" : "true"}
+                    onFocus={() => setPwdFocus(true)}
+                    onBlur={() => setPwdFocus(false)}
+
                 />
                 <TextField
                     required
                     label="Confirm Password"
                     className="account-textfield"
                     type="password"
+                    value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
+                    aria-invalid={confirmMatch ? "false" : "true"}
+                    onFocus={() => (true)}
+                    onBlur={() => setConfirmMatch(false)}
+
                 />
                 <br/>
                 <Button
@@ -199,7 +263,6 @@ export const Signup = (props) => {
                 message={snackbarMessage}
         /> */}
         </div>
-    )
-}
+    )};
 
-export default Signup;
+export default SignUpUser;

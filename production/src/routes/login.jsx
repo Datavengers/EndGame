@@ -61,6 +61,7 @@ const Login = () => {
             label="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            autoComplete="off"
           />
         </Box>
         <br/>
