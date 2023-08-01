@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const SinglyLinkedListQuiz = () => {
+
   const initialQuestions = [
     {
       id: 1,
@@ -150,10 +151,10 @@ const SinglyLinkedListQuiz = () => {
       setCurrentQuestionIndex(0);
       setIsSubmitted(false);
     };
-  
+
     return (
-      <div style={{ fontSize: '1.2rem' }}>
-        <h1>Singly Linked List Quiz</h1>
+      <div id = "quizWrapper">
+        <h1 style={{fontFamily:'Slackey', textShadow:'1px 2px 2px yellow'}}>Singly Linked List Quiz</h1>
         {!isSubmitted && (
           <p>
             Question {currentQuestionIndex + 1} out of {questions.length}
@@ -177,11 +178,12 @@ const SinglyLinkedListQuiz = () => {
                           q.userAnswer === optionIndex + 1
                             ? q.userAnswer === q.correctAnswer
                               ? 'green'
-                              : 'red'
-                            : 'black',
+                              : 'firebrick'
+                              : 'black',
                       }}
                     >
                       <input
+                        className = "quizRadio"
                         type="radio"
                         name={`question-${q.id}`}
                         value={optionIndex + 1}
@@ -214,6 +216,7 @@ const SinglyLinkedListQuiz = () => {
                   }}
                 >
                   <input
+                    className = "quizRadio"
                     type="radio"
                     name={`question-${questions[currentQuestionIndex].id}`}
                     value={optionIndex + 1}
@@ -227,7 +230,7 @@ const SinglyLinkedListQuiz = () => {
               ))}
             </div>
             <div>
-              <button onClick={handleNext}>{currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}</button>
+              <button id="nextBtn" onClick={handleNext}>{currentQuestionIndex < questions.length - 1 ? 'Next' : 'Submit'}</button>
             </div>
           </div>
         )}

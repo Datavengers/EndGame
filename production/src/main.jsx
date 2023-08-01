@@ -6,6 +6,7 @@ import './index.css'
 import './gameMapStyles.css'
 import './loginStyles.css'
 import './lesson1/trainStyles.css'
+import './quizStyles.css'
 import Root from "./routes/root"
 import ErrorPage from "./error-page";
 import Index from "./routes/index";

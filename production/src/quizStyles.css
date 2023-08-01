@@ -1,0 +1,22 @@
+#quizWrapper{
+    width:75vh;
+    height:fit;
+    margin: auto;
+    outline: 5px double white;
+    border: 2px double sandybrown;
+    background: repeating-linear-gradient(135deg, #78e261, #a3da96);
+    /* background-color: #a3da96; */
+    padding:25px 50px 25px 50px;
+    border-radius: 50px 10px 50px 10px;
+    font-size: 1.2em;
+}
+
+.quizRadio{
+    margin-right:10px;
+}
+
+#nextBtn{
+    margin-top: 20px;
+    margin-left: 5%;
+    color: darkgoldenrod
+}
