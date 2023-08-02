@@ -29,17 +29,3 @@ db.sequelize.sync().then(() => {
         console.log(`Server listening on port ${PORT}`);
     });
 });
-
-// app.post('/signup', (req, res) => {
-//     const sql = "SELECT * FROM Users WHERE username = ? AND password = ?";
-
-//     db.query(sql, [req.body.email, req.body.password], (err, data) => {
-//         if(err) return res.json("Signup Failed");
-//         if(data.length > 0) {
-//             return res.json("Signup Successful");
-//         }
-//         else {
-//             return res.json("No Record");
-//         }
-//     });
-// });

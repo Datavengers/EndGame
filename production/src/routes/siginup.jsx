@@ -9,14 +9,13 @@ import { Link } from 'react-router-dom';
 import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:3000';
+const API_URL = 'http://localhost:3000';
 
-// const USER_REGEX = `/^[a-zA-Z][a-ZA-Z0-9-_]{3,23}$/`;
+const USER_REGEX = `/^[a-zA-Z][a-ZA-Z0-9-_]{3,23}$/`;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8, 24}$/;
 
 export const SignUpUser = (props) => {
     const userRef = useRef();
-    const errRef = useRef();
 
     const [username, setUsername] = useState('');
     const [validName, setValidName] = useState(false);
@@ -40,88 +39,88 @@ export const SignUpUser = (props) => {
     const [errMsg, setErrMsg] = useState('');
     const [success, setSuccess] = useState(false);
 
-    // const { handleLogin, getUsername } = React.useContext(LoginContext);
     const [ message, setMessage ] = useState('');
 
-    // const emailRegex = /^\S+@\S+\.\S+$/;
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, []);
-
-
-    useEffect(() => {
-        const result = PWD_REGEX.test(password);
-        console.log(result);
-        console.log(password);
-        setValidPwd(result);
-        const match = password === confirmPassword;
-        setConfirmMatch(match);
-    }, [password, confirmPassword]);
+    const emailRegex = /^\S+@\S+\.\S+$/;
+    // These can be implemented as well for testing username and password:
+    // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
+    // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        console.log('User registering...');
+
+        if (!username || !email || !password || !confirmPassword) {
+            setMessage('Please fill in all the fields');
+            console.log('Please fill in all the fields');
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            setMessage('Please enter a valid email address');
+            console.log('Please enter a valid email address');
+            return;
+        }
+        if (password !== confirmPassword) {
+            setMessage('Passwords do not match');
+            console.log('Passwords do not match');
+            return;
+        }
+        setMessage('');
+        // Query to see if username or email exist should go here with an "if" statement
+        // Run Query- if no username && no email, continue with following:
+        try {
+            console.log('Attempting to POST data')
+            const response = await axios.post(`${API_URL}/signup`, JSON.stringify({username, email, password, confirmPassword}),
+            {
+
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // sends as JSON
+                withCredentials: true
+                },
+                body: JSON.stringify({
+                username,
+                email,
+                password,
+                confirmPassword,
+            }),
+        })
+        console.log(response?.data);
+        console.log(JSON.stringify(response));
+        setSnackbarMessage("Signup Successful");
+        setSnackbarOpen(true);
 
 
-    // function handleSnackbarClose() {
-    //     setSnackbarOpen(false);
-    //   }
+        axios.get(`${API_URL}/signup`).then((response) => {
+            console.log(response.data);
+        });
+        setUsername('');
+        setEmail('');
+        setPassword('');
+        setConfirmPassword('');
+        // Something to reset the Sign ME Up Button here...
+    }
+    
+        catch(error) {
+        console.error("Signup Error", error);
+        setSnackbarMessage("An error occurred during signup");
+        setSnackbarOpen(true);
+    }
 
-    // async function registerUser(event) {
-    //     event.preventDefault() ;
-    // //     console.log("user registering")
 
-    //     if (!username || !email || !password || !confirmPassword) {
-    //         setMessage('Please fill in all the fields');
-    //         return;
-    //     }
+    }
 
-    //     if (!emailRegex.test(email)) {
-    //         setMessage('Please enter a valid email address');
-    //         return;
-    //     }
+    function handleSnackbarClose() {
+        setSnackbarOpen(false);
+      }
 
-    //     if (password !== confirmPassword) {
-    //         setMessage('Passwords do not match');
-    //         return;
-    //     }
 
-    //     setMessage('')
-    //     const response = await axios.get(`${apiUrl}/signup`, {
-    //         //directions
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json', //sends as JSON
-    //         },
-    //         //payload
-    //         body: JSON.stringify({
-    //             username,
-    //             email,
-    //             password,
-    //         }),
-    //     })
 
-    //     try{
-    //         const data = await response.json()
-    //         console.log(data)
-    //         setSnackbarMessage("Your account has been created!");
-    //         setSnackbarOpen(true);
-    //         props.handleSignupClose();
-    //     } catch {
-    //         setSnackbarMessage("Something went wrong. Please try again.");
-    //         setSnackbarOpen(true);
-    //         return;
-    //     }
-    //     loginUser(event);
-    // }
-
-    // function signupConfirmation() {
-    //     return (
-    //         <div>
-    //             You have signed up!
-    //         </div>
-    //     )
-    // }
-
+      // CODE FROM THE ORIGINAL SIGNUP TEMPLATE BELOW. 
+      // This seems to connect to LoginContext, but is currently not enabled
     // //sends login data
     // async function loginUser(event) {
 
@@ -148,19 +147,19 @@ export const SignUpUser = (props) => {
 
         
     //     //confirms user exists
-		// if (data.user) {
+        // if (data.user) {
         //     console.log(data.user)
         //     console.log(data.user._id)
-		// 	localStorage.setItem('token', data.user)
+        //  localStorage.setItem('token', data.user)
         //     getUsername()
         //     handleLogin()
         //     // navigate('/');
-		// } else {
+        // } else {
     //         console.log(data)
     //         setSnackbarMessage("Something went wrong. Please try again.");
     //         setSnackbarOpen(true);
-	// 	}
-	// }
+    //  }
+    // }
 
 
     return (
@@ -179,7 +178,7 @@ export const SignUpUser = (props) => {
                     }}
                     noValidate
                     autoComplete="off"
-                    // onSubmit={registerUser}
+                    onSubmit={handleSubmit}
                 >
                 <TextField
                     required
@@ -190,8 +189,6 @@ export const SignUpUser = (props) => {
                     value={username}
                     autoComplete="off"
                     onChange={(e) => setUsername(e.target.value)}
-                    onFocus={() => setUserFocus(true)}
-                    onBlur={() => setUserFocus(false)}
                 />
                 <TextField
                     required
@@ -200,9 +197,6 @@ export const SignUpUser = (props) => {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    aria-invalid={validEmail ? "false" : "true"}
-                    onFocus={() => setEmailFocus(true)}
-                    onBlur={() => setEmailFocus(false)}
 
                 />
                 <br/>
@@ -213,9 +207,6 @@ export const SignUpUser = (props) => {
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    aria-invalid={validPwd ? "false" : "true"}
-                    onFocus={() => setPwdFocus(true)}
-                    onBlur={() => setPwdFocus(false)}
 
                 />
                 <TextField
@@ -225,9 +216,6 @@ export const SignUpUser = (props) => {
                     type="password"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
-                    aria-invalid={confirmMatch ? "false" : "true"}
-                    onFocus={() => (true)}
-                    onBlur={() => setConfirmMatch(false)}
 
                 />
                 <br/>
@@ -242,17 +230,19 @@ export const SignUpUser = (props) => {
                     variant="outlined"
                 >
                     Sign me up!
+                  
                 </Button>
                 </Box>
+                
                 <p style={{
                     lineHeight: 1.5, 
                     textAlign: 'center', 
                 }}>
                     Psst... Already a member?<br/> 
                     Log in <Link to="/login">here!</Link>
-                </p>
+                </p>    
             </div>
-            {/* <Snackbar
+             <Snackbar
                 anchorOrigin={{
                     vertical: 'bottom',
                     horizontal: 'right',
@@ -261,8 +251,9 @@ export const SignUpUser = (props) => {
                 autoHideDuration={2000}
                 onClose={handleSnackbarClose}
                 message={snackbarMessage}
-        /> */}
+        />
         </div>
     )};
 
 export default SignUpUser;
+
