@@ -18,7 +18,8 @@ const IMAGES = {
     layer17: new URL('./layer17-bridge_front.png', import.meta.url).href,
     mapLinks: new URL('./mapLinks.svg',import.meta.url).href,
     trainimg: new URL('./traingamesnip.PNG', import.meta.url).href,
-    quiz: new URL('./comic-quiz.jpg', import.meta.url).href
+    quiz: new URL('./comic-quiz.jpg', import.meta.url).href,
+    learning: new URL('./learning.jpg', import.meta.url).href
 };
 
 export default IMAGES

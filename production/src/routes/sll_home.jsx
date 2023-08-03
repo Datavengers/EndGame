@@ -22,7 +22,25 @@ export default function Sll_Home() {
             
           </p>
           <div style={{display:'flex', justifyContent:'center'}}>
-          
+          <Link to="/singly-linked-lists/sll-learning">
+            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
+              <CardActionArea>
+                <CardMedia 
+                component="img" 
+                height="140" 
+                image={IMAGES.learning}
+                alt="Singly Linked List Learning Content" />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Singly Linked Lists
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    Read content page so that you can have an in-depth understanding when moving onto game and quiz.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Link>
           <Link to="/singly-linked-lists/train-game">
             <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
             <CardActionArea>

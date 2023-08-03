@@ -20,6 +20,7 @@ import Resources_Home from './routes/resource_home';
 import Signup from './routes/siginup';
 import TrainGUI from './routes/Train';
 import SinglyLinkedListQuiz from './routes/singlyLinkedListQuiz';
+import SinglyLinkedListLearning from './routes/sll_learning';
 import Stats from './routes/stats';
 
 const router = createBrowserRouter([
@@ -47,6 +48,10 @@ const router = createBrowserRouter([
           {
             path:"singly-linked-lists/train-game",
             element:<TrainGUI />
+          },
+          {
+            path:"singly-linked-lists/sll-learning",
+            element:<SinglyLinkedListLearning />
           },
           {
             path: "doubly-linked-lists",
