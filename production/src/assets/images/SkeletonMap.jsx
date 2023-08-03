@@ -6,7 +6,6 @@ const SkeletonMap = () => {
         <h2 className="section-title">
           <Skeleton height={30} width={300} />
         </h2>
-
           <Skeleton height={180} />
       </section>
     );

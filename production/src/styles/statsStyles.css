@@ -1,0 +1,56 @@
+.wrapperDiv{
+    width:150vh;
+    height:88vh;
+    margin:auto;
+    padding:30px;
+    background-color:rgba(255,255,255,0.3);
+    border-radius:50px;
+}
+.wrapperDiv p{
+    font-size: 1.7em;
+    font-weight: bold;
+}
+
+.statsDiv{
+    width:100%;
+    height:80%;
+    margin:auto;
+    display:grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 35% 65%;
+}
+
+.statsBlocks{
+    width:80%;
+    min-height:75%;
+    height:fit-content;
+    margin:auto;
+    border:2px solid black;
+    padding:25px;
+    background-color:rgba(255,255,255,0.2);
+    /* background-color:rgba(150,255, 100,0.3); */ /*green*/
+}
+
+.statsBlocks h1{
+    font-family:'Slackey';
+    color:rgb(146, 30, 30);
+    text-shadow: rgba(255,255,255,0.5) 2px 2px 1px;
+}
+
+.statsBlocks p, li{
+    font-size: 1.5em;
+    font-weight:normal;
+    text-align:center;
+}
+
+#currentPointsDiv p{
+    font-size:10vh;
+    color:rgb(255, 255, 148);
+    text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+}
+
+#alltimeDiv p{
+    font-size:10vh;
+    color:rgb(255, 255, 148);
+    text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+}
