@@ -1,9 +1,11 @@
 import IMAGES from '../assets/images/Images';
 import Particles from "react-tsparticles"
 import {loadFull} from "tsparticles"
-import SvgComponent from "../assets/images/mapSVG"
+import MapSVG from "../assets/images/mapSVG"
+import Nodeman from "../assets/images/nodeman"
 import Skeleton from '@mui/material/Skeleton';
 import { useState } from 'react';
+
 
 export default function Game_Map() {
     {/*required stuff to make the waves exist*/}
@@ -40,15 +42,25 @@ export default function Game_Map() {
                     },
                     particles: {
                         color: {
-                        value: "#ffffff"
+                            value: "#ffffff"
                         },
+                        // move:{
+                        //     direction:"none",
+                        //     enable:true,
+                        //     outModes:{
+                        //         default:"bounceHorizontal",
+                        //     },
+                        //     random:false,
+                        //     speed:1,
+                        //     straight:false,
+                        // },
                         number: {
-                        density: {
-                            enable: false,
-                            area:1080
-                        },
-                        limit: 0,
-                        value: 500,
+                            density: {
+                                enable: false,
+                                area:1080
+                            },
+                            limit: 0,
+                            value: 500,
                         },
                         opacity: {
                         animation: {
@@ -59,20 +71,19 @@ export default function Game_Map() {
                         },
                         random: {
                             enable: true,
-                            minimumValue: 0.2,
+                            minimumValue: 0.3,
                         },
                         value: 2,
                         },
                         shape: {
-                        type: 'triangle',
-                
+                        type: 'triangle',                
                         },
                         size: {
                         random: {
                             enable: true,
-                            minimumValue: 5,
+                            minimumValue: 6,
                         },
-                        value: 2
+                        value: 4
                         }
                     }
                 }}
@@ -82,7 +93,7 @@ export default function Game_Map() {
             <div className="parentLayer">
             {loaded ? null : 
                 <div id="loadingDiv" style={{marginLeft:150}}>
-                    <Skeleton variant="circular" width={700} height={400}/>
+                    <Skeleton variant="circular" width={120 + 'vh'} height={80 +'vh'}/>
                 </div>
             }
                 <img className="mapImg" src={IMAGES.layer1 } style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/>
@@ -103,7 +114,10 @@ export default function Game_Map() {
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer16} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer17} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer">
-                    <div className="svgContainer"><SvgComponent style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                    <div className="svgContainer"><MapSVG style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                </div>
+                <div className="childLayer" id="nodeman">
+                    <Nodeman id="nodemanSVG" style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/>
                 </div>
             </div>
         </div>

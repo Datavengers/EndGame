@@ -1,6 +1,7 @@
 import Skeleton from '@mui/material/Skeleton'
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
+import IMAGES from '../assets/images/Images'
 // import {LoginContext} from '../LoginContext';
 
 export default function Stats() {
@@ -40,7 +41,7 @@ export default function Stats() {
                 </div>
 
                 <div id="logoDiv">
-                    <p>logo goes here at some point</p>
+                    <img src={IMAGES.nodeman} alt="nodeman" width="50%"/>
                 </div>
 
                 <div className="statsBlocks" id="unlockedDiv">

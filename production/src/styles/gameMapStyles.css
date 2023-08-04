@@ -10,21 +10,31 @@ left: 0;
 z-index:2;
 }
 
-/* Landscape tablets, etc*/
-@media only screen and (min-width:768px){
-   
-    #mapWrapper{
+#nodeman{
+    width:26vh;
+    height:26vh;
+    transform:scaleX(-1);
+}
+
+#nodemanSVG{
     width:100%;
-    height:auto;
+    height:100%;
+    left:0;
+    top:0;
+    position:absolute;
+}
+
+#mapWrapper{
+    width:160vh;
+    margin:auto;
     }
     
-    .mapImg{
+.mapImg{
     width: 100%;
-    height:auto;
-    /* margin-top:-5vw; */
-    /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
     }
-    
+
+/* Landscape tablets, etc*/
+@media only screen and (max-width:992px){
     /*This ONLY works with a standard 1920x1080p monitor resolution, no scaling -- will 
     need to incorporate breakpoints based on monitor size and change accordingly*/
     .svgContainer{
@@ -40,19 +50,19 @@ z-index:2;
 }
 
 /* Laptops, smaller desktops, etc*/
-@media only screen and (min-width:992px){
+@media only screen and (max-width:1199px){
     #mapWrapper{
-        width:1000px;
-        height:auto;
-    }
-        
-    .mapImg{
-        width: 100%;
-        height:auto;
-        /* margin-top:-5vw; */
-        /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
+        width:140vh;
+        margin:auto;
     }
 
+    #nodeman{
+        width:26vh;
+        height:26vh;
+        margin-top:-50px;
+        margin-left:-50px;
+        transform:scaleX(-1);
+    }
     .svgContainer{
         position:relative;
         width:440%;
@@ -65,31 +75,7 @@ z-index:2;
     }
 }
 /* Large laptops, desktops, etc*/
-@media only screen and (min-width:1200px){
-   
-    #mapWrapper{
-    width:100%;
-    height:100%;
-    }
-    
-    .mapImg{
-    width: 100%;
-    height:auto;
-    /* margin-top:-5vw; */
-    /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
-    }
-    #mapWrapper{
-        width:1420px;
-        height:auto;
-    }
-    
-    .mapImg{
-        width: 100%;
-        height:auto;
-        /* margin-top:-5vw; */
-        /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
-    }
-    
+@media only screen and (max-width:1364px){    
     .svgContainer{
         position:relative;
         width:630%;
@@ -102,20 +88,7 @@ z-index:2;
     }
 }
 /* Bigger screens*/
-@media only screen and (min-width:1365px){
-   
-    #mapWrapper{
-    width:100%;
-    height:auto;
-    }
-    
-    .mapImg{
-    width: 100%;
-    height:auto;
-    /* margin-top:-5vw; */
-    /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
-    }
-    
+@media only screen and (max-width:1499px){
     .svgContainer{
         position:relative;
         width:480%;
@@ -130,17 +103,7 @@ z-index:2;
 
 /* Really long screens*/
 @media only screen and (min-width:1500px){
-    #mapWrapper{
-        width:85%;
-        height:auto;
-    }
-    
-    .mapImg{
-        width: 100%;
-        height:auto;
-        /* margin-top:-5vw; */
-        /* margin-left:-22rem; */ /*bring back once menu no longer needed*/
-    }
+
     .svgContainer{
         position:relative;
         width:530%;
