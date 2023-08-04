@@ -53,22 +53,25 @@ export const SignUpUser = (props) => {
         console.log('User registering...');
 
         if (!username || !email || !password || !confirmPassword) {
-            setMessage('Please fill in all the fields');
+            setSnackbarMessage('Please fill in all the fields');
+            setSnackbarOpen(true);
             console.log('Please fill in all the fields');
             return;
         }
 
         if (!emailRegex.test(email)) {
-            setMessage('Please enter a valid email address');
+            setSnackbarMessage('Please enter a valid email address');
+            setSnackbarOpen(true);
             console.log('Please enter a valid email address');
             return;
         }
         if (password !== confirmPassword) {
-            setMessage('Passwords do not match');
+            setSnackbarMessage('Passwords do not match');
+            setSnackbarOpen(true);
             console.log('Passwords do not match');
             return;
         }
-        setMessage('');
+        // setSnackbarMessage('');
         // Query to see if username or email exist should go here with an "if" statement
         // Run Query- if no username && no email, continue with following:
         try {
@@ -91,10 +94,12 @@ export const SignUpUser = (props) => {
         console.log(response?.data);
         console.log(JSON.stringify(response));
         setSnackbarMessage("Signup Successful");
-        console.log("Signup Successful");
         setSnackbarOpen(true);
 
 
+        axios.get(`${API_URL}/signup`).then((response) => {
+            console.log(response.data);
+        });
         setUsername('');
         setEmail('');
         setPassword('');
