@@ -91,12 +91,10 @@ export const SignUpUser = (props) => {
         console.log(response?.data);
         console.log(JSON.stringify(response));
         setSnackbarMessage("Signup Successful");
+        console.log("Signup Successful");
         setSnackbarOpen(true);
 
 
-        axios.get(`${API_URL}/signup`).then((response) => {
-            console.log(response.data);
-        });
         setUsername('');
         setEmail('');
         setPassword('');

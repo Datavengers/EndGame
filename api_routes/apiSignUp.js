@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { SignUps } = require("../models");
+const bcrypt = require("bcrypt");
 
 router.get("/", async (req, res) => {
     const listofSignUps = await SignUps.findAll();
@@ -8,10 +9,17 @@ router.get("/", async (req, res) => {
 });
 
 router.post("/",  async (req, res) => {
-    const signup = req.body;
-    await SignUps.create(signup);
-    res.json(signup);
-
+    const {username, email, password, confirmPassword} = req.body;
+    bcrypt.hash(password, 10).then(bcrypt.hash(confirmPassword, 10))
+    .then((hash) => {
+       SignUps.create({
+        username: username, 
+        email: email, 
+        password: hash, 
+        confirmPassword: hash,
+    }); 
+    res.json("SUCCESS");
+})
 });
 
 module.exports = router;
