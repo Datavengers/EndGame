@@ -12,6 +12,7 @@ import FormGroup from '@mui/material/FormGroup';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { MuiDrawer } from './Drawer';
+import { Link } from 'react-router-dom'
 import { useContext, useState } from 'react';
 import {LoginContext} from './LoginContext';
 
@@ -88,8 +89,14 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>My account</MenuItem>
+                <Link to="/stats" style={{textDecoration:'none', color:'black'}}><MenuItem onClick={handleClose}>Stats</MenuItem></Link>
+                <MenuItem onClick={handleClose}>Settings</MenuItem>
+                <MenuItem onClick={() => {
+                  handleClose();
+                  setAuth(false);
+                }}>
+                  Log Out
+                </MenuItem>
               </Menu>
             </div>
           )}

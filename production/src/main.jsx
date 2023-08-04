@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import './Reset.css'
-import './index.css'
-import './gameMapStyles.css'
-import './loginStyles.css'
-import './lesson1/trainStyles.css'
+import './styles/Reset.css'
+import './styles/index.css'
+import './styles/gameMapStyles.css'
+import './styles/loginStyles.css'
+import './styles/trainStyles.css'
+import './styles/quizStyles.css'
+import './styles/statsStyles.css'
 import Root from "./routes/root"
 import ErrorPage from "./error-page";
 import Index from "./routes/index";
@@ -16,7 +18,10 @@ import Login from "./routes/login";
 import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 import Signup from './routes/siginup';
-import TrainGUI from './lesson1/Train'
+import TrainGUI from './routes/Train';
+import SinglyLinkedListQuiz from './routes/singlyLinkedListQuiz';
+import SinglyLinkedListLearning from './routes/sll_learning';
+import Stats from './routes/stats';
 
 const router = createBrowserRouter([
   {
@@ -45,6 +50,10 @@ const router = createBrowserRouter([
             element:<TrainGUI />
           },
           {
+            path:"singly-linked-lists/sll-learning",
+            element:<SinglyLinkedListLearning />
+          },
+          {
             path: "doubly-linked-lists",
             element:<Dll_Home />,
             children:[
@@ -66,8 +75,16 @@ const router = createBrowserRouter([
             element:<Prizes_Home />,
           },
           {
+            path: "sllq",
+            element:<SinglyLinkedListQuiz />,
+          },
+          {
             path: "resources",
             element:<Resources_Home />,
+          },
+          {
+            path: "stats",
+            element:<Stats />,
           },
           {
             // This should keep a bad URL error confined within the page boundaries

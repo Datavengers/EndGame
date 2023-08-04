@@ -1,0 +1,117 @@
+.parentLayer{
+    position:relative;
+    z-index:1;
+}
+
+.childLayer{
+position:absolute;
+top: 0;
+left: 0;
+z-index:2;
+}
+
+#nodeman{
+    width:26vh;
+    height:26vh;
+    transform:scaleX(-1);
+}
+
+#nodemanSVG{
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    position:absolute;
+}
+
+#mapWrapper{
+    width:160vh;
+    margin:auto;
+    }
+    
+.mapImg{
+    width: 100%;
+    }
+
+/* Landscape tablets, etc*/
+@media only screen and (max-width:992px){
+    /*This ONLY works with a standard 1920x1080p monitor resolution, no scaling -- will 
+    need to incorporate breakpoints based on monitor size and change accordingly*/
+    .svgContainer{
+    position:fixed;
+    width:65%;
+    height:65%;
+    z-index:6;
+    }
+
+    svg{
+    width:75%;
+    }
+}
+
+/* Laptops, smaller desktops, etc*/
+@media only screen and (max-width:1199px){
+    #mapWrapper{
+        width:140vh;
+        margin:auto;
+    }
+
+    #nodeman{
+        width:26vh;
+        height:26vh;
+        margin-top:-50px;
+        margin-left:-50px;
+        transform:scaleX(-1);
+    }
+    .svgContainer{
+        position:relative;
+        width:440%;
+        height:100%;
+        z-index:6;
+    }
+
+    svg{
+        width:75%;
+    }
+}
+/* Large laptops, desktops, etc*/
+@media only screen and (max-width:1364px){    
+    .svgContainer{
+        position:relative;
+        width:630%;
+        height:auto;
+        z-index:6;
+    }
+
+    svg{
+        width:75%;
+    }
+}
+/* Bigger screens*/
+@media only screen and (max-width:1499px){
+    .svgContainer{
+        position:relative;
+        width:480%;
+        height:auto;
+        z-index:6;
+    }
+
+    svg{
+        width:85%;
+    }
+}
+
+/* Really long screens*/
+@media only screen and (min-width:1500px){
+
+    .svgContainer{
+        position:relative;
+        width:530%;
+        height:auto;
+        z-index:6;
+    }
+
+    svg{
+        width:95%;
+    }
+}
