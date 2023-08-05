@@ -19,7 +19,8 @@ const IMAGES = {
     mapLinks: new URL('./mapLinks.svg',import.meta.url).href,
     trainimg: new URL('./traingamesnip.PNG', import.meta.url).href,
     quiz: new URL('./comic-quiz.jpg', import.meta.url).href,
-    learning: new URL('./learning.jpg', import.meta.url).href
+    learning: new URL('./learning.jpg', import.meta.url).href,
+    linkedList: new URL('./linked-list.png', import.meta.url).href
 };
 
 export default IMAGES
