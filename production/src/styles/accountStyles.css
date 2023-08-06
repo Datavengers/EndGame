@@ -1,0 +1,78 @@
+.accountWrapper{
+    width:100vw;
+    height:100vh;
+}
+
+#dataDiv{
+    font-size:1.9vh;
+    color: rgb(3, 51, 3);
+    background-color: rgba(161, 226, 146, 0.7);
+    width:70vh;
+    margin:auto;
+    padding:50px;
+    display:grid;
+    border-bottom: 80px #73634c groove;
+    border-radius:100px 50px 100px 100px;
+    outline:rgba(255, 255, 255,0.5) 5px dotted; 
+    grid-template:
+        [greeting-left] "greeting greeting" 90px [greeting-right]
+        [nickname-left] "nickname change1" 45px [nickname-right]
+        [email-left] "email change2" 90px [email-right]
+        [buttons-left] "restart delete" 45px [buttons-right]
+        / 50% 1fr;
+}
+
+#greeting{
+    grid-area: greeting;
+    font-size: 2.2vh;
+    text-align:center;
+}
+
+#nickname{
+    grid-area:nickname;
+}
+
+#name{
+    grid-area: name;
+}
+
+#email{
+    grid-area: email;
+}
+
+#change1{
+    grid-area: change1;
+    text-align:center;
+}
+
+#change2{
+    grid-area: change2;
+    text-align:center;
+}
+
+#restart{
+    grid-area: restart;
+    text-align: center;
+}
+
+#restart button{
+    background-color:yellow;
+    font-weight:bolder;
+    color:rgb(121, 77, 28);
+}
+#delete{
+    grid-area: delete;
+    text-align: center;
+}
+
+#delete button{
+    background-color:rgb(255, 155, 115);
+    font-weight:bolder;
+    color:rgb(216, 0, 0);
+}
+
+.change{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}

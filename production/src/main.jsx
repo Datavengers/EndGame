@@ -8,6 +8,7 @@ import './styles/loginStyles.css'
 import './styles/trainStyles.css'
 import './styles/quizStyles.css'
 import './styles/statsStyles.css'
+import './styles/accountStyles.css'
 import Root from "./routes/root"
 import ErrorPage from "./error-page";
 import Index from "./routes/index";
@@ -22,6 +23,7 @@ import TrainGUI from './routes/Train';
 import SinglyLinkedListQuiz from './routes/singlyLinkedListQuiz';
 import SinglyLinkedListLearning from './routes/sll_learning';
 import Stats from './routes/stats';
+import Account from './routes/account';
 
 const router = createBrowserRouter([
   {
@@ -85,6 +87,10 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element:<Stats />,
+          },
+          {
+            path: "account",
+            element:<Account />,
           },
           {
             // This should keep a bad URL error confined within the page boundaries

@@ -19,7 +19,7 @@ export default function Index() {
       <div className="articleDiv">
       {loaded?null:<Skeleton onLoad={setLoaded(true)}/>}
       <article id="zero-state" style={{fontSize:1.2+'em'}}>
-        <h1 id="biggest">DATA STRUCTURES IS SO BORING</h1>
+        <h1 id="biggest">DATA STRUCTURES ARE SO BORING</h1>
         <h1 id = "bigger">WHY DO I NEED TO LEARN THIS</h1>
         <h1 id = "big">I can just use an array...</h1>
         <p>
