@@ -37,7 +37,7 @@ export default function Index() {
         </p>
         <br/>
         <div style={{display:'flex', justifyContent:'center'}}>
-          <Card sx={{ width: 30+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Card className ="card" sx={{ width: 30+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
               <Typography variant="h4" color="text.primary" gutterBottom>
                 Read
@@ -46,11 +46,11 @@ export default function Index() {
                 Read up on DSA from multiple angles
               </Typography>
               <Typography variant="body2">
-                May one website is tough to figure out, but another is clear. Check out our vetted resources to help out!
+                Maybe one website is tough to parse, but another is clear. Check out our vetted resources to help out!
               </Typography>
             </CardContent>
           </Card>
-          <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Card className ="card"sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
               <Typography variant="h4" color="text.primary" gutterBottom>
                 Play

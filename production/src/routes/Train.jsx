@@ -1,5 +1,5 @@
 import Button from '@mui/material/Button';
-import './trainStyles.css'
+import '../styles/trainStyles.css'
 import { redirect } from 'react-router-dom';
 import { useState } from 'react'
 
