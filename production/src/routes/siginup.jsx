@@ -11,41 +11,24 @@ import axios from 'axios';
 
 const API_URL = 'http://localhost:3000';
 
-const USER_REGEX = `/^[a-zA-Z][a-ZA-Z0-9-_]{3,23}$/`;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8, 24}$/;
-
 export const SignUpUser = (props) => {
     const userRef = useRef();
 
     const [username, setUsername] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
-
     const [email, setEmail] = useState('');
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
-
     const [password, setPassword] = useState('');
-    const [validPwd, setValidPwd] = useState(false);
-    const [pwdFocus, setPwdFocus] = useState(false);
-
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [confirmMatch, setConfirmMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
-
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
-
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
-
-    const [ message, setMessage ] = useState('');
 
     const emailRegex = /^\S+@\S+\.\S+$/;
     // These can be implemented as well for testing username and password:
     // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
     // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+      };
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -71,55 +54,38 @@ export const SignUpUser = (props) => {
             console.log('Passwords do not match');
             return;
         }
-        // setSnackbarMessage('');
-        // Query to see if username or email exist should go here with an "if" statement
-        // Run Query- if no username && no email, continue with following:
+
         try {
-            console.log('Attempting to POST data')
-            const response = await axios.post(`${API_URL}/signup`, JSON.stringify({username, email, password, confirmPassword}),
-            {
-
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // sends as JSON
-                withCredentials: true
-                },
-                body: JSON.stringify({
-                username,
-                email,
-                password,
-                confirmPassword,
-            }),
-        })
-        console.log(response?.data);
-        console.log(JSON.stringify(response));
-        setSnackbarMessage("Signup Successful");
-        setSnackbarOpen(true);
-
-
-        axios.get(`${API_URL}/signup`).then((response) => {
-            console.log(response.data);
-        });
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-        // Something to reset the Sign ME Up Button here...
+            console.log('Attempting to POST data');
+            const data = { username: username, email: email, password: password, confirmPassword: confirmPassword};
+            await axios.post(`${API_URL}/signup`, data).then((response) => {
+                if (response.data.error) {
+                    alert(response.data.error);
+                    setUsername('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                }
+                else {
+                    console.log(response.data);
+                    alert(response.data);
+                    setSnackbarMessage("Signup Successful");
+                    setSnackbarOpen(true);
+            
+                    setUsername('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                }
+            });
     }
     
         catch(error) {
         console.error("Signup Error", error);
         setSnackbarMessage("An error occurred during signup");
         setSnackbarOpen(true);
+        }
     }
-
-
-    }
-
-    function handleSnackbarClose() {
-        setSnackbarOpen(false);
-      }
-
 
 
       // CODE FROM THE ORIGINAL SIGNUP TEMPLATE BELOW. 

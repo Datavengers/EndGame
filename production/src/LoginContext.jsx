@@ -2,6 +2,7 @@ import { useEffect, useState, createContext } from "react";
 import Snackbar from '@mui/material/Snackbar';
 import axios from "axios";
 
+const API_URL = 'http://localhost:3000'; // Your backend server URL
 
 const LoginContext = createContext();
 
@@ -58,7 +59,7 @@ const LoginContextProvider = (props) => {
   
     // if token, makes get request
     if (token) {
-      const res = await axios.get(`http://localhost:3000/login`, {
+      const res = await axios.get(`{API_URL}/login`, {
         method: 'GET',
         headers: {
           // passes the access token grabbing from local storage
