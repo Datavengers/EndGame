@@ -4,10 +4,9 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
-
-const apiUrl = 'http://localhost:3000'; // Your backend server URL
+const API_URL = 'http://localhost:3000'; // Your backend server URL
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -15,41 +14,61 @@ const Login = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  const emailRegex = /^\S+@\S+\.\S+$/;
+
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
-
+  
+  const navigate = useNavigate();
 
   async function loginUser(event) {
     event.preventDefault();
 
-    try {
-      const response = await axios.post(`${apiUrl}/login`, {
-        email,
-        password,
-      });
+    if (!email || !password) {
+      setSnackbarMessage('Please fill in all the fields');
+      setSnackbarOpen(true);
+      console.log('Please fill in all the fields');
+      return;
+    }
 
-      if (response.status === 200) {
-        setSnackbarMessage("Login successful");
-        setSnackbarOpen(true);
-        
-        axios.get("http://localhost:3000/login").then((response) => {
-          console.log(response.data);
-      });
+    if (!emailRegex.test(email)) {
+      setSnackbarMessage('Please enter a valid email address');
+      setSnackbarOpen(true);
+      console.log('Please enter a valid email address');
+      return;
+  }
 
-        // Redirect to a different page after successful login if needed
-        // For example, using React Router:
-        // history.push('/dashboard');
-      } else {
-        setSnackbarMessage("Invalid credentials. Please try again.");
-        setSnackbarOpen(true);
+  try {
+    const data = { email: email, password: password};
+    console.log('Attempting to Login data');
+    await axios.post(`${API_URL}/login`, data).then((response) => {
+      if (response.data.error) {
+        alert(response.data.error);
+        setEmail('');
+        setPassword('');
       }
-    } catch (error) {
-      console.error('Login error:', error);
+      else {
+        sessionStorage.setItem("accessToken", response.data);
+        console.log(response.data)
+        alert(response.data)
+        setSnackbarMessage("Login Successful");
+        setSnackbarOpen(true);
+    
+    
+        setEmail('');
+        setPassword('');
+        navigate("/game_map");
+      }
+    }) 
+}
+    catch(error) {
+      console.error("Login Error", error);
       setSnackbarMessage("An error occurred during login");
       setSnackbarOpen(true);
-    }
+
   }
+}
 
   return (
     <div className="loginDiv">
@@ -60,8 +79,10 @@ const Login = () => {
             required
             label="Email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
             autoComplete="off"
+            placeholder="Ex. email@123.com"
+            onChange={(e) => setEmail(e.target.value)}
+            
           />
         </Box>
         <br/>
@@ -71,12 +92,17 @@ const Login = () => {
             label="Password"
             type="password"
             value={password}
+            autoComplete="off"
+            placeholder="Ex. PasSwoRd123"
             onChange={(e) => setPassword(e.target.value)}
           />
         </Box>
         <br/>
         <Box>
-          <Button type="submit" variant="contained" color="primary">
+          <Button type="submit" 
+          variant="contained" 
+          color="primary"
+          onClick={loginUser}>
             Sign In
           </Button>
         </Box>
@@ -95,6 +121,6 @@ const Login = () => {
         Sign up <Link to="/signup">here!</Link></p>
     </div>
   );
-};
+}
 
 export default Login;
