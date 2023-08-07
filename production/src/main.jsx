@@ -20,10 +20,13 @@ import Prizes_Home from './routes/prize_home';
 import Resources_Home from './routes/resource_home';
 import Signup from './routes/siginup';
 import TrainGUI from './routes/Train';
+import TrainGUI_DLL from './lesson2/TrainDLL';
 import SinglyLinkedListQuiz from './routes/singlyLinkedListQuiz';
 import SinglyLinkedListLearning from './routes/sll_learning';
 import Stats from './routes/stats';
 import Account from './routes/account';
+import DoublyLinkedListLearning from './routes/dll_learning';
+import DoublyLinkedListQuiz from './routes/DoublyLinkedListQuiz';
 
 const router = createBrowserRouter([
   {
@@ -65,6 +68,14 @@ const router = createBrowserRouter([
             ]
           },
           {
+            path: "doubly-linked-lists/dll-train-game",
+            element:<TrainGUI_DLL />
+          },
+          {
+            path: "doubly-linked-lists/dll-learning",
+            element:<DoublyLinkedListLearning />
+          },
+          {
             path:"login",
             element:<Login/>,
           },
@@ -79,6 +90,10 @@ const router = createBrowserRouter([
           {
             path: "sllq",
             element:<SinglyLinkedListQuiz />,
+          },
+          {
+            path: "dllq",
+            element: <DoublyLinkedListQuiz />
           },
           {
             path: "resources",

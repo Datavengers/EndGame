@@ -31,6 +31,11 @@ export const MuiDrawer = () => {
                 onClick={() => setIsDrawerOpen(false)}
             >
                 <Box p={2} width='35vh' textAlign='center' role='presentation'>
+            {/* <DrawerHeader>
+                <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                </IconButton>
+            </DrawerHeader> */}
                     <Typography variant='h4' component='div' sx={{fontFamily:'Slackey'}}>
                         Menu
                     </Typography>
