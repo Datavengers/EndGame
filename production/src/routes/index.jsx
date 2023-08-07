@@ -13,7 +13,7 @@ import {LoginContext} from '../LoginContext';
 export default function Index() {
   const [loaded, setLoaded] = useState(false);
   const [auth, setAuth] = useState(true);
-  // const { username, isLoggedIn } = useContext(LoginContext);
+  const { username, isLoggedIn } = useContext(LoginContext);
 
   return (
       <div className="articleDiv">

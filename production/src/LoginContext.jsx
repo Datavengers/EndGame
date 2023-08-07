@@ -1,6 +1,8 @@
 import { useEffect, useState, createContext } from "react";
 import Snackbar from '@mui/material/Snackbar';
 import axios from "axios";
+import {useNavigate} from 'react-router-dom';
+
 
 const API_URL = 'http://localhost:3000'; // Your backend server URL
 
@@ -9,23 +11,28 @@ const LoginContext = createContext();
 
 const LoginContextProvider = (props) => {
   
-
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState({});
 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
+  const navigate = useNavigate();
+
+
   useEffect(() => {
-    // console.log("login context user effect")
+    console.log("login context user effect")
 
-
-		const token = localStorage.getItem('token')
-		if (token) {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
       setIsLoggedIn(true);
       getUsername();
-    } else {
+      navigate("/game_map");
+      handleLogin();
+    }
+    else {
       setIsLoggedIn(false);
+      console.log("You are not logged in");
     }
   }, []);
 
@@ -35,10 +42,10 @@ const LoginContextProvider = (props) => {
     setIsLoggedIn(true)
     setSnackbarMessage("You are now logged in");
     setSnackbarOpen(true);
-  };
+  }
 
   function handleLogout() {
-    localStorage.removeItem('token')
+    localStorage.removeItem('accessToken')
     setIsLoggedIn(false)
     setSnackbarMessage("You have been logged out");
     setSnackbarOpen(true);
@@ -55,33 +62,35 @@ const LoginContextProvider = (props) => {
   //need to get token, send it, make the get request to username, receive back the username, set it
   async function getUsername() {
     // tries to grab token
-    const token = localStorage.getItem('token');
+    const token = localStorage.getItem("accessToken");
   
     // if token, makes get request
     if (token) {
-      const res = await axios.get(`{API_URL}/login`, {
+      const res = await axios.get(`{API_URL}/signup`, {
         method: 'GET',
         headers: {
           // passes the access token grabbing from local storage
           'Authorization': `Bearer ${token}`
         }
-      });
-  
-      // if successful  response, username is set
-      if (res.ok) {
+      })
+
+      if(res.ok) {
         const data = await res.json();
+
         // success, sets username state
-        const username = data.username
+        const username = data.username;
         setUsername(username);
+        console.log(`Hello ${username}`);
       } else {
         // removes token if request is unsuccessful
-        localStorage.removeItem('token');
+        localStorage.removeItem('accessToken');
       }
     }
-  }
+  
 
-  // console.log("loginContext rendered")
-  // console.log(isLoggedIn)
+  console.log("loginContext rendered")
+  console.log(isLoggedIn)
+  }
 
   return (
     <LoginContext.Provider

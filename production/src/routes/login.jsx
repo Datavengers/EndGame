@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
-import {Link, useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {LoginContext} from "../LoginContext";
 
 const API_URL = 'http://localhost:3000'; // Your backend server URL
 
@@ -13,6 +14,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const { getUsername } = useContext(LoginContext);
 
   const emailRegex = /^\S+@\S+\.\S+$/;
 
@@ -20,7 +22,6 @@ const Login = () => {
     setSnackbarOpen(false);
   };
   
-  const navigate = useNavigate();
 
   async function loginUser(event) {
     event.preventDefault();
@@ -49,16 +50,16 @@ const Login = () => {
         setPassword('');
       }
       else {
-        sessionStorage.setItem("accessToken", response.data);
-        console.log(response.data)
-        alert(response.data)
+        localStorage.setItem("accessToken", response.data);
         setSnackbarMessage("Login Successful");
         setSnackbarOpen(true);
+        
     
     
         setEmail('');
         setPassword('');
-        navigate("/game_map");
+        getUsername(true);
+        // navigate("/game_map");
       }
     }) 
 }

@@ -5,9 +5,10 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 // import Dialog from '@mui/material/Dialog';
-// import { LoginContext } from '../hooks/LoginContext';
+import { LoginContext } from '../LoginContext';
 import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
+import { LoginContextProvider } from "../LoginContext";
 
 const API_URL = 'http://localhost:3000';
 
@@ -20,6 +21,8 @@ export const SignUpUser = (props) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const { getUsername, handleLogin } = LoginContextProvider(LoginContext);
+
 
     const emailRegex = /^\S+@\S+\.\S+$/;
     // These can be implemented as well for testing username and password:
@@ -45,7 +48,7 @@ export const SignUpUser = (props) => {
         if (!emailRegex.test(email)) {
             setSnackbarMessage('Please enter a valid email address');
             setSnackbarOpen(true);
-            console.log('Please enter a valid email address');
+            console.log('Please enter a valid email address or signup');
             return;
         }
         if (password !== confirmPassword) {
@@ -67,15 +70,29 @@ export const SignUpUser = (props) => {
                     setConfirmPassword('');
                 }
                 else {
-                    console.log(response.data);
-                    alert(response.data);
                     setSnackbarMessage("Signup Successful");
                     setSnackbarOpen(true);
+                    localStorage.setItem('accessToken', response.data)
+                    getUsername(true);
+                    handleLogin();
             
                     setUsername('');
                     setEmail('');
                     setPassword('');
                     setConfirmPassword('');
+
+                    // if (data.user) {
+        //     console.log(data.user)
+        //     console.log(data.user._id)
+        //  localStorage.setItem('accessToken', data.user)
+        //     getUsername()
+        //     handleLogin()
+
+        // } else {
+    //         console.log(data)
+    //         setSnackbarMessage("Something went wrong. Please try again.");
+    //         setSnackbarOpen(true);
+    //  }
                 }
             });
     }
@@ -95,7 +112,7 @@ export const SignUpUser = (props) => {
 
     //     event.preventDefault() 
     
-    //     const response = await axios.post(`${apiUrl}/signup`, {
+    //     const response = await axios.post(`${API_URL}/signup`, {
     //         username,
     //         email,
     //         password,
@@ -116,18 +133,7 @@ export const SignUpUser = (props) => {
 
         
     //     //confirms user exists
-        // if (data.user) {
-        //     console.log(data.user)
-        //     console.log(data.user._id)
-        //  localStorage.setItem('token', data.user)
-        //     getUsername()
-        //     handleLogin()
-        //     // navigate('/');
-        // } else {
-    //         console.log(data)
-    //         setSnackbarMessage("Something went wrong. Please try again.");
-    //         setSnackbarOpen(true);
-    //  }
+        
     // }
 
 
