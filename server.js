@@ -4,7 +4,7 @@ const app = express();
 const cors = require("cors");
 // const mysql = require("mysql");
 // const bodyParser = require("body-parser"); 
-
+const ViteExpress = require("vite-express");
 
 
 app.use(express.json());
@@ -16,16 +16,16 @@ const db = require("./models");
 
 // ROUTERS
 const userRouter = require("./api_routes/apiSignUp");
-app.use("/signup", userRouter);
+app.use("/api/signup", userRouter);
 
 const loginRouter = require("./api_routes/apiLogin");
-app.use("/login", loginRouter);
+app.use("/api/login", loginRouter);
 
 // const signUpRouter = require("./api_routes/apiSignUp");
 // app.use("/signup", signUpRouter);
 
 db.sequelize.sync().then(() => {
-    app.listen(PORT, () => {
+    ViteExpress.listen(app,PORT, () => {
         console.log(`Server listening on port ${PORT}`);
     });
 });

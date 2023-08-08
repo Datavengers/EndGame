@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {LoginContext} from "../LoginContext";
+import {LoginContext, LoginContextProvider} from "../LoginContext";
 
 const API_URL = 'http://localhost:3000'; // Your backend server URL
 
@@ -14,7 +14,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
-  const { getUsername } = useContext(LoginContext);
+  const { getUsername, handleLogin } = useContext(LoginContext);
+
 
   const emailRegex = /^\S+@\S+\.\S+$/;
 
@@ -43,7 +44,7 @@ const Login = () => {
   try {
     const data = { email: email, password: password};
     console.log('Attempting to Login data');
-    await axios.post(`${API_URL}/login`, data).then((response) => {
+    await axios.post(`${API_URL}/api/login`, data).then((response) => {
       if (response.data.error) {
         alert(response.data.error);
         setEmail('');
@@ -58,7 +59,8 @@ const Login = () => {
     
         setEmail('');
         setPassword('');
-        getUsername(true);
+        getUsername();
+        handleLogin();
         // navigate("/game_map");
       }
     }) 

@@ -1,4 +1,4 @@
-import { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, createContext } from "react";
 import Snackbar from '@mui/material/Snackbar';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
@@ -27,21 +27,20 @@ const LoginContextProvider = (props) => {
     if (token) {
       setIsLoggedIn(true);
       getUsername();
-      navigate("/game_map");
-      handleLogin();
-    }
-    else {
+    } else {
       setIsLoggedIn(false);
       console.log("You are not logged in");
+     
     }
   }, []);
 
 
   function handleLogin() {
     console.log('handle login launched')
-    setIsLoggedIn(true)
+    setIsLoggedIn(true);
     setSnackbarMessage("You are now logged in");
     setSnackbarOpen(true);
+    navigate("/game_map");
   }
 
   function handleLogout() {
@@ -49,6 +48,7 @@ const LoginContextProvider = (props) => {
     setIsLoggedIn(false)
     setSnackbarMessage("You have been logged out");
     setSnackbarOpen(true);
+    
   }
 
   function handleSnackbarClose() {
@@ -66,7 +66,7 @@ const LoginContextProvider = (props) => {
   
     // if token, makes get request
     if (token) {
-      const res = await axios.get(`{API_URL}/signup`, {
+      const res = await axios.get(`${API_URL}/api/signup`, {
         method: 'GET',
         headers: {
           // passes the access token grabbing from local storage
@@ -78,7 +78,7 @@ const LoginContextProvider = (props) => {
         const data = await res.json();
 
         // success, sets username state
-        const username = data.username;
+        const username = res.data.username;
         setUsername(username);
         console.log(`Hello ${username}`);
       } else {
@@ -121,4 +121,3 @@ const LoginContextProvider = (props) => {
 };
 
 export { LoginContextProvider, LoginContext };
-

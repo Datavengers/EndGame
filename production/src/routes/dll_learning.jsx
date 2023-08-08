@@ -6,6 +6,9 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActionArea from '@mui/material/CardActionArea';
 import IMAGES from '../assets/images/Images';
 import { AlignHorizontalCenter, FormatAlignJustify } from '@mui/icons-material';
+import React from 'react';
+
+
 
 export default function DoublyLinkedListLearning() {
 

@@ -26,7 +26,7 @@ import SinglyLinkedListLearning from './routes/sll_learning';
 import Stats from './routes/stats';
 import Account from './routes/account';
 import DoublyLinkedListLearning from './routes/dll_learning';
-import DoublyLinkedListQuiz from './routes/DoublyLinkedListQuiz';
+import DoublyLinkedListQuiz from './routes/doublyLinkedListQuiz';
 
 const router = createBrowserRouter([
   {
