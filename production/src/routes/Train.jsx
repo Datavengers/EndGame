@@ -1,7 +1,7 @@
 import Button from '@mui/material/Button';
 import '../styles/trainStyles.css'
 import { redirect } from 'react-router-dom';
-import { useState } from 'react'
+import React,{ useState } from 'react'
 
 // const prompt = require("prompt-sync")({sigint:true});
 // const ticketBackSize = 10;

@@ -8,7 +8,7 @@ import {
     useNavigation, //manages current navigation state; adds a fade while loading, based in CSS - can change to spinner, etc
     useSubmit, // updates search results with every stroke
 } from "react-router-dom"
-import { useEffect, useState } from "react"; //manipulates form's state in DOM directly
+import React,{ useEffect, useState } from "react"; //manipulates form's state in DOM directly
 import {default as AppBar} from "../AppBar";
 import { MuiDrawer } from "../Drawer";
 import { LoginContextProvider } from '../LoginContext'

@@ -6,3 +6,10 @@ For React MUI material components to work:
 -- npm install @mui/material @emotion/react @emotion/styled
 -- npm install @mui/material @mui/styled-engine-sc styled-components
 -- npm install @mui/icons-material 
+-- npm install axios
+
+For Backend components to work:
+-- npm install
+-- npm install express cors mysql2
+-- npm install vite-express
+-- npm install bcrypt 

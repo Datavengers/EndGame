@@ -4,7 +4,7 @@ import {loadFull} from "tsparticles"
 import MapSVG from "../assets/images/mapSVG"
 import Nodeman from "../assets/images/nodeman"
 import Skeleton from '@mui/material/Skeleton';
-import { useState } from 'react';
+import React,{ useState } from 'react';
 
 
 export default function Game_Map() {

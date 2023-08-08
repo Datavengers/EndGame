@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useContext, useEffect, useRef, useState} from "react";
 import TextField from "@mui/material/TextField";
 import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { LoginContext } from '../LoginContext';
 import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
-import { LoginContextProvider } from "../LoginContext";
+
 
 const API_URL = 'http://localhost:3000';
 
@@ -21,7 +21,7 @@ export const SignUpUser = (props) => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
-    const { getUsername, handleLogin } = LoginContextProvider(LoginContext);
+    const { getUsername, handleLogin } = useContext(LoginContext);
 
 
     const emailRegex = /^\S+@\S+\.\S+$/;
@@ -61,7 +61,7 @@ export const SignUpUser = (props) => {
         try {
             console.log('Attempting to POST data');
             const data = { username: username, email: email, password: password, confirmPassword: confirmPassword};
-            await axios.post(`${API_URL}/signup`, data).then((response) => {
+            await axios.post(`${API_URL}/api/signup`, data).then((response) => {
                 if (response.data.error) {
                     alert(response.data.error);
                     setUsername('');
@@ -73,7 +73,7 @@ export const SignUpUser = (props) => {
                     setSnackbarMessage("Signup Successful");
                     setSnackbarOpen(true);
                     localStorage.setItem('accessToken', response.data)
-                    getUsername(true);
+                    getUsername();
                     handleLogin();
             
                     setUsername('');
