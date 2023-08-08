@@ -5,47 +5,33 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 // import Dialog from '@mui/material/Dialog';
-// import { LoginContext } from '../hooks/LoginContext';
+import { LoginContext } from '../LoginContext';
 import Snackbar from '@mui/material/Snackbar';
 import axios from 'axios';
+import { LoginContextProvider } from "../LoginContext";
 
 const API_URL = 'http://localhost:3000';
-
-const USER_REGEX = `/^[a-zA-Z][a-ZA-Z0-9-_]{3,23}$/`;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8, 24}$/;
 
 export const SignUpUser = (props) => {
     const userRef = useRef();
 
     const [username, setUsername] = useState('');
-    const [validName, setValidName] = useState(false);
-    const [userFocus, setUserFocus] = useState(false);
-
     const [email, setEmail] = useState('');
-    const [validEmail, setValidEmail] = useState(false);
-    const [emailFocus, setEmailFocus] = useState(false);
-
     const [password, setPassword] = useState('');
-    const [validPwd, setValidPwd] = useState(false);
-    const [pwdFocus, setPwdFocus] = useState(false);
-
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [confirmMatch, setConfirmMatch] = useState(false);
-    const [matchFocus, setMatchFocus] = useState(false);
-
     const [snackbarOpen, setSnackbarOpen] = useState(false);
     const [snackbarMessage, setSnackbarMessage] = useState('');
+    const { getUsername, handleLogin } = LoginContextProvider(LoginContext);
 
-    const [errMsg, setErrMsg] = useState('');
-    const [success, setSuccess] = useState(false);
-
-    const [ message, setMessage ] = useState('');
 
     const emailRegex = /^\S+@\S+\.\S+$/;
     // These can be implemented as well for testing username and password:
     // const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
     // const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
+    const handleSnackbarClose = () => {
+        setSnackbarOpen(false);
+      };
 
     async function handleSubmit(event) {
         event.preventDefault();
@@ -53,70 +39,70 @@ export const SignUpUser = (props) => {
         console.log('User registering...');
 
         if (!username || !email || !password || !confirmPassword) {
-            setMessage('Please fill in all the fields');
+            setSnackbarMessage('Please fill in all the fields');
+            setSnackbarOpen(true);
             console.log('Please fill in all the fields');
             return;
         }
 
         if (!emailRegex.test(email)) {
-            setMessage('Please enter a valid email address');
-            console.log('Please enter a valid email address');
+            setSnackbarMessage('Please enter a valid email address');
+            setSnackbarOpen(true);
+            console.log('Please enter a valid email address or signup');
             return;
         }
         if (password !== confirmPassword) {
-            setMessage('Passwords do not match');
+            setSnackbarMessage('Passwords do not match');
+            setSnackbarOpen(true);
             console.log('Passwords do not match');
             return;
         }
-        setMessage('');
-        // Query to see if username or email exist should go here with an "if" statement
-        // Run Query- if no username && no email, continue with following:
+
         try {
-            console.log('Attempting to POST data')
-            const response = await axios.post(`${API_URL}/signup`, JSON.stringify({username, email, password, confirmPassword}),
-            {
+            console.log('Attempting to POST data');
+            const data = { username: username, email: email, password: password, confirmPassword: confirmPassword};
+            await axios.post(`${API_URL}/signup`, data).then((response) => {
+                if (response.data.error) {
+                    alert(response.data.error);
+                    setUsername('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
+                }
+                else {
+                    setSnackbarMessage("Signup Successful");
+                    setSnackbarOpen(true);
+                    localStorage.setItem('accessToken', response.data)
+                    getUsername(true);
+                    handleLogin();
+            
+                    setUsername('');
+                    setEmail('');
+                    setPassword('');
+                    setConfirmPassword('');
 
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json', // sends as JSON
-                withCredentials: true
-                },
-                body: JSON.stringify({
-                username,
-                email,
-                password,
-                confirmPassword,
-            }),
-        })
-        console.log(response?.data);
-        console.log(JSON.stringify(response));
-        setSnackbarMessage("Signup Successful");
-        setSnackbarOpen(true);
+                    // if (data.user) {
+        //     console.log(data.user)
+        //     console.log(data.user._id)
+        //  localStorage.setItem('accessToken', data.user)
+        //     getUsername()
+        //     handleLogin()
 
-
-        axios.get(`${API_URL}/signup`).then((response) => {
-            console.log(response.data);
-        });
-        setUsername('');
-        setEmail('');
-        setPassword('');
-        setConfirmPassword('');
-        // Something to reset the Sign ME Up Button here...
+        // } else {
+    //         console.log(data)
+    //         setSnackbarMessage("Something went wrong. Please try again.");
+    //         setSnackbarOpen(true);
+    //  }
+                }
+            });
     }
     
         catch(error) {
         console.error("Signup Error", error);
         setSnackbarMessage("An error occurred during signup");
         setSnackbarOpen(true);
+        }
     }
-
-
-    }
-
-    function handleSnackbarClose() {
-        setSnackbarOpen(false);
-      }
-
 
 
       // CODE FROM THE ORIGINAL SIGNUP TEMPLATE BELOW. 
@@ -126,7 +112,7 @@ export const SignUpUser = (props) => {
 
     //     event.preventDefault() 
     
-    //     const response = await axios.post(`${apiUrl}/signup`, {
+    //     const response = await axios.post(`${API_URL}/signup`, {
     //         username,
     //         email,
     //         password,
@@ -147,18 +133,7 @@ export const SignUpUser = (props) => {
 
         
     //     //confirms user exists
-        // if (data.user) {
-        //     console.log(data.user)
-        //     console.log(data.user._id)
-        //  localStorage.setItem('token', data.user)
-        //     getUsername()
-        //     handleLogin()
-        //     // navigate('/');
-        // } else {
-    //         console.log(data)
-    //         setSnackbarMessage("Something went wrong. Please try again.");
-    //         setSnackbarOpen(true);
-    //  }
+        
     // }
 
 

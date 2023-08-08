@@ -21,7 +21,7 @@ import {LoginContext} from './LoginContext';
 export default function MenuAppBar() {
   const [auth, setAuth] = useState(true);
   const [anchorEl, setAnchorEl] = useState(null);
-  // const { username, isLoggedIn } = useContext(LoginContext);
+  const { username, isLoggedIn } = useContext(LoginContext);
   /* This ^ might not be important if we use auth?*/
 
   const handleChange = (event) => {

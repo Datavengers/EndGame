@@ -15,14 +15,14 @@ const PORT = 3000;
 const db = require("./models");
 
 // ROUTERS
-const userRouter = require("./api_routes/apiUser");
-app.use("/user", userRouter);
+const userRouter = require("./api_routes/apiSignUp");
+app.use("/signup", userRouter);
 
 const loginRouter = require("./api_routes/apiLogin");
 app.use("/login", loginRouter);
 
-const signUpRouter = require("./api_routes/apiSignUp");
-app.use("/signup", signUpRouter);
+// const signUpRouter = require("./api_routes/apiSignUp");
+// app.use("/signup", signUpRouter);
 
 db.sequelize.sync().then(() => {
     app.listen(PORT, () => {

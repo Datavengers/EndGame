@@ -1,8 +1,8 @@
-// Creates table Login in database
+// Creates table SignUp in database
 
 module.exports = (sequelize, DataTypes) => {
 
-    const Login = sequelize.define("Login", {
+    const UserLogins = sequelize.define("UserLogins", {
 
         email: {
             type: DataTypes.STRING,
@@ -12,8 +12,13 @@ module.exports = (sequelize, DataTypes) => {
         password: {
             type: DataTypes.STRING,
             allowNull: false,
-        },
+        }
     });
 
-    return Login;
+    UserLogins.associate = (models) => {
+        UserLogins.belongsTo(models.SignUps)
+    }
+
+
+    return UserLogins;
 };
