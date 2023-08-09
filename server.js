@@ -15,14 +15,14 @@ const PORT = 3000;
 const db = require("./models");
 
 // ROUTERS
-const userRouter = require("./api_routes/apiSignUp");
-app.use("/api/signup", userRouter);
+const signUpRouter = require("./api_routes/apiSignUp");
+app.use("/api/signup", signUpRouter);
 
 const loginRouter = require("./api_routes/apiLogin");
 app.use("/api/login", loginRouter);
 
-// const signUpRouter = require("./api_routes/apiSignUp");
-// app.use("/signup", signUpRouter);
+// const userRouter = require("./api_routes/apiLogin/auth");
+// app.use("/api/auth/login", userRouter);
 
 db.sequelize.sync().then(() => {
     ViteExpress.listen(app,PORT, () => {

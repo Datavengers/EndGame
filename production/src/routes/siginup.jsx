@@ -73,7 +73,7 @@ export const SignUpUser = (props) => {
                     setSnackbarMessage("Signup Successful");
                     setSnackbarOpen(true);
                     localStorage.setItem('accessToken', response.data)
-                    getUsername();
+                    // getUsername(username);
                     handleLogin();
             
                     setUsername('');

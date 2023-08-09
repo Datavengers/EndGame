@@ -3,6 +3,7 @@ const router = express.Router();
 const { SignUps } = require("../models");
 const bcrypt = require("bcrypt");
 
+
 router.get("/", async (req, res) => {
     const listofSignUps = await SignUps.findAll();
     res.json(listofSignUps);
@@ -32,6 +33,10 @@ router.post("/",  async (req, res) => {
         res.json("Signup Successful");
     });
     }
+    // const accessToken = sign({email: ckEmail.email, username: ckEmail.username}, 
+    //     "importantsecret"
+    //     );
+    // res.json(accessToken);  
 
 
 // router.post("/login", async (req, res) => {

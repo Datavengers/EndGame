@@ -51,8 +51,11 @@ const Login = () => {
         setPassword('');
       }
       else {
-        localStorage.setItem("accessToken", response.data);
+        localStorage.setItem('accessToken', response.data);
+        console.log(response.data)
+        alert(response.data)
         setSnackbarMessage("Login Successful");
+        console.log("Login Successful");
         setSnackbarOpen(true);
         
     
@@ -61,7 +64,6 @@ const Login = () => {
         setPassword('');
         getUsername();
         handleLogin();
-        // navigate("/game_map");
       }
     }) 
 }

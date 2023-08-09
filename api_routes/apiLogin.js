@@ -27,12 +27,16 @@ router.post("/", async (req, res) => {
             return;
         }
     
-    const accessToken = sign({email: ckEmail.email, username: ckEmail.username}, 
+    const accessToken = sign({email: ckEmail.email}, 
         "importantsecret"
         );
     res.json(accessToken);  
         
     });
+});
+
+router.get('/auth', validateToken, (req, res) => {
+    res.json(req.ckEmail);
 });
 
 
