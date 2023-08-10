@@ -23,7 +23,9 @@ const LoginContextProvider = (props) => {
     console.log("login context user effect")
 
     const token = localStorage.getItem('accessToken');
+    console.log(token);
     if (token) {
+      console.log(token);
       console.log("The token should be true");
       setIsLoggedIn(true);
       getUsername();
@@ -89,9 +91,10 @@ const LoginContextProvider = (props) => {
     }
   
 
+
+  }  
   console.log("loginContext rendered")
   console.log(isLoggedIn)
-  }
 
   return (
     <LoginContext.Provider

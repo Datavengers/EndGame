@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
 import {Link} from 'react-router-dom';
-import {LoginContext, LoginContextProvider} from "../LoginContext";
+import {LoginContext} from "../LoginContext";
 
 const API_URL = 'http://localhost:3000'; // Your backend server URL
 
