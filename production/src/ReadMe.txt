@@ -14,3 +14,10 @@ For Backend components to work:
 -- npm install express cors mysql2
 -- npm install vite-express
 -- npm install bcrypt 
+-- Create a schema titled "practicetutorial" 
+-- Use your actual MySQL password in the config.js file to access it.
+
+If your db is being dumb due to active changes (e.g. new fields added after you created it):
+-- Drop the entire schema
+-- Recreate the empty schema
+-- Proceed as normal

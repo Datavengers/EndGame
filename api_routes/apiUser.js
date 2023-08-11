@@ -7,7 +7,7 @@ router.get("/", passport.authenticate("jwt", { session: false }), async (req, re
   try {
     // Assuming you've set req.user based on passport-jwt strategy
     const user = req.user;
-    res.json({ username: user.username, email: user.email }); // Adjust response data accordingly
+    res.json({ username: user.username, email: user.email, currentPoints: user.currentPoints, overallPoints: user.overallPoints }); // Adjust response data accordingly
   } catch (error) {
     res.status(500).json({ error: "An error occurred while fetching user info" });
   }
