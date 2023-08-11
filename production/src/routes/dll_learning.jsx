@@ -13,7 +13,9 @@ export default function DoublyLinkedListLearning() {
         <div className="articleDiv">
         <article id="zero-state"style={{fontSize:1.2+"em"}}>
             <h1 id="bigger">Doubly-Linked Lists Learning</h1>
-            
+            <p>
+                
+            </p>
             {/* Cards with additional resources to check out here */}
 {/* 
             <div style={{display:'flex', justifyContent:'center'}}>
