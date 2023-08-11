@@ -2,61 +2,42 @@ const express = require("express");
 const router = express.Router();
 const { SignUps } = require("../models");
 const bcrypt = require("bcrypt");
+const { sign } = require("jsonwebtoken");
 
+router.post("/", async (req, res) => {
+  const { username, email, password, confirmPassword } = req.body;
 
-router.get("/", async (req, res) => {
-    const listofSignUps = await SignUps.findAll();
-    res.json(listofSignUps);
-});
+  const user = await SignUps.findOne({ where: { username: username } });
+  const uEmail = await SignUps.findOne({ where: { email: email } });
 
-router.post("/",  async (req, res) => {
-    const {username, email, password, confirmPassword} = req.body;
+  if (user) {
+    res.json({ error: "Username already exists! Invalid signup. Try again." });
+    return;
+  } else if (uEmail) {
+    res.json({ error: "Email already exists! Invalid signup. Try again." });
+    return;
+  } else {
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = await SignUps.create({
+        username: username,
+        email: email,
+        password: hashedPassword,
+        confirmPassword: hashedPassword,
+      });
 
-    const user = await SignUps.findOne({ where: { username: username}});
-    const uEmail = await SignUps.findOne({ where: { email: email }});
+      // Generate an access token
+      const accessToken = sign(
+        { email: newUser.email, username: newUser.username },
+        "importantsecret"
+      );
 
-    if (user) {
-     res.json({ error: "Username already exists! Invalid signup. Try again."});
-     return;
-    } else if (uEmail) {
-     res.json({ error: "Email already exists! Invalid signup. Try again."});
-     return;
-    } else {
-        bcrypt.hash(password, 10).then(bcrypt.hash(confirmPassword, 10))
-        .then((hash) => {
-        SignUps.create({
-            username: username, 
-            email: email, 
-            password: hash, 
-            confirmPassword: hash,
-        }); 
-        res.json("Signup Successful");
-    });
+      res.json({ accessToken, username: newUser.username });
+    } catch (error) {
+      console.error("Signup Error", error);
+      res.status(500).json({ error: "An error occurred during signup" });
     }
-    // const accessToken = sign({email: ckEmail.email, username: ckEmail.username}, 
-    //     "importantsecret"
-    //     );
-    // res.json(accessToken);  
-
-
-// router.post("/login", async (req, res) => {
-//     const { email, password } = req.body;
-
-//     const ckEmail = await SignUps.findOne({ where: { email : email} });
-   
-//     if (!ckEmail) {
-//         res.json({ error: "Email does not exist" });
-//         return;
-//     }
-//     bcrypt.compare(password, ckEmail.password).then((match) => {
-//         if (!match) {
-//             res.json({error: "Wrong Email and Password combination"});
-//             return;
-//         }
-//        res.json("You are logged in!");       
-//     });
-    
-// });
+  }
 });
 
 module.exports = router;

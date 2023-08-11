@@ -4,8 +4,8 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import axios from 'axios';
-import {Link} from 'react-router-dom';
-import {LoginContext} from "../LoginContext";
+import { Link } from 'react-router-dom';
+import { LoginContext } from "../LoginContext";
 
 const API_URL = 'http://localhost:3000'; // Your backend server URL
 
@@ -16,13 +16,11 @@ const Login = () => {
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const { getUsername, handleLogin } = useContext(LoginContext);
 
-
   const emailRegex = /^\S+@\S+\.\S+$/;
 
   const handleSnackbarClose = () => {
     setSnackbarOpen(false);
   };
-  
 
   async function loginUser(event) {
     event.preventDefault();
@@ -30,50 +28,38 @@ const Login = () => {
     if (!email || !password) {
       setSnackbarMessage('Please fill in all the fields');
       setSnackbarOpen(true);
-      console.log('Please fill in all the fields');
       return;
     }
 
     if (!emailRegex.test(email)) {
       setSnackbarMessage('Please enter a valid email address');
       setSnackbarOpen(true);
-      console.log('Please enter a valid email address');
       return;
-  }
+    }
 
-  try {
-    const data = { email: email, password: password};
-    console.log('Attempting to Login data');
-    await axios.post(`${API_URL}/api/login`, data).then((response) => {
+    try {
+      const data = { email: email, password: password };
+      const response = await axios.post(`${API_URL}/api/login`, data);
+
       if (response.data.error) {
-        alert(response.data.error);
-        setEmail('');
-        setPassword('');
-      }
-      else {
-        localStorage.setItem('accessToken', response.data);
-        console.log(response.data)
-        alert(response.data)
-        setSnackbarMessage("Login Successful");
-        console.log("Login Successful");
+        setSnackbarMessage(response.data.error);
         setSnackbarOpen(true);
-        
-    
-    
+      } else {
+        localStorage.setItem('accessToken', response.data.accessToken);
+        setSnackbarMessage("Login Successful");
+        setSnackbarOpen(true);
+
         setEmail('');
         setPassword('');
         getUsername();
         handleLogin();
       }
-    }) 
-}
-    catch(error) {
+    } catch (error) {
       console.error("Login Error", error);
       setSnackbarMessage("An error occurred during login");
       setSnackbarOpen(true);
-
+    }
   }
-}
 
   return (
     <div className="loginDiv">
@@ -87,7 +73,6 @@ const Login = () => {
             autoComplete="off"
             placeholder="Ex. email@123.com"
             onChange={(e) => setEmail(e.target.value)}
-            
           />
         </Box>
         <br/>
@@ -104,10 +89,11 @@ const Login = () => {
         </Box>
         <br/>
         <Box>
-          <Button type="submit" 
-          variant="contained" 
-          color="primary"
-          onClick={loginUser}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+          >
             Sign In
           </Button>
         </Box>

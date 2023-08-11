@@ -8,16 +8,26 @@ export default function Stats() {
   const [loaded, setLoaded] = useState(false);
   // const { username, isLoggedIn } = useContext(LoginContext);
 
-  const [users, setUsers] = useState([])
+  const [users, setUsers] = useState({}); // Change to object
 
-  const fetchUserData = () => {
-    fetch("https://jsonplaceholder.typicode.com/users/5")
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setUsers(data)
-      })
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setUsers(data);
+        setLoaded(true);
+      } else {
+        console.error('Error fetching user data');
+      }
+    } catch (error) {
+      console.error('Error fetching user data', error);
+    }
   };
 
   useEffect(() => {

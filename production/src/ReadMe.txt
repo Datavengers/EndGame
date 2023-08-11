@@ -10,6 +10,7 @@ For React MUI material components to work:
 
 For Backend components to work:
 -- npm install
+-- npm install express passport passport-local express-session
 -- npm install express cors mysql2
 -- npm install vite-express
 -- npm install bcrypt 
