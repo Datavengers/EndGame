@@ -1,23 +1,17 @@
-const { verify } = require("jsonwebtoken");
+const passport = require("passport");
 
+// Import the JWT strategy setup from jwtStrategy.js
+require("./jwtStrategy.js"); 
+
+// Middleware function to authenticate user using JWT strategy
 const validateToken = (req, res, next) => {
-    const accessToken = req. header("accessToken");
-
-    if (!accessToken) {
-        return res.json({ error: "User not logged in!"});
+  passport.authenticate("jwt", { session: false }, (err, user, info) => {
+    if (err || !user) {
+      return res.status(401).json({ error: "Unauthorized" });
     }
-    else {
-        try {
-            const validToken = verify(accessToken, "importantsecret");
-
-            if (validToken) {
-                return next();
-            }
-        }
-        catch (err) {
-            return res.json({ error: "Invalid token." });
-        }
-    };    
+    req.user = user; // Attach the authenticated user to the request object
+    return next();
+  })(req, res, next);
 };
 
 module.exports = { validateToken };

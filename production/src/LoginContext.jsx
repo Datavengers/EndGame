@@ -7,9 +7,7 @@ const API_URL = 'http://localhost:3000'; // Your backend server URL
 
 const LoginContext = createContext("");
 
-
 const LoginContextProvider = (props) => {
-  
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState();
 
@@ -18,83 +16,59 @@ const LoginContextProvider = (props) => {
 
   const navigate = useNavigate();
 
-
   useEffect(() => {
-    console.log("login context user effect")
-
     const token = localStorage.getItem('accessToken');
-    console.log(token);
+    
     if (token) {
-      console.log(token);
-      console.log("The token should be true");
       setIsLoggedIn(true);
       getUsername();
     } else {
       setIsLoggedIn(false);
-      console.log("You are not logged in");
-     
     }
   }, []);
 
-
   function handleLogin() {
-    console.log('handle login launched')
     setIsLoggedIn(true);
     setSnackbarMessage("You are now logged in");
-    console.log('You are now logged in')
     setSnackbarOpen(true);
     navigate("/game_map");
   }
 
   function handleLogout() {
-    localStorage.removeItem('accessToken')
-    setIsLoggedIn(false)
+    localStorage.removeItem('accessToken');
+    setIsLoggedIn(false);
     setSnackbarMessage("You have been logged out");
     setSnackbarOpen(true);
-    
   }
 
   function handleSnackbarClose() {
     setSnackbarOpen(false);
   }
 
-
-  //should probably create a function just for handling token
-
-
-  //need to get token, send it, make the get request to username, receive back the username, set it
   async function getUsername() {
-    // tries to grab token
-    const token = localStorage.getItem('accessToken');
-  
-    // if token, makes get request
-    if (token) {
-      const res = await axios.get(`${API_URL}/api/login`, {
-        method: 'GET',
-        headers: {
-          // passes the access token grabbing from local storage
-          'Authorization': `Bearer ${token}`
-        }
-      })
-      console.log(res);
-      if(res.status == 200) {
-        const data = res.data[0];
+    const token = localStorage.getItem("accessToken");
 
-        // success, sets username state
-        const username = data.username;
-        setUsername(username);
-        console.log(`Hello ${username}`);
-      } else {
-        // removes token if request is unsuccessful
-        // localStorage.removeItem('accessToken');
+    if (token) {
+      try {
+        const response = await axios.get(`${API_URL}/api/user`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (response.status === 200) {
+          const data = response.data;
+          const username = data.username;
+          setUsername(username);
+      
+        } else {
+          localStorage.removeItem('accessToken');
+        }
+      } catch (error) {
+        console.error('Error getting username', error);
       }
     }
-  
-
-
-  }  
-  console.log("loginContext rendered")
-  console.log(isLoggedIn)
+  }
 
   return (
     <LoginContext.Provider
