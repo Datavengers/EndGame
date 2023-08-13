@@ -42,54 +42,30 @@ db.sequelize.sync().then(() => {
 });
 
 
-// const aLoggerMiddleware = (req, res, next) => {
-//     console.log(req.method, req.url, res.statusCode);
-//     next();
-//   };
-//   app.use(aLoggerMiddleware);
-
-// app.get('manifest.json', function (req, res) {
-//     // console.log("Wednesday");
-//     res.json({});
-//   });
-
-// app.use(express.static("/backend/frontend/src/pages"));
-
-
-// const donkey = path.join(__dirname, 'frontend', 'build');
-// console.log(donkey)
-// app.use("/", express.static(donkey));
+// const buildPath = path.join(__dirname, 'production', 'build');
+// console.log(buildPath)
+// app.use("/", express.static(buildPath));
 
 
 // prefixRouter.get('/*', function (req, res) {
-//    res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
+//    res.sendFile(path.join(__dirname, 'production', 'build', 'index.html'));
 //  });
 
 //  app.use("/",prefixRouter);
 
-// forumRoute(prefixRouter);
-// contactRoute(prefixRouter);
+// apiSignUpRoutes(prefixRouter);
+// apiLoginRoutes(prefixRouter);
+// apiUserRoutes(prefixRouter);
 
-// async function main() {
-//   if(process.env.MODE == "production"){
-//     console.log("production");
-//     await mongoose.connect('mongodb://projectUkraine:1j6zn9n8tnm@192.168.171.67/projectUkraine?authSource=admin', {  
-//   useNewUrlParser: true,
-//   useUnifiedTopology: true
-  
-// }); 
-//   } else {
-//     console.log("local");
-//     await mongoose.connect("mongodb://127.0.0.1:27017/projectUkraine");
-//   }
-// console.log("Database Connected"); 
+async function main() {
+  if(process.env.MODE == "production"){
+    console.log("production"); } 
+  else {
+    console.log("local");
+  }
+console.log("Database Connected"); 
 
-
+};
  
 
-
-//  app.listen(process.env.PORT || port, () => {
-//   console.log(`Your Project Ukraine server is running on port ${port}`)
-// })};
-
-// main().catch((err) => console.error(err));
+main().catch((err) => console.error(err));
