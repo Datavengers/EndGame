@@ -53,6 +53,24 @@ export default function SinglyLinkedListLearning() {
                 </CardActionArea>
                 </Card>
             </Link>
+            <Link to="https://www.geeksforgeeks.org/data-structures/linked-list/singly-linked-list/">
+                <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
+                <CardActionArea>
+                    <CardMedia 
+                    component="img" 
+                    height="140" 
+                    image={IMAGES.learning}
+                    alt="Singly Linked List Learning Content" />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        Singly Linked List - GeeksForGeeks                  </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        Additional resource to learn more about singly linked lists!
+                    </Typography>
+                    </CardContent>
+                </CardActionArea>
+                </Card>
+            </Link>
             </div>
             </div>
         </article>
