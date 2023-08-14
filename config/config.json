@@ -16,7 +16,7 @@
   "production": {
     "username": "data_vengers",
     "password": "v41b94j382",
-    "database": "PracticeTutorial",
+    "database": "data_vengers",
     "host": "127.0.0.1",
     "dialect": "mysql"
   }
