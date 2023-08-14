@@ -1,8 +1,8 @@
 {
-  "": {
-    "username": "root",
-    "password": "Bandgeek5%", 
-    "database": "PracticeTutorial",
+  "development": {
+    "username": "data_vengers",
+    "password": "v41b94j382", 
+    "database": "data_vengers",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
@@ -13,11 +13,10 @@
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
-  "development": {
+  "production": {
     "username": "data_vengers",
     "password": "v41b94j382",
     "database": "data_vengers",
-    "host": "192.168.206.177",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   }
-}
