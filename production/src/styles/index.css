@@ -322,6 +322,12 @@ i {
   padding:3vh;
 }
 
-.card{
-  
+#aboutus_p{
+  font-size: 2vh;
+  font-family: 'Maven Pro', sans-serif;
+}
+
+#bottomLink{
+  position: absolute;
+  bottom: 0;
 }

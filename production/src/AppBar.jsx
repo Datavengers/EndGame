@@ -44,7 +44,7 @@ export default function MenuAppBar() {
         <Toolbar className="appbar">
           {isLoggedIn && <MuiDrawer />}
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, fontSize: 2 + 'em', fontFamily: 'Slackey' }}>
-            DSA EndGame
+            DSAvengers
           </Typography>
 
           <FormGroup>

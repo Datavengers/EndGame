@@ -4,10 +4,37 @@ import {loadFull} from "tsparticles"
 import MapSVG from "../assets/images/mapSVG"
 import Nodeman from "../assets/images/nodeman"
 import Skeleton from '@mui/material/Skeleton';
-import React,{ useState } from 'react';
-
+import React,{ useState, useEffect } from 'react';
 
 export default function Game_Map() {
+    const [loaded, setLoaded] = useState(false);
+  // const { username, isLoggedIn } = useContext(LoginContext);
+
+  const [user, setUser] = useState({}); // Change to object
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setUser(data);
+      } else {
+        console.error('Error fetching user data');
+      }
+    } catch (error) {
+      console.error('Error fetching user data', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData()
+  }, []);
+
     {/*required stuff to make the waves exist*/}
     const particlesInit = async (main) => {
         console.log(main);
@@ -17,8 +44,6 @@ export default function Game_Map() {
       const particlesLoaded = (container) => {
         console.log(container);
       }
-
-      const [loaded, setLoaded] = useState(false);
 
     return (
         <> 
@@ -98,21 +123,52 @@ export default function Game_Map() {
             }
                 <img className="mapImg" src={IMAGES.layer1 } style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer2} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer3} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                {user.triesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer3a} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                {user.treesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer3b} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                {user.sqUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer3c} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                <div className="childLayer"><img className="mapImg" src={IMAGES.layer3d} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                {!user.treesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer4a} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                {!user.triesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer4b} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer4} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer5} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                
+                {user.DLLUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer5} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer6} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer7} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer8} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                {user.DLLUnlocked && (
+                    <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer10} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer11} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                {user.sqUnlocked &&(
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer11} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer12} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer13} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                {user.triesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer13} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer14} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
-                <div className="childLayer"><img className="mapImg" src={IMAGES.layer15} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
+                {user.treesUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer15} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                {!user.DLLUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer18} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
+                {!user.sqUnlocked && (
+                    <div className="childLayer"><img className="mapImg" src={IMAGES.layer19} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer16} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer17} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
+                
                 <div className="childLayer">
                     <div className="svgContainer"><MapSVG style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 </div>

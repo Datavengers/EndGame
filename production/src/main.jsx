@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import './styles/fonts.css'
 import './styles/Reset.css'
 import './styles/index.css'
 import './styles/gameMapStyles.css'
@@ -27,6 +28,11 @@ import Stats from './routes/stats';
 import Account from './routes/account';
 import DoublyLinkedListLearning from './routes/dll_learning';
 import DoublyLinkedListQuiz from './routes/doublyLinkedListQuiz';
+import AboutUs from './routes/aboutus';
+import SQ_Home from './routes/';
+import Trees_Home from './routes/trees_home';
+import Tries_Home from './routes/tries_home';
+import Readings from './routes/readings';
 
 const router = createBrowserRouter([
   {
@@ -96,6 +102,18 @@ const router = createBrowserRouter([
             element: <DoublyLinkedListQuiz />
           },
           {
+            path: "stacks-n-queues",
+            element: <SQ_Home />
+          },
+          {
+            path:"trees",
+            element:<Trees_Home/>
+          },
+          {
+            path:"tries",
+            element:<Tries_Home/>
+          },
+          {
             path: "resources",
             element:<Resources_Home />,
           },
@@ -106,6 +124,14 @@ const router = createBrowserRouter([
           {
             path: "account",
             element:<Account />,
+          },
+          {
+            path: "about-us",
+            element: <AboutUs />,
+          },
+          {
+            path: 'library',
+            element: <Readings/>
           },
           {
             // This should keep a bad URL error confined within the page boundaries
