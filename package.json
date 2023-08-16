@@ -4,7 +4,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+     "build": "vite build"
   },
   "repository": {
     "type": "git",
@@ -15,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Datavengers/EndGame/issues"
   },
-  "homepage": "https://github.com/Datavengers/EndGame#readme",
+  "homepage": "/data-vengers/",
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.0",

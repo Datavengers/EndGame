@@ -3,7 +3,7 @@ import Snackbar from '@mui/material/Snackbar';
 import axios from "axios";
 import {useNavigate} from 'react-router-dom';
 
-const API_URL = 'http://localhost:3000'; // Your backend server URL
+const API_URL = '/data-vengers/'; // Your backend server URL
 
 const LoginContext = createContext("");
 
