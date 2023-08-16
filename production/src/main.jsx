@@ -27,6 +27,7 @@ import Stats from './routes/stats';
 import Account from './routes/account';
 import DoublyLinkedListLearning from './routes/dll_learning';
 import DoublyLinkedListQuiz from './routes/doublyLinkedListQuiz';
+import AboutUs from './routes/aboutus';
 
 const router = createBrowserRouter([
   {
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
           {
             path: "account",
             element:<Account />,
+          },
+          {
+            path: "about-us",
+            element: <AboutUs />,
           },
           {
             // This should keep a bad URL error confined within the page boundaries
