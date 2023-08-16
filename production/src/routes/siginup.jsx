@@ -7,7 +7,7 @@ import { LoginContext } from "../LoginContext";
 import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "/data-vengers/";
 
 const SignUpUser = () => {
   const [username, setUsername] = useState("");
@@ -169,3 +169,4 @@ const SignUpUser = () => {
 };
 
 export default SignUpUser;
+

@@ -28,11 +28,11 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 
-app.use("/api/signup", apiSignUpRoutes);
-app.use("/api/login", apiLoginRoutes);
-app.use("/api/user", apiUserRoutes); // Add the user info route
+app.use("/data-vengers/api/signup", apiSignUpRoutes);
+app.use("/data-vengers/api/login", apiLoginRoutes);
+app.use("/data-vengers/api/user", apiUserRoutes); // Add the user info route
 
-
+app.use(express.static("/production/src/"));
 
 
 db.sequelize.sync().then(() => {
@@ -42,23 +42,23 @@ db.sequelize.sync().then(() => {
 });
 
 
-// const buildPath = path.join(__dirname, 'production', 'build');
+// const buildPath = path.join(__dirname, 'production');
 // console.log(buildPath)
-// app.use("/", express.static(buildPath));
+ //app.use("/", express.static(buildPath));
 
 
-// prefixRouter.get('/*', function (req, res) {
-//    res.sendFile(path.join(__dirname, 'production', 'build', 'index.html'));
-//  });
+ //prefixRouter.get('/*', function (req, res) {
+   // res.sendFile(path.join(__dirname, 'production', 'index.html'));
+  //});
 
-//  app.use("/",prefixRouter);
+  //app.use("/",prefixRouter);
 
 // apiSignUpRoutes(prefixRouter);
-// apiLoginRoutes(prefixRouter);
-// apiUserRoutes(prefixRouter);
+ //apiLoginRoutes(prefixRouter);
+ //apiUserRoutes(prefixRouter);
 
 async function main() {
-  if(process.env.MODE == "production"){
+  if(process.env.NODE_ENV == "production"){
     console.log("production"); } 
   else {
     console.log("local");

@@ -115,8 +115,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
+// {basename: "/data-vengers/"});
   },
-]);
+],
+ {basename: "/data-vengers/"});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
