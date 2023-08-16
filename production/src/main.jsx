@@ -39,72 +39,72 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Index />},
           {
-            path: "game_map",
+            path: "data-vengers/game_map",
             element:<Game_Map />,
           },
           {
-            path: "singly-linked-lists",
+            path: "data-vengers/singly-linked-lists",
             element:<Sll_Home />,
             children:[
-              {path:"singly-linked-lists/articles"},
-              {path:"singly-linked-lists/quizzes",}
+              {path:"data-vengers/singly-linked-lists/articles"},
+              {path:"data-vengers/singly-linked-lists/quizzes",}
             ]
           },
           {
-            path:"singly-linked-lists/train-game",
+            path:"data-vengers/singly-linked-lists/train-game",
             element:<TrainGUI />
           },
           {
-            path:"singly-linked-lists/sll-learning",
+            path:"data-vengers/singly-linked-lists/sll-learning",
             element:<SinglyLinkedListLearning />
           },
           {
-            path: "doubly-linked-lists",
+            path: "data-vengers/doubly-linked-lists",
             element:<Dll_Home />,
             children:[
-              {path:"doubly-linked-lists/articles",},
-              {path:"doubly-linked-lists/games",},
-              {path:"doubly-linked-lists/quizzes",}
+              {path:"data-vengers/doubly-linked-lists/articles",},
+              {path:"data-vengers/doubly-linked-lists/games",},
+              {path:"data-vengers/doubly-linked-lists/quizzes",}
             ]
           },
           {
-            path: "doubly-linked-lists/dll-train-game",
+            path: "data-vengers/doubly-linked-lists/dll-train-game",
             element:<TrainGUI_DLL />
           },
           {
-            path: "doubly-linked-lists/dll-learning",
+            path: "data-vengers/doubly-linked-lists/dll-learning",
             element:<DoublyLinkedListLearning />
           },
           {
-            path:"login",
+            path:"data-vengers/login",
             element:<Login/>,
           },
           {
-            path:"signup",
+            path:"data-vengers/signup",
             element:<Signup/>,
           },
           {
-            path: "prizes",
+            path: "data-vengers/prizes",
             element:<Prizes_Home />,
           },
           {
-            path: "sllq",
+            path: "data-vengers/sllq",
             element:<SinglyLinkedListQuiz />,
           },
           {
-            path: "dllq",
+            path: "data-vengers/dllq",
             element: <DoublyLinkedListQuiz />
           },
           {
-            path: "resources",
+            path: "data-vengers/resources",
             element:<Resources_Home />,
           },
           {
-            path: "stats",
+            path: "data-vengers/stats",
             element:<Stats />,
           },
           {
-            path: "account",
+            path: "data-vengers/account",
             element:<Account />,
           },
           {

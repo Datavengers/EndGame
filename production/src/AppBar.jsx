@@ -34,7 +34,7 @@ export default function MenuAppBar() {
       handleLogout();
       navigate('/');  // Redirect to the main page after logout
     } else {
-      navigate('/login');  // Redirect to the login page
+      navigate('/data-vengers/login');  // Redirect to the login page
     }
   }
 
@@ -87,10 +87,10 @@ export default function MenuAppBar() {
                 open={Boolean(anchorEl)}
                 onClose={handleClose}
               >
-                <Link to="/stats" style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to="/data-vengers/stats" style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem onClick={handleClose}>Stats</MenuItem>
                 </Link>
-                <Link to="/account" style={{ textDecoration: 'none', color: 'black' }}>
+                <Link to="/data-vengers/account" style={{ textDecoration: 'none', color: 'black' }}>
                   <MenuItem onClick={handleClose}>Account</MenuItem>
                 </Link>
                 <MenuItem onClick={() => {

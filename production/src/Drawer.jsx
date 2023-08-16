@@ -41,7 +41,7 @@ export const MuiDrawer = () => {
                     </Typography>
                     <List>
                         <ListItem>
-                            <Link to="game_map" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to="data-vengers/game_map" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><MapIcon /></ListItemIcon>
                                     <ListItemText primaryTypographyProps={{fontSize:3.2+'vh',fontFamily:'Architects Daughter'}}>Map</ListItemText>
@@ -52,7 +52,7 @@ export const MuiDrawer = () => {
                         
                         <Divider />
                         <ListItem>
-                            <Link to="singly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to="data-vengers/singly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><ArrowForwardIcon /></ListItemIcon>
                                     <ListItemText primaryTypographyProps={{fontSize:3.2+'vh',fontFamily:'Architects Daughter'}}>Singly Linked Lists</ListItemText>
@@ -60,7 +60,7 @@ export const MuiDrawer = () => {
                             </Link>
                         </ListItem>
                         <ListItem>
-                            <Link to="doubly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to="data-vengers/doubly-linked-lists" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><SyncAltIcon /></ListItemIcon>
                                     <ListItemText primaryTypographyProps={{fontSize:3.2+'vh',fontFamily:'Architects Daughter'}}>Doubly Linked Lists</ListItemText>
@@ -70,7 +70,7 @@ export const MuiDrawer = () => {
                         <Divider />
 
                         <ListItem>
-                            <Link to="prizes" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to="data-vengers/prizes" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><EmojiEventsIcon /></ListItemIcon>
                                     <ListItemText primaryTypographyProps={{fontSize:3.2+'vh',fontFamily:'Architects Daughter'}}>Prizes</ListItemText>
@@ -78,7 +78,7 @@ export const MuiDrawer = () => {
                             </Link>
                         </ListItem>
                         <ListItem>
-                            <Link to="resources" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Link to="data-vengers/resources" style={{ textDecoration: 'none', color: 'inherit' }}>
                                 <ListItemButton>
                                     <ListItemIcon><InfoIcon /></ListItemIcon>
                                     <ListItemText primaryTypographyProps={{fontSize:3.2+'vh',fontFamily:'Architects Daughter'}}>Resources</ListItemText>

@@ -81,11 +81,11 @@ export default function Index() {
         <p style={{fontWeight:'bold'}}>
           Are you ready to dive in? Because of our gamification
           of DSA, you need to have a user account before you can
-          dive in.  <Link to="/signup" style={{color:'blue'}}>Create an account here.</Link>
+          dive in.  <Link to="/data-vengers/signup" style={{color:'blue'}}>Create an account here.</Link>
         </p>
         <br/>
         <p>
-          Already a member? Welcome back! <Link to="/login" style={{color:'blue'}}>Login here.</Link>
+          Already a member? Welcome back! <Link to="/data-vengers/login" style={{color:'blue'}}>Login here.</Link>
         </p>
         </article>
       </div>

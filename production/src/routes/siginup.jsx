@@ -150,7 +150,7 @@ const SignUpUser = () => {
           }}
         >
           Psst... Already a member?<br />
-          Log in <Link to="/login">here!</Link>
+          Log in <Link to="/data-vengers/login">here!</Link>
         </p>
       </div>
       <Snackbar
@@ -168,4 +168,3 @@ const SignUpUser = () => {
 };
 
 export default SignUpUser;
-https://portfolios.talentsprint.com/data-vengers/

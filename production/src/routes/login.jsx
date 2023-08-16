@@ -109,7 +109,7 @@ const Login = () => {
         message={snackbarMessage}
       />
       <p>Psst... Don't have a login yet? <br/>
-        Sign up <Link to="/signup">here!</Link></p>
+        Sign up <Link to="/data-vengers/signup">here!</Link></p>
     </div>
   );
 }

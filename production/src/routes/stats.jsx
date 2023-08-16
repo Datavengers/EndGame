@@ -61,11 +61,11 @@ export default function Stats() {
                     <h1>Unlocked Topics:</h1>
                     <ul>
                       {users.overallPoints >= 0 && (
-                        <Link to="/singly-linked-lists">
+                        <Link to="/data-vengers/singly-linked-lists">
                             <li>Singly-linked Lists</li>
                         </Link>)}
                       {users.overallPoints >= DLL_MIN_POINTS && (
-                        <Link to="/doubly-linked-lists">
+                        <Link to="/data-vengers/doubly-linked-lists">
                             <li>Doubly-linked Lists</li>
                         </Link>)}
                         {/*TBD: link to stacks and queues when available*/}
