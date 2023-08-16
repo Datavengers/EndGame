@@ -4,6 +4,11 @@ const { SignUps } = require("../models");
 const bcrypt = require("bcrypt");
 const { sign } = require("jsonwebtoken");
 
+router.get("/", async (req, res) => {
+  const signUps = await SignUps.findAll();
+  res.json(signUps);
+})
+
 router.post("/", async (req, res) => {
   const { username, email, password, confirmPassword } = req.body;
 
