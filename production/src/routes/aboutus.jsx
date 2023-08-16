@@ -14,22 +14,19 @@ export default function AboutUs() {
 
   return (
       <div className="articleDiv">
-        {loaded ? null : (
-          <div style={{display: 'flex', flexFlow:'row wrap', justifyContents: 'center'}}>
-          <Skeleton style={{margin:15}}variant="rectangular" width={210} height={210}/>
-          <Skeleton variant="rectangular" width={210} height={210}/>
-          <Skeleton variant="rectangular" width={210} height={210}/>
-          <Skeleton variant="rectangular" width={210} height={210}/>
-          <Skeleton variant="rectangular" width={210} height={210}/>
-          </div>
-        )
-        }
-
       <div>
         <h1> Meet the Team</h1>
         <p id="aboutus_p"> For this final project of TechWise by TalentSprint, sponsored by Google, the five of us - all working, studying, or both at the same time - were able to participate in various ways and get this project off the ground.
             This would not have been possible without the education, guidance, and support from the educators at the Community College of Allegheny County, the Demoines Area Community College, and the University of Nevada Reno.
         </p>
+        {loaded ? null: ( 
+          <div style={{display: 'flex', flexFlow:'row wrap', justifyContents: 'center'}}>
+          <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
+          <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
+          <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
+          <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
+          <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
+          </div>)}
         <div style={{display:'flex', flexFlow: 'row wrap', justifyContent:'center'}}>
           <Card className ="card" sx={{ width: 35+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardActionArea>
