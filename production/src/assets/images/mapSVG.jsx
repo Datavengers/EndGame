@@ -37,7 +37,7 @@ function SvgComponent(props) {
       {...props}
     >
       
-      <Link to="/">
+      <Link to="/resources">
       <path
         id="schoolPoly"
         d="M55.855 126.942l23.357 1.523 10.155-6.093 9.648 5.078h19.803l6.6 6.6 1.524 5.079v55.854H45.7l1.281-43.997-12.912-4.76-2.056-8.62 17.12 1.732z"
@@ -45,8 +45,9 @@ function SvgComponent(props) {
         fillOpacity={0}
       />
       </Link>
+
       {user.sqUnlocked && (
-        <Link to="/">
+        <Link to="/stacks-n-queues">
         <path
           id="dinerPoly"
           d="m 305.6767,149.28397 h 86.32067 l 2.53884,8.63207 10.15537,5.07769 2.03107,39.09819 -95.4605,1.01554 -9.6476,-27.92729 z"
@@ -54,15 +55,17 @@ function SvgComponent(props) {
           fillOpacity={0}
         />
         </Link>)}
-      <Link to="/">
+
+      <Link to="/library">
       <path
         id="libraryPoly"
         d="m 155.3772,51.792402 19.2952,-8.632066 7.61653,4.569918 29.45058,-8.632067 30.46612,7.108761 13.10594,-1.404207 14.82134,6.481893 0.50777,53.315706 H 154.86943 Z"
         fill="#fffd31"
         fillOpacity={0}
       />
+
       </Link>
-      <Link to="/">
+      <Link to="/prizes">
       <path
         id="vendingPoly"
         fill="#fffd31"
@@ -80,7 +83,7 @@ function SvgComponent(props) {
         />
         </Link>)}
       {user.treesUnlocked && (
-        <Link to="/">
+        <Link to="/trees">
         <path
           id="treesPoly"
           transform="translate(49.761 32.497)"
@@ -90,7 +93,7 @@ function SvgComponent(props) {
         />
         </Link>)}
       {user.triesUnlocked && (
-        <Link to="/">
+        <Link to="/tries">
         <path
           id="triesPoly"
           transform="translate(51.285 32.497)"

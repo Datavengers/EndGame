@@ -7,7 +7,7 @@ export default function Resources_Home() {
       <p id="zero-state">
         Welcome to the future home of Resources!
         <br/>
-        This page will hold sublinks to resources and helpful tools.
+        This page will hold sublinks to quizzes and minigames.
         <br/>
       </p>
     </>
