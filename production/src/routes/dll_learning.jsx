@@ -26,6 +26,14 @@ export default function DoublyLinkedListLearning() {
                 node consists of -- a pointer to the next node, a pointer to the previous node, and a section for
                 data.  Therefore, traversal can happen bidirectionally within a doubly linked list.
             </p>
+            <img src={IMAGES.doublyLinkedList} alt='doubly linked list diagram' style={{marginLeft:150}} />
+
+            <ol>
+                <li>The time complexity for adding a new node at the end of a doubly linked list is O(n).</li>
+                <li>The head node's previous pointer points to null.</li>
+                <li>In a doubly linked list, deletion of a node can happen from the front, back, or at any node between.</li>
+                <li>The time complexity for inserting a new node at the front of a doubly linked list is O(1).</li>
+            </ol>
             {/* Cards with additional resources to check out here */}
 
             <div style={{display:'flex', justifyContent:'center'}}>
