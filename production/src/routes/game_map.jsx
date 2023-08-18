@@ -4,15 +4,26 @@ import {loadFull} from "tsparticles"
 import MapSVG from "../assets/images/mapSVG"
 import Nodeman from "../assets/images/nodeman"
 import Skeleton from '@mui/material/Skeleton';
-import React,{ useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
+
 
 export default function Game_Map() {
     const [loaded, setLoaded] = useState(false);
-  // const { username, isLoggedIn } = useContext(LoginContext);
+    const [userEmail, setUserEmail] = useState('');
+    const [user, setUser] = useState({}); // Change to object
+    const [open, setOpen] = useState(true);
 
-  const [user, setUser] = useState({}); // Change to object
+    const handleClose = (()=>{
+        setOpen(false);
+    })
 
-  const fetchUserData = async () => {
+    const fetchUserData = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/user", {
         headers: {
@@ -29,11 +40,15 @@ export default function Game_Map() {
     } catch (error) {
       console.error('Error fetching user data', error);
     }
-  };
+    };
 
-  useEffect(() => {
-    fetchUserData()
-  }, []);
+    useEffect(() => {
+        fetchUserData()
+    }, []);
+
+    useEffect(()=>{
+        setUserEmail(user.email)
+    }, [user.email]);
 
     {/*required stuff to make the waves exist*/}
     const particlesInit = async (main) => {
@@ -44,6 +59,125 @@ export default function Game_Map() {
       const particlesLoaded = (container) => {
         console.log(container);
       }
+    
+    async function subtractPoints(points){
+        const response = await fetch(`http://localhost:3000/api/spendPoints`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', //sends as JSON
+        },
+        //payload
+        body: JSON.stringify({ 
+            email:userEmail,
+            pointValue:points,
+        }),
+        })
+        try{
+        const data = await response.json()
+        console.log(data)
+        } catch {
+        console.log("error from the Account page");
+            return;
+        }
+    }
+
+    async function unlockDLL(){   
+    handleClose();
+    console.log("You clicked to unlock DLL!");
+    const response = await fetch(`http://localhost:3000/api/unlockDLL`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json', //sends as JSON
+        },
+        //payload
+        body: JSON.stringify({ 
+            email:userEmail,
+        }),
+        })
+        .then(subtractPoints(25))
+        .then(location.reload());
+        try{
+        const data = await response.json()
+        console.log(data)
+        } catch {
+        console.log("error from the Account page");
+            return;
+        }
+      }
+
+      async function unlockSQ(){   
+        handleClose();
+        console.log("You clicked to unlock Stacks & Queues!");
+        const response = await fetch(`http://localhost:3000/api/unlockSQ`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', //sends as JSON
+            },
+            //payload
+            body: JSON.stringify({ 
+                email:userEmail,
+            }),
+        })
+        .then(subtractPoints(50))
+        .then(location.reload());
+        try{
+        const data = await response.json()
+        console.log(data)
+        } catch {
+        console.log("error from the Account page");
+            return;
+        }
+    }
+
+    async function unlockTrees(){   
+        handleClose();
+        console.log("You clicked to unlock Trees!");
+        const response = await fetch(`http://localhost:3000/api/unlockTrees`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', //sends as JSON
+            },
+            //payload
+            body: JSON.stringify({ 
+                email:userEmail,
+            }),
+        })
+        .then(subtractPoints(75))
+        .then(location.reload());
+        try{
+            const data = await response.json()
+            console.log(data)
+        } catch {
+            console.log("error from the Account page");
+            return;
+        }
+        
+    }
+        
+    async function unlockTries(){   
+        handleClose();
+        console.log("You clicked to unlock Stacks & Queues!");
+        const response = await fetch(`http://localhost:3000/api/unlockTries`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', //sends as JSON
+            },
+            //payload
+            body: JSON.stringify({ 
+                email:userEmail,
+            }),
+        })
+        .then(subtractPoints(100))
+        .then(location.reload());
+        try{
+        const data = await response.json()
+        console.log(data)
+        } catch {
+        console.log("error from the Account page");
+            return;
+        }
+        
+    }
 
     return (
         <> 
@@ -114,6 +248,7 @@ export default function Game_Map() {
                 }}
                 />  
             </div>
+            
             {/*island*/}
             <div className="parentLayer">
             {loaded ? null : 
@@ -122,6 +257,81 @@ export default function Game_Map() {
                 </div>
             }
                 <img className="mapImg" src={IMAGES.layer1 } style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/>
+                <div className="childLayer" id="messageDiv">
+                    {user.overallPoints == 0 && !user.DLLUnlocked && (
+                        <Dialog open={open} onClose={handleClose} >
+                        <DialogTitle>Welcome to the island!</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Checkout the schoolhouse to see all the games and quizzes you've unlocked, or
+                            click the library for all the articles if you're more of a reader. Clicking the 
+                            train station will lead you to Singly-Linked List specific activities.  And before
+                            you know it, you'll have earned enough points to start finding out what's hiding among
+                            all those trees...
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={handleClose}>Close</Button>
+                        </DialogActions>
+                      </Dialog>
+                    )}
+                    {user.overallPoints >=25 && user.currentPoints >=25 && !user.DLLUnlocked && (
+                        <Dialog open={open} onClose={handleClose} >
+                        <DialogTitle>Well done!</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Hey there, DSAvenger! Looks like you earned enough points to unlock a new region! Would you like to do that now?
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={unlockDLL}>Yes</Button>
+                          <Button onClick={handleClose}>No</Button>
+                        </DialogActions>
+                      </Dialog>
+                    )}
+                    {user.overallPoints >= 50 && user.currentPoints >=50 && !user.sqUnlocked && user.DLLUnlocked && (
+                        <Dialog open={open} onClose={handleClose} >
+                        <DialogTitle>Woohoo!</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            Look at you, DSAvenger! You must be getting hungry. How about using 50 of those points to unlock a new region?
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={unlockSQ}>Yes</Button>
+                          <Button onClick={handleClose}>No</Button>
+                        </DialogActions>
+                      </Dialog>
+                    )}
+                    {user.overallPoints >= 75 && user.currentPoints >= 75 && !user.treesUnlocked && user.sqUnlocked && (
+                        <Dialog open={open} onClose={handleClose} >
+                        <DialogTitle>Astounding!</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            You're doing fantastic, DSAvenger! How about a little break in a park? Want to spend 75 points to unlock a new region?
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={unlockTrees}>Yes</Button>
+                          <Button onClick={handleClose}>No</Button>
+                        </DialogActions>
+                      </Dialog>
+                    )}
+                    {user.overallPoints >= 100 && user.currentPoints >= 100 && !user.triesUnlocked && user.treesUnlocked && (
+                        <Dialog open={open} onClose={handleClose} >
+                        <DialogTitle>Magnificent!</DialogTitle>
+                        <DialogContent>
+                          <DialogContentText>
+                            You've nearly unlocked the whole map, DSAvenger! You deserve a treat - let's unlock that last section for 100 points.
+                          </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                          <Button onClick={unlockTries}>Ok</Button>
+                          <Button onClick={handleClose}>No</Button>
+                        </DialogActions>
+                      </Dialog>
+                    )}
+                </div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer2} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 
                 {user.triesUnlocked && (
@@ -139,14 +349,14 @@ export default function Game_Map() {
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer4} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 
                 
-                {user.DLLUnlocked && (
+                {user.DLLUnlocked == 1 && (
                     <div className="childLayer"><img className="mapImg" src={IMAGES.layer5} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
                 
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer6} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer7} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer8} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>
                 
-                {user.DLLUnlocked && (
+                {user.DLLUnlocked == 1 && (
                     <div className="childLayer" id="train"><img className="mapImg" src={IMAGES.train} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>)}
                 
                 <div className="childLayer"><img className="mapImg" src={IMAGES.layer10} style={loaded ? {}:{display: 'none'}} onLoad={() =>setLoaded(true)}/></div>

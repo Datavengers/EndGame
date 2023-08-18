@@ -1,11 +1,13 @@
 import Button from '@mui/material/Button';
 import '../styles/trainStyles.css'
 import { redirect } from 'react-router-dom';
-import React,{ useState } from 'react'
+import React,{ useState, useEffect } from 'react'
+
 
 // const prompt = require("prompt-sync")({sigint:true});
 // const ticketBackSize = 10;
 let currentCar;
+let pointCounter = 1; // One because you get a point just for playing!
 
 
 var cars = {
@@ -42,10 +44,38 @@ var cars = {
 var inventory = [];
 
 export default function TrainGUI(){
+  
   var [isStarted, setStarted] = useState(false);
   var [bgColor, setBgColor] = useState("black");
   var [textColor, setTextColor] = useState("lime");
   var [inputColor, setInputColor] = useState("black");
+  var [points, setPoints] = useState(0);
+  const [users, setUsers] = useState({});
+  const [loaded, setLoaded] = useState(false);
+
+  const fetchUserData = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/user", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        }
+      });
+
+      if (response.status === 200) {
+        const data = await response.json();
+        setUsers(data);
+        setLoaded(true);
+      } else {
+        console.error('Error fetching user data');
+      }
+    } catch (error) {
+      console.error('Error fetching user data', error);
+    }
+  };
+
+  useEffect(() => {
+    fetchUserData();
+  }, []);
   
   // Print a main menu and the commands
   var [textToShow, setText] = useState(
@@ -91,6 +121,7 @@ export default function TrainGUI(){
         inventory.push(item);
         // Display a helpful message
         setText(item + " taken!");
+        pointCounter += 1;
         // Remove the item from items available in the car
         cars[currentCar].items = cars[currentCar].items.filter((ticket) => ticket !== item);
       } else if (input.includes("ticket")){ 
@@ -117,9 +148,35 @@ export default function TrainGUI(){
       You lose this round.`;
     }
     stringBuilder += `
-    Play again? (y / n)`;
+    Play again? (y / n)
+    Points: ${pointCounter}`;
 
     setText(stringBuilder);
+    pointCounter;
+    updatePoints();
+  }
+
+  async function updatePoints() {
+    
+    const response = await fetch(`http://localhost:3000/api/gainPoints`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json', //sends as JSON
+      },
+      //payload
+      body: JSON.stringify({ 
+        email:users.email,
+        pointValue:pointCounter,
+      }),
+    })
+
+    try{
+        const data = await response.json()
+        console.log(data)
+    } catch {
+      console.log("error from the Train page");
+        return;
+    }
   }
   
 
