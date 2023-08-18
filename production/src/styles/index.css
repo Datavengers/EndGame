@@ -8,7 +8,8 @@ html {
 }
 
 body {
-  font-family: 'Architects Daughter', cursive;
+  /* font-family: 'Architects Daughter', cursive; */
+  font-family:'Space Grotesk', sans-serif;
   
   /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
@@ -330,4 +331,20 @@ i {
 #bottomLink{
   position: absolute;
   bottom: 0;
+}
+
+.libraryDiv{
+  width:75vw;
+  margin-left: auto;
+  margin-right: auto;
+  /* background-color:rgba(255,255,255,0.3); */
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255,255,255,0.4),
+    rgba(255,255,254,0.4) 100px,
+    rgba(255,255,252,0.5) 100px,
+    rgba(255,255,250,0.5) 200px
+  );
+  border:1px solid white;
+  padding:3vh;
 }

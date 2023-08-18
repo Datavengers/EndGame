@@ -1,7 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const SinglyLinkedListQuiz = () => {
+  const [user,setUser] = useState('');
+  const [loaded,setLoaded] = useState(false);
 
+  const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+          setUser(data);
+          setLoaded(true);
+        } else {
+          console.error('Error fetching user data');
+        }
+      } catch (error) {
+        console.error('Error fetching user data', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchUserData();
+    }, []);
+
+  async function updatePoints() {
+      
+    const response = await fetch(`http://localhost:3000/api/gainPoints`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json', //sends as JSON
+      },
+      //payload
+      body: JSON.stringify({ 
+        email:user.email,
+        pointValue:calculateScore(),
+      }),
+    })
+  
+    try{
+        const data = await response.json()
+        console.log(data)
+    } catch {
+      console.log("error from the dll_cards page");
+        return;
+    }
+  }
   const initialQuestions = [
     {
       id: 1,
@@ -143,6 +191,7 @@ const SinglyLinkedListQuiz = () => {
         setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
       } else {
         setIsSubmitted(true);
+        updatePoints();
       }
     };
   

@@ -10,9 +10,6 @@ export default function Stats() {
 
   const [users, setUsers] = useState({}); // Change to object
 
-  const DLL_MIN_POINTS = 25; // min points req'd to access Doubly-linked lists
-  const SQ_MIN_POINTS = 50; // min points req'd to access Stacks & Queues
-
   const fetchUserData = async () => {
     try {
       const response = await fetch("http://localhost:3000/api/user", {
@@ -64,13 +61,22 @@ export default function Stats() {
                         <Link to="/singly-linked-lists">
                             <li>Singly-linked Lists</li>
                         </Link>)}
-                      {users.overallPoints >= DLL_MIN_POINTS && (
+                      {users.dllUnlocked && (
                         <Link to="/doubly-linked-lists">
                             <li>Doubly-linked Lists</li>
                         </Link>)}
-                        {/*TBD: link to stacks and queues when available*/}
-                        {users.overallPoints >= SQ_MIN_POINTS && (
-                            <li>Stacks & Queues</li>)}
+                      {users.sqUnlocked && (
+                        <Link to="/sq_home">
+                            <li>Stacks & Queues</li>
+                          </Link>)}
+                      {users.treesUnlocked && (
+                        <Link to="/trees_home">
+                            <li>Trees</li>
+                          </Link>)}
+                      {users.triesUnlocked && (
+                        <Link to="/tries_home">
+                            <li>Tries</li>
+                          </Link>)}
                     </ul>
                 </div>
 

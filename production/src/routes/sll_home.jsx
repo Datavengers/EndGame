@@ -1,13 +1,57 @@
-import { Link } from 'react-router-dom';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import CardMedia from '@mui/material/CardMedia'
-import CardActionArea from '@mui/material/CardActionArea'
-import IMAGES from '../assets/images/Images';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {SLL_GFG_Card, SLL_Train_card, SLL_educatio_Card, SLL_learning_card, SLL_quiz1 } from '../cards/sll_cards';
 
 export default function Sll_Home() {
+  const [user,setUser] = useState('');
+  const [loaded,setLoaded] = useState(false);
+  const ARTICLE_POINT_VALUE = 3;
+
+
+  const fetchUserData = async () => {
+      try {
+        const response = await fetch("http://localhost:3000/api/user", {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+          setUser(data);
+          setLoaded(true);
+        } else {
+          console.error('Error fetching user data');
+        }
+      } catch (error) {
+        console.error('Error fetching user data', error);
+      }
+    };
+
+    useEffect(() => {
+      fetchUserData();
+    }, []);
+  async function updatePoints() {
+      
+    const response = await fetch(`http://localhost:3000/api/gainPoints`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json', //sends as JSON
+      },
+      //payload
+      body: JSON.stringify({ 
+        email:user.email,
+        pointValue:ARTICLE_POINT_VALUE,
+      }),
+    })
+  
+    try{
+        const data = await response.json()
+        console.log(data)
+    } catch {
+      console.log("error from the dll_cards page");
+        return;
+    }
+  }
     return (
     <div className="articleDiv">
       <article id="zero-state"style={{fontSize:1.2+"em"}}>
@@ -22,66 +66,12 @@ export default function Sll_Home() {
             no matter what you do, you're building those superhero muscles!
             
           </p>
-          <div style={{display:'flex', justifyContent:'center'}}>
-          <Link to="/singly-linked-lists/sll-learning">
-            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-              <CardActionArea>
-                <CardMedia 
-                component="img" 
-                height="140" 
-                image={IMAGES.learning}
-                alt="Singly Linked List Learning Content" />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Singly Linked Lists
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Read content page so that you can have an in-depth understanding when moving onto game and quiz.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Link>
-          <Link to="/singly-linked-lists/train-game">
-            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={IMAGES.trainimg}
-                alt="train game"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Play the Train Game!
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Can you successfully traverse a singly-linked train and collect all the passengers' tickets?
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          </Link>
-          <Link to="/sllq">
-          <Card sx={{ margin: 2.5, width:300, height:275,  backgroundColor:'rgba(255,255,255,0.6)' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={IMAGES.quiz}
-                alt="SLL Quiz"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  SLL Quiz
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Links, types, time capacity... So much to remember! What's the highest score you can get?
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Link>
+          <div style={{display:'flex', flexFlow:'row wrap',justifyContent:'center'}}>
+          <div onClick={updatePoints}><SLL_learning_card/></div>
+            <SLL_Train_card/>
+            <SLL_quiz1/>
+            <div onClick={updatePoints}><SLL_educatio_Card/></div>
+            <div onClick={updatePoints}><SLL_GFG_Card /></div>
           </div>
       </article>
     </div>
