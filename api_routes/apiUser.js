@@ -11,7 +11,11 @@ router.get("/", passport.authenticate("jwt", { session: false }), async (req, re
       username: user.username, 
       email: user.email, 
       currentPoints: user.currentPoints, 
-      overallPoints: user.overallPoints 
+      overallPoints: user.overallPoints,
+      DLLUnlocked: user.DLLUnlocked,
+      sqUnlocked: user.sqUnlocked,
+      treesUnlocked: user.treesUnlocked,
+      triesUnlocked: user.triesUnlocked
     }); // Adjust response data accordingly
   } catch (error) {
     res.status(500).json({ error: "An error occurred while fetching user info" });
