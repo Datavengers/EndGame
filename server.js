@@ -13,6 +13,10 @@ const apiLoginRoutes = require("./api_routes/apiLogin"); // Import your login AP
 const apiUserRoutes = require("./api_routes/apiUser"); // Import your user info API routes
 const apiChangeUsername = require("./api_routes/apiChangeUsername");
 const apiGainPoints = require("./api_routes/apiGainPoints");
+const apiSpendPoints = require("./api_routes/apiSpendPoints");
+const apiDeleteAccount = require("./api_routes/apiDeleteAccount");
+const apiResetAccount = require("./api_routes/apiResetAccount");
+const apiChangeEmail = require('./api_routes/apiChangeEmail');
 
 
 app.use(express.json());
@@ -33,6 +37,10 @@ app.use("/api/login", apiLoginRoutes);
 app.use("/api/user", apiUserRoutes); // Add the user info route
 app.use("/api/changeUsername", apiChangeUsername);
 app.use("/api/gainPoints", apiGainPoints);
+app.use("/api/spendPoints", apiSpendPoints);
+app.use("/api/resetAccount", apiResetAccount);
+app.use("/api/deleteAccount", apiDeleteAccount);
+app.use("/api/changeEmail", apiChangeEmail);
 
 
 
