@@ -28,7 +28,8 @@ const IMAGES = {
     quiz: new URL('./comic-quiz.jpg', import.meta.url).href,
     learning: new URL('./learning.jpg', import.meta.url).href,
     linkedList: new URL('./linked-list.png', import.meta.url).href,
-    nodeman: new URL('./nodeman.svg', import.meta.url).href
+    nodeman: new URL('./nodeman.svg', import.meta.url).href,
+    doublyLinkedList: new URL('./doubly-linked-list.png', import.meta.url).href
 };
 
 export default IMAGES
