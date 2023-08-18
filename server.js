@@ -28,9 +28,9 @@ app.use(bodyParser.json());
 app.use(passport.initialize());
 
 
-app.use("/data-vengers/api/signup", apiSignUpRoutes);
-app.use("/data-vengers/api/login", apiLoginRoutes);
-app.use("/data-vengers/api/user", apiUserRoutes); // Add the user info route
+app.use("/api/signup", apiSignUpRoutes);
+app.use("/api/login", apiLoginRoutes);
+app.use("/api/user", apiUserRoutes); // Add the user info route
 
 app.use(express.static("/production/src/"));
 

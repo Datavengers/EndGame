@@ -209,7 +209,7 @@ function HandleInput(e){
     case "n":
     case "no":
       if (currentCar == "Front of Train"){
-        window.open("/data-vengers/singly-linked-lists", "_self");
+        window.open("/singly-linked-lists", "_self");
       }
       break;
     default:

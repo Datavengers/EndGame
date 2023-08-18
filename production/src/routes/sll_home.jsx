@@ -23,7 +23,7 @@ export default function Sll_Home() {
             
           </p>
           <div style={{display:'flex', justifyContent:'center'}}>
-          <Link to="/data-vengers/singly-linked-lists/sll-learning">
+          <Link to="/singly-linked-lists/sll-learning">
             <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
               <CardActionArea>
                 <CardMedia 
@@ -42,7 +42,7 @@ export default function Sll_Home() {
               </CardActionArea>
             </Card>
           </Link>
-          <Link to="/data-vengers/singly-linked-lists/train-game">
+          <Link to="/singly-linked-lists/train-game">
             <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
             <CardActionArea>
               <CardMedia

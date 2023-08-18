@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Datavengers/EndGame/issues"
   },
-  "homepage": "/data-vengers/",
+  "homepage": "/data-vengers",
   "description": "",
   "dependencies": {
     "bcrypt": "^5.1.0",

@@ -39,72 +39,72 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Index />},
           {
-            path: "data-vengers/game_map",
+            path: "/game_map",
             element:<Game_Map />,
           },
           {
-            path: "data-vengers/singly-linked-lists",
+            path: "/singly-linked-lists",
             element:<Sll_Home />,
             children:[
-              {path:"data-vengers/singly-linked-lists/articles"},
-              {path:"data-vengers/singly-linked-lists/quizzes",}
+              {path:"/singly-linked-lists/articles"},
+              {path:"/singly-linked-lists/quizzes",}
             ]
           },
           {
-            path:"data-vengers/singly-linked-lists/train-game",
+            path:"/singly-linked-lists/train-game",
             element:<TrainGUI />
           },
           {
-            path:"data-vengers/singly-linked-lists/sll-learning",
+            path:"/singly-linked-lists/sll-learning",
             element:<SinglyLinkedListLearning />
           },
           {
-            path: "data-vengers/doubly-linked-lists",
+            path: "/doubly-linked-lists",
             element:<Dll_Home />,
             children:[
-              {path:"data-vengers/doubly-linked-lists/articles",},
-              {path:"data-vengers/doubly-linked-lists/games",},
-              {path:"data-vengers/doubly-linked-lists/quizzes",}
+              {path:"/doubly-linked-lists/articles",},
+              {path:"/doubly-linked-lists/games",},
+              {path:"/doubly-linked-lists/quizzes",}
             ]
           },
           {
-            path: "data-vengers/doubly-linked-lists/dll-train-game",
+            path: "/doubly-linked-lists/dll-train-game",
             element:<TrainGUI_DLL />
           },
           {
-            path: "data-vengers/doubly-linked-lists/dll-learning",
+            path: "/doubly-linked-lists/dll-learning",
             element:<DoublyLinkedListLearning />
           },
           {
-            path:"data-vengers/login",
+            path:"/login",
             element:<Login/>,
           },
           {
-            path:"data-vengers/signup",
+            path:"/signup",
             element:<Signup/>,
           },
           {
-            path: "data-vengers/prizes",
+            path: "/prizes",
             element:<Prizes_Home />,
           },
           {
-            path: "data-vengers/sllq",
+            path: "/sllq",
             element:<SinglyLinkedListQuiz />,
           },
           {
-            path: "data-vengers/dllq",
+            path: "/dllq",
             element: <DoublyLinkedListQuiz />
           },
           {
-            path: "data-vengers/resources",
+            path: "/resources",
             element:<Resources_Home />,
           },
           {
-            path: "data-vengers/stats",
+            path: "/stats",
             element:<Stats />,
           },
           {
-            path: "data-vengers/account",
+            path: "/account",
             element:<Account />,
           },
           {
@@ -115,10 +115,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
-// {basename: "/data-vengers/"});
+// {basename: "/data-vengers"});
   },
 ],
- {basename: "/data-vengers/"});
+ {basename: "/data-vengers"});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

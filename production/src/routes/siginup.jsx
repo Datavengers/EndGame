@@ -7,7 +7,7 @@ import { LoginContext } from "../LoginContext";
 import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
 
-const API_URL = "/data-vengers/";
+const API_URL = "/data-vengers";
 
 const SignUpUser = () => {
   const [username, setUsername] = useState("");
@@ -151,7 +151,7 @@ const SignUpUser = () => {
           }}
         >
           Psst... Already a member?<br />
-          Log in <Link to="/data-vengers/login">here!</Link>
+          Log in <Link to="/login">here!</Link>
         </p>
       </div>
       <Snackbar

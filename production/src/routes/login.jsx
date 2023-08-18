@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { LoginContext } from "../LoginContext";
 
-const API_URL = '/data-vengers/'; // Your backend server URL
+const API_URL = '/data-vengers'; // Your backend server URL
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -109,7 +109,7 @@ const Login = () => {
         message={snackbarMessage}
       />
       <p>Psst... Don't have a login yet? <br/>
-        Sign up <Link to="/data-vengers/signup">here!</Link></p>
+        Sign up <Link to="/signup">here!</Link></p>
     </div>
   );
 }

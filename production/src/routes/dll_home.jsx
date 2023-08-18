@@ -20,7 +20,7 @@ export default function Dll_Home() {
             linked lists and what makes Doubly-linked lists -- DOUBLY.
           </p>
           <div style={{display:'flex', justifyContent:'center'}}>
-          <Link to="/data-vengers/doubly-linked-lists/dll-learning">
+          <Link to="/doubly-linked-lists/dll-learning">
             <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
               <CardActionArea>
                 <CardMedia 
@@ -39,7 +39,7 @@ export default function Dll_Home() {
               </CardActionArea>
             </Card>
           </Link>
-          <Link to="/data-vengers/doubly-linked-lists/dll-train-game">
+          <Link to="/doubly-linked-lists/dll-train-game">
             <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
             <CardActionArea>
               <CardMedia

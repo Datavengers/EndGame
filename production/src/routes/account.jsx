@@ -7,7 +7,7 @@ export default function Account() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+      const response = await fetch("/api/user", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }

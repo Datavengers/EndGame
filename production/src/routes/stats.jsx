@@ -15,7 +15,7 @@ export default function Stats() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+      const response = await fetch("/api/user", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -61,11 +61,11 @@ export default function Stats() {
                     <h1>Unlocked Topics:</h1>
                     <ul>
                       {users.overallPoints >= 0 && (
-                        <Link to="/data-vengers/singly-linked-lists">
+                        <Link to="/singly-linked-lists">
                             <li>Singly-linked Lists</li>
                         </Link>)}
                       {users.overallPoints >= DLL_MIN_POINTS && (
-                        <Link to="/data-vengers/doubly-linked-lists">
+                        <Link to="/doubly-linked-lists">
                             <li>Doubly-linked Lists</li>
                         </Link>)}
                         {/*TBD: link to stacks and queues when available*/}
