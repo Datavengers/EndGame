@@ -341,6 +341,11 @@ i {
   padding:3vh;
 }
 
+.aboutPics{
+  width: 34vh;
+  height: 34vh;
+}
+
 @media screen and (orientation:landscape)
 and (max-device-width: 900px) {
   

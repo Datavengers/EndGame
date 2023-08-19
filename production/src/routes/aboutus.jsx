@@ -19,12 +19,11 @@ export default function AboutUs() {
         </p>
         
         <div style={{display:'flex', flexFlow: 'row wrap', justifyContent:'center'}}>
-          <Link to ="https://www.linkedin.com/in/ashley-butela" target="_blank">
-          <Link to ="https://www.github.com/abutela" target="_blank">
-          <Card className ="card" sx={{ width: 35+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to ="https://www.linkedin.com/in/ashley-butela" target="_blank" style={{textDecoration:'none'}}>
+          <Card className ="card" sx={{ minWidth: 35+'vh', maxWidth:35 + 'vh',margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardActionArea>
               <CardContent>
-              <CardMedia component='img' image={IMAGES.ashley} alt='Photo of Ashley Butela'/>
+              <CardMedia className="aboutPics" component='img' image={IMAGES.ashley} alt='Photo of Ashley Butela'/>
                 <Typography className="card_name" variant="h4" color="text.primary">
                   Ashley
                 </Typography>
@@ -39,13 +38,11 @@ export default function AboutUs() {
             </CardActionArea>
           </Card>
           </Link>
-          </Link>
 
-          <Link to="https://www.linkedin.com/in/amy-c-9b7a9a23b/" target="_blank">
-          <Link to="https://github.com/pghgal317" target="_blank">
-          <Card className ="card"sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to="https://www.linkedin.com/in/amy-c-9b7a9a23b/" target="_blank"style={{textDecoration:'none'}}>
+          <Card className ="card"sx={{ minWidth: 35+'vh', maxWidth:35 + 'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia component='img' image={IMAGES.amy} alt='Photo of Amy Ciuffoletti'/>
+            <CardMedia className="aboutPics" component='img' image={IMAGES.amy} alt='Photo of Amy Ciuffoletti'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Amy
               </Typography>
@@ -59,13 +56,11 @@ export default function AboutUs() {
             </CardContent>
           </Card>
           </Link>
-          </Link>
 
-          <Link to='https://www.linkedin.com/in/viktoriia-denys/' target="_blank">
-          <Link to="https://www.github.com/vdenys93" target="_blank">
-          <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to='https://www.linkedin.com/in/viktoriia-denys/' target="_blank"style={{textDecoration:'none'}}>
+          <Card sx={{ minWidth: 35+'vh', maxWidth:35 + 'vh',margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia component='img' image={IMAGES.viktoriia} alt='Photo of Viktoriia Denys'/>
+            <CardMedia className="aboutPics" component='img' image={IMAGES.viktoriia} alt='Photo of Viktoriia Denys'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Viktoriia
               </Typography>
@@ -78,13 +73,11 @@ export default function AboutUs() {
             </CardContent>
           </Card>
           </Link>
-          </Link>
 
-          <Link to="https://www.linkedin.com/in/jordan-rood/" target="_blank">
-          <Link to="https://www.github.com/rood-jordan" target="_blank">
-          <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to="https://www.linkedin.com/in/jordan-rood/" target="_blank"style={{textDecoration:'none'}}>
+          <Card sx={{ minWidth: 35+'vh', maxWidth:35 + 'vh',margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia component='img' image={IMAGES.jordan} alt='Photo of Jordan Rood'/>
+            <CardMedia className="aboutPics" component='img' image={IMAGES.jordan} alt='Photo of Jordan Rood'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Jordan
               </Typography>
@@ -98,13 +91,11 @@ export default function AboutUs() {
             </CardContent>
           </Card>
           </Link>
-          </Link>
 
-          <Link to="https://www.linkedin.com/in/fionnlagh-jones/">
-          <Link to="https://www.github.com/fionnlaghjones">
-          <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to="https://www.linkedin.com/in/fionnlagh-jones/"target ="-blank" style={{textDecoration:'none'}}>
+          <Card sx={{ minWidth: 35+'vh', maxWidth:35 + 'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia component='img' image={IMAGES.finnly} alt='Photo of Fionnlagh Jones'/>
+            <CardMedia className="aboutPics" component='img' image={IMAGES.finnly} alt='Photo of Fionnlagh Jones'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Fionnlagh
               </Typography>
@@ -116,7 +107,6 @@ export default function AboutUs() {
               </Typography>
             </CardContent>
           </Card>
-          </Link>
           </Link>
         </div>
       </div>
