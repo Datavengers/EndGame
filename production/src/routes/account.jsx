@@ -153,6 +153,7 @@ export default function Account() {
         newname: newUsername,
       }),
     })
+    .then(location.reload());
 
     try{
         const data = await response.json()
