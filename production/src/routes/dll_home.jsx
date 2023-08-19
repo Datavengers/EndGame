@@ -78,7 +78,7 @@ export default function Dll_Home() {
             <div onClick={updatePoints}><DLL_GFG_Card/></div>
             <div onClick={updatePoints}><DLL_javatpoint_Card /></div>
           </div>
-          </div>
+          
       </article>
     </div>
     
