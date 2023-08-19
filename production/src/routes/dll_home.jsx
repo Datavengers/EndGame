@@ -5,10 +5,16 @@ export default function Dll_Home() {
   const [user,setUser] = useState('');
   const [loaded,setLoaded] = useState(false);
   const ARTICLE_POINT_VALUE = 3;
+  
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125'; // Your backend server URL
 
   const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+
+        const response = await fetch(`${API_URL}/api/user`, {
+
+
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -31,7 +37,9 @@ export default function Dll_Home() {
     }, []);
   async function updatePoints() {
       
-    const response = await fetch(`/data-vengers/api/gainPoints`, {
+
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -64,74 +72,15 @@ export default function Dll_Home() {
             linked lists and what makes Doubly-linked lists -- DOUBLY.
           </p>
           <div style={{display:'flex', flexFlow:'row wrap',justifyContent:'center'}}>
-            <DLL_learning_card/>
+            <div onClick={updatePoints}><DLL_learning_card/></div>
             <DLL_Train_card/>
             <DLL_quiz1/>
             <div onClick={updatePoints}><DLL_GFG_Card/></div>
             <div onClick={updatePoints}><DLL_javatpoint_Card /></div>
-          <div style={{display:'flex', justifyContent:'center'}}>
-          <Link to="/doubly-linked-lists/dll-learning">
-            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-              <CardActionArea>
-                <CardMedia 
-                component="img" 
-                height="140" 
-                image={IMAGES.learning}
-                alt="Double Linked List Learning Content" />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Doubly Linked Lists
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    Read content page so that you can have an in-depth understanding when moving onto game and quiz.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Link>
-          <Link to="/doubly-linked-lists/dll-train-game">
-            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={IMAGES.trainimg}
-                alt="train game"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  Play the DLL Train Game!
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Can you successfully traverse a DLL train and collect all the passengers' tickets?
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-          </Link>
-          <Link to="/dllq">
-          <Card sx={{ margin: 2.5, width:300, height:275,  backgroundColor:'rgba(255,255,255,0.6)' }}>
-            <CardActionArea>
-              <CardMedia
-                component="img"
-                height="140"
-                image={IMAGES.quiz}
-                alt="SLL Quiz"
-              />
-              <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                  DLL Quiz
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  Links, types, time capacity... So much to remember! What's the highest score you can get?
-                </Typography>
-              </CardContent>
-            </CardActionArea>
-          </Card>
-        </Link>
           </div>
           </div>
       </article>
     </div>
+    
     );
   }

@@ -17,7 +17,9 @@ export default function Index() {
 
   return (
       <div className="articleDiv">
+        
       {loaded?null:<Skeleton onLoad={setLoaded(true)}/>}
+
       <article id="zero-state" style={{fontSize:1.2+'em'}}>
         <h1 id="biggest">DATA STRUCTURES ARE SO BORING</h1>
         <h1 id = "bigger">WHY DO I NEED TO LEARN THIS</h1>
@@ -36,7 +38,7 @@ export default function Index() {
           what these data structures and algorithms (DSA) are all about.
         </p>
         <br/>
-        <div style={{display:'flex', justifyContent:'center'}}>
+        <div style={{display:'flex', flexFlow:'row wrap', justifyContent:'center'}}>
           <Card className ="card" sx={{ width: 30+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
               <Typography variant="h4" color="text.primary" gutterBottom>

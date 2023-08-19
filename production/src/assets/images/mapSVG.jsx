@@ -2,14 +2,17 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { useEffect, useState } from 'react'
 
-
+const API_URL = '/data-vengers';
+// const API_URL = 'http://localhost:8125';
 
 function SvgComponent(props) {
   const [user, setUser] = useState({}); // Change to object
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+
+      const response = await fetch(`${API_URL}/api/user`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -37,7 +40,7 @@ function SvgComponent(props) {
       {...props}
     >
       
-      <Link to="/">
+      <Link to="/resources">
       <path
         id="schoolPoly"
         d="M55.855 126.942l23.357 1.523 10.155-6.093 9.648 5.078h19.803l6.6 6.6 1.524 5.079v55.854H45.7l1.281-43.997-12.912-4.76-2.056-8.62 17.12 1.732z"
@@ -56,7 +59,7 @@ function SvgComponent(props) {
         />
         </Link>)}
 
-      <Link to="/resources">
+      <Link to="/library">
       <path
         id="libraryPoly"
         d="m 155.3772,51.792402 19.2952,-8.632066 7.61653,4.569918 29.45058,-8.632067 30.46612,7.108761 13.10594,-1.404207 14.82134,6.481893 0.50777,53.315706 H 154.86943 Z"

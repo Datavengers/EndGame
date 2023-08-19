@@ -3,10 +3,15 @@ import React, { useState, useEffect } from 'react';
 const SinglyLinkedListQuiz = () => {
   const [user,setUser] = useState('');
   const [loaded,setLoaded] = useState(false);
+  
+  const API_URL = "/data-vengers";
+  // const API_URL = "http://localhost:8125";
 
   const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+
+        const response = await fetch(`${API_URL}/api/user`, {
+
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -30,7 +35,9 @@ const SinglyLinkedListQuiz = () => {
 
   async function updatePoints() {
       
-    const response = await fetch(`/data-vengers/api/gainPoints`, {
+
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

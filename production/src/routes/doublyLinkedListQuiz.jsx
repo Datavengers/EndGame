@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-// export default function DoublylLinkedListQuiz() {
-//     return (
-//         <>
-//             <div id="quizWrapper">
-//                 <h1 id="bigger">DLL Quiz Page</h1>
-//                 <p>This is where the double linked list quiz content will be.</p>
-//             </div>
-//         </>
-//     );
-// }
-
 const DoublyLinkedListQuiz = () => {
   const [user,setUser] = useState('');
   const [loaded,setLoaded] = useState(false);
+  
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125'; // Your backend server URL
 
   const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+
+        const response = await fetch(`${API_URL}/api/user`, {
+
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -40,8 +34,9 @@ const DoublyLinkedListQuiz = () => {
     }, []);
 
   async function updatePoints() {
-      
-    const response = await fetch(`/data-vengers/api/gainPoints`, {
+
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

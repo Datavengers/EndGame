@@ -5,7 +5,7 @@
     background-color: #78e261;
     border-bottom: 40px #73634c groove;
     border-radius:40%;
-    width:25%;
+    width:45vh;
     padding:30px;
     margin:auto;
     outline:white 5px dotted;    
@@ -18,8 +18,47 @@
     background-color: #78e261;
     border-bottom: 40px #73634c groove;
     border-radius:40%;
-    width:45%;
+    width:70vh;
     padding:30px;
     margin:auto;
     outline:white 5px dotted;    
+}
+
+.signupDiv button {
+    background-color:white;
+}
+
+.loginDiv button {
+    margin-bottom: 15px;
+}
+
+/*mobile*/
+@media screen and (orientation:portrait) and (max-width: 415px){
+    .loginDiv{
+        border-bottom: 80px #73634c groove;
+        border-radius:40%;
+        width:100%;
+        padding:60px;  
+    }
+    
+    .signupDiv{
+        border-bottom: 40px #73634c groove;
+        border-radius:40%;
+        width:120%;
+        padding:60px;
+        margin-left:-25px;
+        outline:white 5px dotted;    
+    }
+
+    .signupDiv p{
+        font-size: 3.5vw;
+    }
+
+    .signupDiv h1{
+        font-size: 7vw;
+    }
+
+    .signupDiv h3{
+        font-size: 4vw;
+    }
 }

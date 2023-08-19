@@ -7,12 +7,16 @@ import IMAGES from '../assets/images/Images'
 export default function Stats() {
   const [loaded, setLoaded] = useState(false);
   // const { username, isLoggedIn } = useContext(LoginContext);
-
   const [users, setUsers] = useState({}); // Change to object
+  
+  const API_URL = "/data-vengers";
+  // const API_URL = "http://localhost:8125";
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+
+      const response = await fetch(`${API_URL}/api/user`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -35,7 +39,7 @@ export default function Stats() {
   }, []);
 
   return (
-        <div className="wrapperDiv">
+        <div className="statsWrapper">
             <p>Howdy, {users.username}!</p>
             <br/>
             <div className="statsDiv">

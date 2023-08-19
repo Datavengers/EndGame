@@ -22,6 +22,9 @@ export default function Account() {
   const [newEmail, setNewEmail] = useState('');
   const [password, setPassword] = useState('');
   const { handleLogout } = useContext(LoginContext);
+  
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125'; // Your backend server URL
 
   const handleNameOpen = () => {
     setNameOpen(true);
@@ -56,7 +59,10 @@ export default function Account() {
 
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+
+      const response = await fetch(`${API_URL}/api/user`, {
+
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -86,7 +92,9 @@ export default function Account() {
   async function resetAccount() {
     console.log("You clicked reset account!");
     handleResetClose();
-    const response = await fetch(`/data-vengers/api/resetAccount`, {
+
+    const response = await fetch(`${API_URL}/api/resetAccount`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -107,7 +115,9 @@ export default function Account() {
 
   async function deleteAccount() {
     handleDeleteClose();
-    const response = await fetch(`/data-vengers/api/deleteAccount`, {
+
+    const response = await fetch(`${API_URL}/api/deleteAccount`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -130,7 +140,9 @@ export default function Account() {
 
   async function changeUsername(e) {
     handleNameClose();
-    const response = await fetch(`/data-vengers/api/changeUsername`, {
+
+    const response = await fetch(`${API_URL}/api/changeUsername`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -153,7 +165,9 @@ export default function Account() {
 
   async function changeEmail() {
     handleEmailClose();
-    const response = await fetch(`/data-vengers/api/changeEmail`, {
+
+    const response = await fetch(`${API_URL}/api/changeEmail`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

@@ -54,6 +54,9 @@ z-index:2;
     width:75%;
     }
 }
+.mobile{
+    display: none;
+}
 
 /* Laptops, smaller desktops, etc*/
 @media only screen and (max-width:1199px){
@@ -119,5 +122,72 @@ z-index:2;
 
     svg{
         width:95%;
+    }
+}
+
+/*theoretically mobile styles*/
+@media screen and (orientation: portrait)
+and (max-device-width: 415px){
+   .desktop{
+    display: none;
+   }
+   .mobile{
+    display:block;
+    font-size: 2em;
+   }
+}
+
+@media screen and (orientation:landscape)
+and (max-device-width: 900px) {
+    .parentLayer{
+        position:relative;
+        z-index:1;
+    }
+    
+    .childLayer{
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index:2;
+    }
+
+    .svgContainer{
+        position:relative;
+        width:220%;
+        height:auto;
+        z-index:6;
+    }
+
+    svg{
+        width:95%;
+    }
+    
+    #nodeman{
+        width:15vw;
+        height:15vw;
+        transform:scaleX(-1);
+    }
+    
+    #nodemanSVG{
+        width:90%;
+        height:90%;
+        left:-0;
+        top:0;
+        position:absolute;
+    }
+    
+    #mapWrapper{
+        width:80%;
+        margin:auto;
+        }
+        
+    .mapImg{
+        width: 100%;
+        }
+    
+    #messageDiv{
+        width: 30%;
+        padding: 10px;
+        margin-left: 86%;
     }
 }

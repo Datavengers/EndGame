@@ -189,14 +189,6 @@ form[action$="destroy"] button {
   left: 0
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 #sidebar nav {
   flex: 1;
@@ -347,4 +339,36 @@ i {
   );
   border:1px solid white;
   padding:3vh;
+}
+
+@media screen and (orientation:landscape)
+and (max-device-width: 900px) {
+  
+}
+@media screen and (orientation:landscape) and 
+(max-device-width: 415px){
+  .appbar {
+    background-color: #5ebcfa; 
+    z-index:10;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .articleDiv{
+    width:98vw;
+    margin-left:-60px;
+    border-radius:24px;
+  }
+
+  #biggest{
+    font-size:1.5em;
+  }
+  #bigger{
+    font-size: 1.3em;
+  }
+  #big{
+    font-size:1em;
+  }
 }
