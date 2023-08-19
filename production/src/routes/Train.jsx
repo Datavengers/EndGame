@@ -58,7 +58,9 @@ export default function TrainGUI(){
 
   const fetchUserData = async () => {
     try {
+
       const response = await fetch(`${API_URL}/api/user`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -161,7 +163,9 @@ export default function TrainGUI(){
 
   async function updatePoints() {
     
+
     const response = await fetch(`${API_URL}/api/gainPoints`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

@@ -19,12 +19,14 @@ export default function Readings() {
   const ARTICLE_POINT_VALUE = 3;
 
   const fetchUserData = async () => {
+
       try {
         const response = await fetch(`${API_URL}/api/user`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
         });
+
 
         if (response.status === 200) {
           const data = await response.json();

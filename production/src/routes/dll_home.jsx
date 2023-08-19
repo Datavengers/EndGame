@@ -11,7 +11,10 @@ export default function Dll_Home() {
 
   const fetchUserData = async () => {
       try {
+
         const response = await fetch(`${API_URL}/api/user`, {
+
+
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -34,7 +37,9 @@ export default function Dll_Home() {
     }, []);
   async function updatePoints() {
       
+
     const response = await fetch(`${API_URL}/api/gainPoints`, {
+
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -72,6 +77,7 @@ export default function Dll_Home() {
             <DLL_quiz1/>
             <div onClick={updatePoints}><DLL_GFG_Card/></div>
             <div onClick={updatePoints}><DLL_javatpoint_Card /></div>
+          </div>
           </div>
       </article>
     </div>

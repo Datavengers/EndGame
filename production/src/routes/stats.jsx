@@ -14,7 +14,9 @@ export default function Stats() {
 
   const fetchUserData = async () => {
     try {
+
       const response = await fetch(`${API_URL}/api/user`, {
+
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
