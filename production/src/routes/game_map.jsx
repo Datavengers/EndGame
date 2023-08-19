@@ -25,7 +25,7 @@ export default function Game_Map() {
 
     const fetchUserData = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/user", {
+      const response = await fetch("/data-vengers/api/user", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -61,7 +61,7 @@ export default function Game_Map() {
       }
     
     async function subtractPoints(points){
-        const response = await fetch(`http://localhost:3000/api/spendPoints`, {
+        const response = await fetch(`/data-vengers/api/spendPoints`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', //sends as JSON
@@ -84,7 +84,7 @@ export default function Game_Map() {
     async function unlockDLL(){   
     handleClose();
     console.log("You clicked to unlock DLL!");
-    const response = await fetch(`http://localhost:3000/api/unlockDLL`, {
+    const response = await fetch(`/data-vengers/api/unlockDLL`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', //sends as JSON
@@ -108,7 +108,7 @@ export default function Game_Map() {
       async function unlockSQ(){   
         handleClose();
         console.log("You clicked to unlock Stacks & Queues!");
-        const response = await fetch(`http://localhost:3000/api/unlockSQ`, {
+        const response = await fetch(`/data-vengers/api/unlockSQ`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
@@ -132,7 +132,7 @@ export default function Game_Map() {
     async function unlockTrees(){   
         handleClose();
         console.log("You clicked to unlock Trees!");
-        const response = await fetch(`http://localhost:3000/api/unlockTrees`, {
+        const response = await fetch(`/data-vengers/api/unlockTrees`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
@@ -157,7 +157,7 @@ export default function Game_Map() {
     async function unlockTries(){   
         handleClose();
         console.log("You clicked to unlock Stacks & Queues!");
-        const response = await fetch(`http://localhost:3000/api/unlockTries`, {
+        const response = await fetch(`/data-vengers/api/unlockTries`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
