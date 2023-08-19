@@ -32,7 +32,7 @@ export const MuiDrawer = () => {
     const fetchUserData = async () => {
       try {
 
-        const response = await fetch(`{API_URL}/api/user`, {
+        const response = await fetch(`${API_URL}/api/user`, {
 
     
           headers: {

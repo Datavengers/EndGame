@@ -4,16 +4,11 @@ import { Link, redirect } from 'react-router-dom';
 import Box from '@mui/material/Box'
 import Button from '@mui/material/Button'
 import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import {LoginContext} from '../LoginContext';
 
 export default function Index() {
   const [loaded, setLoaded] = useState(false);
-  const [auth, setAuth] = useState(true);
-  const { username, isLoggedIn } = useContext(LoginContext);
 
   return (
       <div className="articleDiv">

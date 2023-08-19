@@ -1,13 +1,12 @@
 import Skeleton from '@mui/material/Skeleton'
 import React, { useState, useContext } from 'react'
-import { Link, redirect } from 'react-router-dom';
-import Box from '@mui/material/Box'
-import Button from '@mui/material/Button'
+import IMAGES from '../../src/assets/images'
 import Card from '@mui/material/Card';
 import CardActionArea from '@mui/material/CardActions'
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import { Link } from 'react-router-dom';
 
 export default function AboutUs() {
   const [loaded, setLoaded] = useState(false);
@@ -28,7 +27,9 @@ export default function AboutUs() {
           <Skeleton style={{margin:1.5+'vw'}} variant="rectangular" width={35+'vh'} height={35+'vh'}/>
           </div>)}
         <div style={{display:'flex', flexFlow: 'row wrap', justifyContent:'center'}}>
-          <Card className ="card" sx={{ width: 35+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
+          <Link to ="https://www.linkedin.com/in/ashley-butela" target="_blank">
+          <Link to ="https://www.github.com/abutela" target="_blank">
+          <Card onLoad={setLoaded(true)} className ="card" sx={{ width: 35+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardActionArea>
               <CardContent>
               <CardMedia component='img' image={IMAGES.ashley} alt='Photo of Ashley Butela'/>
@@ -41,12 +42,15 @@ export default function AboutUs() {
                 <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                   Community College of Allegheny County grad &apos;23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience,
                   and Jihanki3000, a stylized Japanese vending machine.
-                  <a href='https://www.linkedin.com/in/ashley-butela'>LinkedIn</a>
                 </Typography>
               </CardContent>
             </CardActionArea>
           </Card>
+          </Link>
+          </Link>
 
+          <Link to="https://www.linkedin.com/in/amy-c-9b7a9a23b/" target="_blank">
+          <Link to="https://github.com/pghgal317" target="_blank">
           <Card className ="card"sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
             <CardMedia component='img' image={IMAGES.amy} alt='Photo of Amy Ciuffoletti'/>
@@ -58,12 +62,15 @@ export default function AboutUs() {
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                 CCAC anticipated grad &apos;24. Backend developer with background in Music Education. Would love career in STEAM education, 
-                LMS dev/admin, Technology education, integration, & outreach (or with NASA).
-                <a href='https://www.linkedin.com/in/amy-c-9b7a9a23b/'>LinkedIn</a>         
+                LMS dev/admin, Technology education, integration, & outreach (or with NASA).  
               </Typography>
             </CardContent>
           </Card>
+          </Link>
+          </Link>
 
+          <Link to='https://www.linkedin.com/in/viktoriia-denys/' target="_blank">
+          <Link to="https://www.github.com/vdenys93" target="_blank">
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
             <CardMedia component='img' image={IMAGES.viktoriia} alt='Photo of Viktoriia Denys'/>
@@ -75,11 +82,14 @@ export default function AboutUs() {
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                 Computer Information Systems major at DMACC with a background in Accounting and Audit!                 
-                <a href='https://www.linkedin.com/in/viktoriia-denys/'>LinkedIn</a>
               </Typography>
             </CardContent>
           </Card>
+          </Link>
+          </Link>
 
+          <Link to="https://www.linkedin.com/in/jordan-rood/" target="_blank">
+          <Link to="https://www.github.com/rood-jordan" target="_blank">
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
             <CardMedia component='img' image={IMAGES.jordan} alt='Photo of Jordan Rood'/>
@@ -91,12 +101,15 @@ export default function AboutUs() {
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                 Undergraduate student at the University of Nevada, Reno majoring in Computer Science & Engineering, and minoring in Mathematics.
-                Also, I am currently a Software Engineering Intern at IGT.  Interests include full-stack web development, artificial intelligence, and embedded system work.
-                <a href='https://www.linkedin.com/in/jordan-rood/'>LinkedIn</a>
+                Also currently a Software Engineering Intern at IGT.  Interests include full-stack web development, artificial intelligence, and embedded system work.
               </Typography>
             </CardContent>
           </Card>
+          </Link>
+          </Link>
 
+          <Link to="https://www.linkedin.com/in/fionnlagh-jones/">
+          <Link to="https://www.github.com/fionnlaghjones">
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
             <CardMedia component='img' image={IMAGES.finnly} alt='Photo of Fionnlagh Jones'/>
@@ -108,10 +121,11 @@ export default function AboutUs() {
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                 CCAC anticipated grad 2024. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense. Enjoyer of PHP.
-                <a href='https://www.linkedin.com/in/fionnlagh-jones/'>LinkedIn</a>
               </Typography>
             </CardContent>
           </Card>
+          </Link>
+          </Link>
         </div>
       </div>
       </div>

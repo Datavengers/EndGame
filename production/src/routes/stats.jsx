@@ -9,8 +9,8 @@ export default function Stats() {
   // const { username, isLoggedIn } = useContext(LoginContext);
   const [users, setUsers] = useState({}); // Change to object
   
-  const API_URL = "/data-vengers";
-  // const API_URL = "http://localhost:8125";
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125';
 
   const fetchUserData = async () => {
     try {
@@ -20,7 +20,8 @@ export default function Stats() {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
-      });
+      })
+      .then(console.log("User loaded as: " + users + ", DLL unlocked? " + users.DLLUnlocked + " SQ Unlocked? " + users.sqUnlocked + " trees unlocked?" + users.treesUnlocked + " tries unlocked? " + users.triesUnlocked));
 
       if (response.status === 200) {
         const data = await response.json();
@@ -65,7 +66,7 @@ export default function Stats() {
                         <Link to="/singly-linked-lists">
                             <li>Singly-linked Lists</li>
                         </Link>)}
-                      {users.dllUnlocked && (
+                      {users.DLLUnlocked == 1 && (
                         <Link to="/doubly-linked-lists">
                             <li>Doubly-linked Lists</li>
                         </Link>)}
