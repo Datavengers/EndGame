@@ -8,17 +8,22 @@ import CardActionArea from '@mui/material/CardActionArea'
 import IMAGES from '../assets/images/Images';
 
 export default function Resources_Home() {
-    const [user, setUser] = useState('');
-    const [loaded, setLoaded] = useState(false);
-  
-    const fetchUserData = async () => {
+  const [user, setUser] = useState('');
+  const [loaded, setLoaded] = useState(false);
+
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125'; // Your backend server URL
+
+  const ARTICLE_POINT_VALUE = 3;
+
+  const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+        const response = await fetch(`${API_URL}/api/user`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
         });
-  
+
         if (response.status === 200) {
           const data = await response.json();
           setUser(data);
@@ -30,12 +35,10 @@ export default function Resources_Home() {
         console.error('Error fetching user data', error);
       }
     };
-  
+
     useEffect(() => {
       fetchUserData();
     }, []);
-  
-    
     return (
       <>
       <div className="libraryDiv">

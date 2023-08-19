@@ -6,10 +6,12 @@ export default function Sll_Home() {
   const [loaded,setLoaded] = useState(false);
   const ARTICLE_POINT_VALUE = 3;
 
+  const API_URL = "/data-vengers";
+  // const API_URL = "http://localhost:8125";
 
   const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+        const response = await fetch(`${API_URL}/api/user`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -32,7 +34,7 @@ export default function Sll_Home() {
     }, []);
   async function updatePoints() {
       
-    const response = await fetch(`/data-vengers/api/gainPoints`, {
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -63,11 +65,10 @@ export default function Sll_Home() {
             and graphs.
             Read up on what singly-linked lists (and other structure) are all about.
             Test your memory with a quiz, or practice your skills with a game - 
-            no matter what you do, you're building those superhero muscles!
-            
+            no matter what you do, you're building those superhero muscles!          
           </p>
           <div style={{display:'flex', flexFlow:'row wrap',justifyContent:'center'}}>
-          <div onClick={updatePoints}><SLL_learning_card/></div>
+            <div onClick={updatePoints}><SLL_learning_card/></div>
             <SLL_Train_card/>
             <SLL_quiz1/>
             <div onClick={updatePoints}><SLL_educatio_Card/></div>

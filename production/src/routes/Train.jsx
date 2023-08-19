@@ -53,9 +53,12 @@ export default function TrainGUI(){
   const [users, setUsers] = useState({});
   const [loaded, setLoaded] = useState(false);
 
+  const API_URL = "/data-vengers";
+  // const API_URL = "http://localhost:8125";
+
   const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+      const response = await fetch(`${API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -158,7 +161,7 @@ export default function TrainGUI(){
 
   async function updatePoints() {
     
-    const response = await fetch(`/data-vengers/api/gainPoints`, {
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

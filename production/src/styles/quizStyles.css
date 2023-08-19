@@ -1,6 +1,7 @@
 #quizWrapper{
     width:75vh;
-    height:fit;
+    height:fit-content;
+    overflow:scroll;
     margin: auto;
     outline: 5px double white;
     border: 2px double sandybrown;

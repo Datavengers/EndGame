@@ -19,13 +19,16 @@ export default function Game_Map() {
     const [user, setUser] = useState({}); // Change to object
     const [open, setOpen] = useState(true);
 
+    const API_URL = '/data-vengers';
+    // const API_URL = 'http://localhost:8125'; // Your backend server URL
+
     const handleClose = (()=>{
         setOpen(false);
     })
 
     const fetchUserData = async () => {
     try {
-      const response = await fetch("/data-vengers/api/user", {
+      const response = await fetch(`${API_URL}/api/user`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`
         }
@@ -61,7 +64,7 @@ export default function Game_Map() {
       }
     
     async function subtractPoints(points){
-        const response = await fetch(`/data-vengers/api/spendPoints`, {
+        const response = await fetch(`${API_URL}/api/spendPoints`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', //sends as JSON
@@ -84,7 +87,7 @@ export default function Game_Map() {
     async function unlockDLL(){   
     handleClose();
     console.log("You clicked to unlock DLL!");
-    const response = await fetch(`/data-vengers/api/unlockDLL`, {
+    const response = await fetch(`${API_URL}/api/unlockDLL`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json', //sends as JSON
@@ -108,7 +111,7 @@ export default function Game_Map() {
       async function unlockSQ(){   
         handleClose();
         console.log("You clicked to unlock Stacks & Queues!");
-        const response = await fetch(`/data-vengers/api/unlockSQ`, {
+        const response = await fetch(`${API_URL}/api/unlockSQ`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
@@ -132,7 +135,7 @@ export default function Game_Map() {
     async function unlockTrees(){   
         handleClose();
         console.log("You clicked to unlock Trees!");
-        const response = await fetch(`/data-vengers/api/unlockTrees`, {
+        const response = await fetch(`${API_URL}/api/unlockTrees`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
@@ -157,7 +160,7 @@ export default function Game_Map() {
     async function unlockTries(){   
         handleClose();
         console.log("You clicked to unlock Stacks & Queues!");
-        const response = await fetch(`/data-vengers/api/unlockTries`, {
+        const response = await fetch(`${API_URL}/api/unlockTries`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json', //sends as JSON
