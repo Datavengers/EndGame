@@ -7,7 +7,7 @@ import { LoginContext } from "../LoginContext";
 import Snackbar from "@mui/material/Snackbar";
 import axios from "axios";
 
-const API_URL = "http://localhost:3000";
+const API_URL = "/data-vengers";
 
 const SignUpUser = () => {
   const [username, setUsername] = useState("");
@@ -58,6 +58,7 @@ const SignUpUser = () => {
         setSnackbarMessage(response.data.error);
         setSnackbarOpen(true);
       } else {
+        await axios.get(`${API_URL}/api/signup'`, data);
         setSnackbarMessage("Signup Successful");
         setSnackbarOpen(true);
         localStorage.setItem("accessToken", response.data.accessToken);

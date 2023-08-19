@@ -45,60 +45,60 @@ const router = createBrowserRouter([
         children: [
           { index: true, element: <Index />},
           {
-            path: "game_map",
+            path: "/game_map",
             element:<Game_Map />,
           },
           {
-            path: "singly-linked-lists",
+            path: "/singly-linked-lists",
             element:<Sll_Home />,
             children:[
-              {path:"singly-linked-lists/articles"},
-              {path:"singly-linked-lists/quizzes",}
+              {path:"/singly-linked-lists/articles"},
+              {path:"/singly-linked-lists/quizzes",}
             ]
           },
           {
-            path:"singly-linked-lists/train-game",
+            path:"/singly-linked-lists/train-game",
             element:<TrainGUI />
           },
           {
-            path:"singly-linked-lists/sll-learning",
+            path:"/singly-linked-lists/sll-learning",
             element:<SinglyLinkedListLearning />
           },
           {
-            path: "doubly-linked-lists",
+            path: "/doubly-linked-lists",
             element:<Dll_Home />,
             children:[
-              {path:"doubly-linked-lists/articles",},
-              {path:"doubly-linked-lists/games",},
-              {path:"doubly-linked-lists/quizzes",}
+              {path:"/doubly-linked-lists/articles",},
+              {path:"/doubly-linked-lists/games",},
+              {path:"/doubly-linked-lists/quizzes",}
             ]
           },
           {
-            path: "doubly-linked-lists/dll-train-game",
+            path: "/doubly-linked-lists/dll-train-game",
             element:<TrainGUI_DLL />
           },
           {
-            path: "doubly-linked-lists/dll-learning",
+            path: "/doubly-linked-lists/dll-learning",
             element:<DoublyLinkedListLearning />
           },
           {
-            path:"login",
+            path:"/login",
             element:<Login/>,
           },
           {
-            path:"signup",
+            path:"/signup",
             element:<Signup/>,
           },
           {
-            path: "prizes",
+            path: "/prizes",
             element:<Prizes_Home />,
           },
           {
-            path: "sllq",
+            path: "/sllq",
             element:<SinglyLinkedListQuiz />,
           },
           {
-            path: "dllq",
+            path: "/dllq",
             element: <DoublyLinkedListQuiz />
           },
           {
@@ -118,11 +118,11 @@ const router = createBrowserRouter([
             element:<Resources_Home />,
           },
           {
-            path: "stats",
+            path: "/stats",
             element:<Stats />,
           },
           {
-            path: "account",
+            path: "/account",
             element:<Account />,
           },
           {
@@ -141,8 +141,10 @@ const router = createBrowserRouter([
         ],
       },
     ],
+// {basename: "/data-vengers"});
   },
-]);
+],
+ {basename: "/data-vengers"});
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>

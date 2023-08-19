@@ -1,24 +1,23 @@
 {
-    "development": {
-      "username": "root",
-      "password": "1993", 
-      "database": "PracticeTutorial",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-    "test": {
-      "username": "root",
-      "password": "1993",
-      "database": "PracticeTutorial",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    },
-    "production": {
-      "username": "root",
-      "password": "1993",
-      "database": "PracticeTutorial",
-      "host": "127.0.0.1",
-      "dialect": "mysql"
-    }
+  "development": {
+    "username": "data_vengers",
+    "password": "v41b94j382", 
+    "database": "data_vengers",
+    "host": "192.168.206.177",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "data_vengers",
+    "password": "v41b94j382",
+    "database": "data_vengers",
+    "host": "192.168.206.177",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "data_vengers",
+    "password": "v41b94j382",
+    "database": "data_vengers",
+    "host": "192.168.206.177",
+    "dialect": "mysql"
   }
   
