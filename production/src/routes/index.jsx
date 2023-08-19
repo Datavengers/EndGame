@@ -36,7 +36,7 @@ export default function Index() {
           what these data structures and algorithms (DSA) are all about.
         </p>
         <br/>
-        <div style={{display:'flex', justifyContent:'center'}}>
+        <div style={{display:'flex', flexFlow:'row wrap', justifyContent:'center'}}>
           <Card className ="card" sx={{ width: 30+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
               <Typography variant="h4" color="text.primary" gutterBottom>

@@ -21,12 +21,12 @@
 }
 
 .statsBlocks{
-    width:80%;
-    min-height:75%;
+    min-width:45vh;
+    min-height: 25vh;
     height:fit-content;
     margin:auto;
     border:2px solid black;
-    padding:25px;
+    padding:3vh;
     background-color:rgba(255,255,255,0.2);
     /* background-color:rgba(150,255, 100,0.3); */ /*green*/
 }
@@ -53,4 +53,128 @@
     font-size:10vh;
     color:rgb(255, 255, 148);
     text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+}
+
+@media screen and (max-width: 995px){
+    .wrapperDiv{
+        position:fixed;
+        width:120vh;
+        height:85vh;
+        margin:auto;
+        padding:30px;
+        background-color:rgba(255,255,255,0.3);
+        border-radius:50px;
+    }
+    .wrapperDiv p{
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+    
+    .statsDiv{
+        width:100%;
+        height:100%;
+        margin:auto;
+        display:grid;
+        grid-template-columns: 33% 33% 33%;
+        grid-template-rows: 35% 65%;
+    }
+    
+    .statsBlocks{
+        min-width:30vh;
+        min-height: 30vh;
+        height:fit-content;
+        margin:auto;
+        border:2px solid black;
+        padding:1.5vh;
+        background-color:rgba(255,255,255,0.2);
+        /* background-color:rgba(150,255, 100,0.3); */ /*green*/
+    }
+    
+    .statsBlocks h1{
+        font-family:'Slackey';
+        font-size: 3.5vh;
+        color:rgb(146, 30, 30);
+        text-shadow: rgba(255,255,255,0.5) 2px 2px 1px;
+    }
+    
+    .statsBlocks p, li{
+        font-size: 1.3em;
+        font-weight:normal;
+        text-align:center;
+    }
+    
+    #currentPointsDiv p{
+        font-size:10vh;
+        color:rgb(255, 255, 148);
+        text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+    }
+    
+    #alltimeDiv p{
+        font-size:10vh;
+        color:rgb(255, 255, 148);
+        text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+    }
+}
+
+@media screen and (max-width: 415px){
+    .statsWrapper{
+        width:90vw;
+        height:fit-content;
+        margin-left: -10%;
+        padding:25px;
+        background-color:rgba(255,255,255,0.3);
+        border-radius:50px;
+    }
+    .statsWrapper p{
+        font-size: 1.4em;
+        font-weight: bold;
+    }
+    
+    .statsDiv{
+        width:100%;
+        height:fit-content;
+        margin:auto;
+        display:flex;
+        flex-flow: row wrap;
+    }
+    
+    .statsBlocks{
+        width:75vw;
+        min-height: 25vh;
+        height:fit-content;
+        margin:15px;
+        border:2px solid black;
+        padding:1.5vh;
+        background-color:rgba(255,255,255,0.2);
+        /* background-color:rgba(150,255, 100,0.3); */ /*green*/
+    }
+    
+    .statsBlocks h1{
+        font-family:'Slackey';
+        font-size: 3.5vh;
+        color:rgb(146, 30, 30);
+        text-shadow: rgba(255,255,255,0.5) 2px 2px 1px;
+    }
+    
+    .statsBlocks p, li{
+        font-size: 1.3em;
+        font-weight:normal;
+        text-align:center;
+    }
+    
+    #currentPointsDiv p{
+        font-size:10vh;
+        color:rgb(255, 255, 148);
+        text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+    }
+    
+    #alltimeDiv p{
+        font-size:10vh;
+        color:rgb(255, 255, 148);
+        text-shadow: rgba(0,0,0,0.5) 2px 2px 1px;
+    }
+
+    #logoDiv {
+        display: none;
+    }
 }
