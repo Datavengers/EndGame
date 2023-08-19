@@ -64,7 +64,7 @@ export default function Dll_Home() {
             linked lists and what makes Doubly-linked lists -- DOUBLY.
           </p>
           <div style={{display:'flex', flexFlow:'row wrap',justifyContent:'center'}}>
-            <DLL_learning_card/>
+           <div onClick={updatePoints}><DLL_learning_card/></div>
             <DLL_Train_card/>
             <DLL_quiz1/>
             <div onClick={updatePoints}><DLL_GFG_Card/></div>
