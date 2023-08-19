@@ -33,6 +33,12 @@ z-index:2;
     width: 100%;
     }
 
+#messageDiv{
+    width: 30%;
+    padding: 10px;
+    margin-left: 86%;
+}
+
 /* Landscape tablets, etc*/
 @media only screen and (max-width:992px){
     /*This ONLY works with a standard 1920x1080p monitor resolution, no scaling -- will 
