@@ -1,7 +1,7 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { Drawer, Box, Typography, IconButton, Divider } from '@mui/material';
-import { Link } from 'react-router-dom'; // Import the Link component
+import { Link, useNavigate } from 'react-router-dom'; // Import the Link component
 import MenuIcon from '@mui/icons-material/Menu';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -18,10 +18,13 @@ import ParkIcon from '@mui/icons-material/Park';
 import AbcIcon from '@mui/icons-material/Abc';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import SchoolIcon from '@mui/icons-material/School';
+import {LoginContext} from './LoginContext';
 
 export const MuiDrawer = () => {
     const [isDrawerOpen, setIsDrawerOpen] = useState(false);
     const [user, setUser] = useState({});
+    const {isLoggedIn, handleLogout} = useContext(LoginContext);
+    const navigate = useNavigate();
 
     const fetchUserData = async () => {
       try {
@@ -171,6 +174,59 @@ export const MuiDrawer = () => {
                                 </ListItemButton>
                             </Link>
                         </ListItem>
+
+                        <div className="mobile">
+                        {!isLoggedIn && (
+                            <>
+                            <ListItem>
+                                <Link to="/login" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItemButton>
+                                        <ListItemIcon style={{color:'yellow'}}><MenuBookIcon /></ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{fontSize:2.5+'vh',fontFamily:'Architects Daughter'}}>Login</ListItemText>
+                                    </ListItemButton>
+                                </Link>
+                            </ListItem>
+                            <ListItem>
+                                <Link to="/signup" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItemButton>
+                                        <ListItemIcon style={{color:'yellow'}}><MenuBookIcon /></ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{fontSize:2.5+'vh',fontFamily:'Architects Daughter'}}>Signup</ListItemText>
+                                    </ListItemButton>
+                                </Link>
+                            </ListItem>
+                            </>
+                        )}
+                        {isLoggedIn && (
+                            <>
+                            <ListItem>
+                                <Link to="/account" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItemButton>
+                                        <ListItemIcon style={{color:'yellow'}}><MenuBookIcon /></ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{fontSize:2.5+'vh',fontFamily:'Architects Daughter'}}>Account</ListItemText>
+                                    </ListItemButton>
+                                </Link>
+                            </ListItem>
+                            <ListItem>
+                                <Link to="/stats" style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItemButton>
+                                        <ListItemIcon style={{color:'yellow'}}><MenuBookIcon /></ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{fontSize:2.5+'vh',fontFamily:'Architects Daughter'}}>Stats</ListItemText>
+                                    </ListItemButton>
+                                </Link>
+                            </ListItem>
+                            <ListItem onClick={() => {
+                                handleLogout();
+                                navigate('/');  // Redirect to the main page after logout
+                            }}>
+                                <Link style={{ textDecoration: 'none', color: 'inherit' }}>
+                                    <ListItemButton>
+                                        <ListItemIcon style={{color:'yellow'}}><MenuBookIcon /></ListItemIcon>
+                                        <ListItemText primaryTypographyProps={{fontSize:2.5+'vh',fontFamily:'Architects Daughter'}}>Logout</ListItemText>
+                                    </ListItemButton>
+                                </Link>
+                            </ListItem>
+                            </>)}
+                        </div>
                     </List>
                     <List id="bottomLink">
                         <ListItem>

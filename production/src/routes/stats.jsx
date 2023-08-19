@@ -35,7 +35,7 @@ export default function Stats() {
   }, []);
 
   return (
-        <div className="wrapperDiv">
+        <div className="statsWrapper">
             <p>Howdy, {users.username}!</p>
             <br/>
             <div className="statsDiv">

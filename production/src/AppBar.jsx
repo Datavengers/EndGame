@@ -47,6 +47,7 @@ export default function MenuAppBar() {
             DSAvengers
           </Typography>
 
+          <div className="desktop">
           <FormGroup>
             <FormControlLabel
               control={
@@ -59,9 +60,10 @@ export default function MenuAppBar() {
               label={isLoggedIn ? 'Logout' : 'Login'}
             />
           </FormGroup>
+          </div>
 
           {isLoggedIn && (
-            <div>
+            <div id="appCircle">
               <IconButton
                 size="large"
                 aria-label="account of current user"

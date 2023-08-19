@@ -23,3 +23,31 @@
     margin:auto;
     outline:white 5px dotted;    
 }
+
+.signupDiv button {
+    background-color:white;
+}
+
+/*mobile*/
+@media screen and (max-width: 415px){
+    .loginDiv{
+        background-color: #78e261;
+        border-bottom: 80px #73634c groove;
+        border-radius:40%;
+        width:100%;
+        padding:60px;  
+    }
+    
+    .signupDiv{
+        align-items:center;
+        text-align:center;
+        color:white;
+        background-color: #78e261;
+        border-bottom: 40px #73634c groove;
+        border-radius:40%;
+        width:120%;
+        padding:60px;
+        margin-left:-25px;
+        outline:white 5px dotted;    
+    }
+}
