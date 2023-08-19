@@ -6,35 +6,57 @@ import Typography from '@mui/material/Typography'
 import CardMedia from '@mui/material/CardMedia'
 import CardActionArea from '@mui/material/CardActionArea'
 import IMAGES from '../assets/images/Images';
+import { SLL_GFG_Card, SLL_educatio_Card, SLL_learning_card } from "../cards/sll_cards";
+import { DLL_GFG_Card, DLL_javatpoint_Card, DLL_learning_card } from "../cards/dll_cards";
 
 export default function Readings() {
   const [user, setUser] = useState('');
   const [loaded, setLoaded] = useState(false);
 
+  const API_URL = '/data-vengers';
+  // const API_URL = 'http://localhost:8125'; // Your backend server URL
+
+  const ARTICLE_POINT_VALUE = 3;
+
   const fetchUserData = async () => {
-    try {
-      const response = await fetch("/data-vengers/api/user", {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      try {
+        const response = await fetch(`${API_URL}/api/user`, {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('accessToken')}`
+          }
+        });
+
+        if (response.status === 200) {
+          const data = await response.json();
+          setUser(data);
+          setLoaded(true);
+        } else {
+          console.error('Error fetching user data');
         }
-      });
-
-      if (response.status === 200) {
-        const data = await response.json();
-        setUser(data);
-        setLoaded(true);
-      } else {
-        console.error('Error fetching user data');
+      } catch (error) {
+        console.error('Error fetching user data', error);
       }
-    } catch (error) {
-      console.error('Error fetching user data', error);
-    }
-  };
+    };
 
-  useEffect(() => {
-    fetchUserData();
-  }, []);
+    useEffect(() => {
+      fetchUserData();
+    }, []);
 
+
+  async function updatePoints() {
+      
+    const response = await fetch(`${API_URL}/api/gainPoints`, {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json', //sends as JSON
+      },
+      //payload
+      body: JSON.stringify({ 
+        email:user.email,
+        pointValue:ARTICLE_POINT_VALUE,
+      }),
+    })
+  }
   
   return (
     <>
@@ -45,135 +67,15 @@ export default function Readings() {
             Welcome to the library! Here you'll find all the articles you've unlocked.
           </p>
           <div style={{display:'flex', flexFlow:'row wrap',justifyContent:'center'}}>
-          <Link to="/singly-linked-lists/sll-learning"style={{textDecoration:'none'}}>
-            <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-              <CardActionArea>
-                <CardMedia 
-                component="img" 
-                height="140" 
-                image={IMAGES.learning}
-                alt="Singly Linked List Learning Content" />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Staff Article
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    What are singly-linked lists all about? Read our staff's take on this essential structure.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Link>
-          <Link to="https://www.educative.io/answers/what-is-a-singly-linked-list" target="_blank" style={{textDecoration:'none'}}>
-              <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-                <CardActionArea>
-                    <CardMedia 
-                    component="img" 
-                    height="140" 
-                    image={IMAGES.learning}
-                    alt="Singly Linked List Learning Content" />
-                    <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                      Educative.io
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="div">
-                        What is SLL?               
-                      </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Explore this resource to learn even more about singly linked lists!
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-                </Card>
-            </Link>
-            <Link to="https://www.geeksforgeeks.org/data-structures/linked-list/singly-linked-list/" target="_blank" style={{textDecoration:'none'}}>
-                <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-                <CardActionArea>
-                    <CardMedia 
-                    component="img" 
-                    height="140" 
-                    image={IMAGES.learning}
-                    alt="Singly Linked List Learning Content" />
-                    <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                      Geeks for Geeks
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="div">
-                        Singly Linked List                 
-                      </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Additional resource to learn more about singly linked lists!
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-                </Card>
-            </Link>
+          <div onClick={updatePoints}><SLL_GFG_Card/></div>
+          <div onClick={updatePoints}><SLL_educatio_Card/></div>
+          <div onClick={updatePoints}><SLL_learning_card/></div>
           {user.DLLUnlocked && (
             <>
-            <Link to="/doubly-linked-lists/dll-learning"style={{textDecoration:'none'}}>
-              <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-                <CardActionArea>
-                  <CardMedia 
-                  component="img" 
-                  height="140" 
-                  image={IMAGES.learning}
-                  alt="Singly Linked List Learning Content" />
-                  <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                      Staff Article
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      Check out our staff's great take on doubly-linked lists!
-                    </Typography>
-                  </CardContent>
-                </CardActionArea>
-              </Card>
-            </Link>
-              <Link to="https://www.geeksforgeeks.org/data-structures/linked-list/doubly-linked-list/" target="_blank" style={{textDecoration:'none'}}>
-                  <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-                  <CardActionArea>
-                      <CardMedia 
-                      component="img" 
-                      height="140" 
-                      image={IMAGES.learning}
-                      alt="Doubly Linked List Learning Content" />
-                      <CardContent>
-                      <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                        Geeks for Geeks
-                      </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                          Doubly Linked List                
-                        </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                          Explore this resource to learn even more about doubly linked lists!
-                      </Typography>
-                      </CardContent>
-                  </CardActionArea>
-                  </Card>
-              </Link>
-              
-              <Link to="https://www.javatpoint.com/doubly-linked-list" target="_blank" style={{textDecoration:'none'}}>
-                  <Card sx={{margin: 2.5, width: 300, height:275, backgroundColor:'rgba(255,255,255,0.6)' }}>
-                  <CardActionArea>
-                      <CardMedia 
-                      component="img" 
-                      height="140" 
-                      image={IMAGES.learning}
-                      alt="Doubly Linked List Learning Content" />
-                      <CardContent>
-                      <Typography sx={{ fontSize: 14 }} color="text.secondary">
-                        JavaTPoint
-                      </Typography>
-                      <Typography gutterBottom variant="h5" component="div">
-                          Doubly Linked List                 </Typography>
-                      <Typography variant="body2" color="text.secondary">
-                          Explore this additional resource to learn extra about doubly linked lists!
-                      </Typography>
-                      </CardContent>
-                  </CardActionArea>
-                  </Card>
-              </Link>
-              </>
+              <div onClick={updatePoints}><DLL_learning_card/></div>
+              <div onClick={updatePoints}><DLL_GFG_Card/></div>                
+              <div onClick={updatePoints}><DLL_javatpoint_Card/></div>
+            </>
           )}
 
           {user.sqUnlocked && (
@@ -258,7 +160,6 @@ export default function Readings() {
           )}
           </div>
           </article>
-    </div>
+      </div>
     </>
-    );
-  }
+  )}

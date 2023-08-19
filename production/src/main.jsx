@@ -29,7 +29,7 @@ import Account from './routes/account';
 import DoublyLinkedListLearning from './routes/dll_learning';
 import DoublyLinkedListQuiz from './routes/doublyLinkedListQuiz';
 import AboutUs from './routes/aboutus';
-import SQ_Home from './routes/';
+import SQ_Home from './routes/sq_home';
 import Trees_Home from './routes/trees_home';
 import Tries_Home from './routes/tries_home';
 import Readings from './routes/readings';
@@ -51,10 +51,6 @@ const router = createBrowserRouter([
           {
             path: "/singly-linked-lists",
             element:<Sll_Home />,
-            children:[
-              {path:"/singly-linked-lists/articles"},
-              {path:"/singly-linked-lists/quizzes",}
-            ]
           },
           {
             path:"/singly-linked-lists/train-game",
@@ -67,11 +63,6 @@ const router = createBrowserRouter([
           {
             path: "/doubly-linked-lists",
             element:<Dll_Home />,
-            children:[
-              {path:"/doubly-linked-lists/articles",},
-              {path:"/doubly-linked-lists/games",},
-              {path:"/doubly-linked-lists/quizzes",}
-            ]
           },
           {
             path: "/doubly-linked-lists/dll-train-game",
@@ -102,19 +93,19 @@ const router = createBrowserRouter([
             element: <DoublyLinkedListQuiz />
           },
           {
-            path: "stacks-n-queues",
+            path: "/stacks-n-queues",
             element: <SQ_Home />
           },
           {
-            path:"trees",
+            path:"/trees",
             element:<Trees_Home/>
           },
           {
-            path:"tries",
+            path:"/tries",
             element:<Tries_Home/>
           },
           {
-            path: "resources",
+            path: "/resources",
             element:<Resources_Home />,
           },
           {
@@ -126,11 +117,11 @@ const router = createBrowserRouter([
             element:<Account />,
           },
           {
-            path: "about-us",
+            path: "/about-us",
             element: <AboutUs />,
           },
           {
-            path: 'library',
+            path: '/library',
             element: <Readings/>
           },
           {
@@ -141,7 +132,7 @@ const router = createBrowserRouter([
         ],
       },
     ],
-// {basename: "/data-vengers"});
+// {basename: "/data-vengers"}); // not this one
   },
 ],
  {basename: "/data-vengers"});

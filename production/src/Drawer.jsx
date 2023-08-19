@@ -26,9 +26,12 @@ export const MuiDrawer = () => {
     const {isLoggedIn, handleLogout} = useContext(LoginContext);
     const navigate = useNavigate();
 
+    const API_URL = '/data-vengers';
+    // const API_URL = '/localhost:8125';
+
     const fetchUserData = async () => {
       try {
-        const response = await fetch("/data-vengers/api/user", {
+        const response = await fetch(`{API_URL}/api/user`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
