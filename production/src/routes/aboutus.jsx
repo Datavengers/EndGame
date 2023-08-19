@@ -28,7 +28,7 @@ export default function AboutUs() {
                   Ashley
                 </Typography>
                 <Typography variant="h5" color="text.secondary" component="div">
-                  Frontend Renegade
+                  Fullstack Renegade
                 </Typography> 
                 <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                   Community College of Allegheny County grad &apos;23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience,

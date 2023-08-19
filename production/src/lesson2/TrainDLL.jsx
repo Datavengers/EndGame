@@ -185,7 +185,7 @@ export default function TrainGUI_DLL(){
     //     case "n":
     //     case "no":
     //         if (currentCar == "Front of Train"){
-    //             window.open("/singly-linked-lists", "_self");
+    //             window.open("/data-vengers//singly-linked-lists", "_self");
     //         }
     //         break;
     //     default:

@@ -46,9 +46,9 @@ var inventory = [];
 export default function TrainGUI(){
   
   var [isStarted, setStarted] = useState(false);
-  var [bgColor, setBgColor] = useState("black");
-  var [textColor, setTextColor] = useState("lime");
-  var [inputColor, setInputColor] = useState("black");
+  var [bgColor, setBgColor] = useState(localStorage.getItem(bgColor) ? localStorage.setItem(bgColor) : "black");
+  var [textColor, setTextColor] = useState(localStorage.getItem(textColor) ? localStorage.setItem(textColor) :"lime");
+  var [inputColor, setInputColor] = useState(localStorage.getItem(inputColor) ? localStorage.setItem(inputColor) :"black");
   var [points, setPoints] = useState(0);
   const [users, setUsers] = useState({});
   const [loaded, setLoaded] = useState(false);
@@ -273,7 +273,7 @@ function HandleInput(e){
     case "n":
     case "no":
       if (currentCar == "Front of Train"){
-        window.open("/singly-linked-lists", "_self");
+        window.open("/data-vengers/singly-linked-lists", "_self");
       }
       break;
     default:
@@ -289,18 +289,27 @@ function HandleInput(e){
     switch (textColor){
       case("lime"):
         setBgColor("blue");
+        localStorage.setItem(bgColor,"blue");
         setTextColor("white");
+        localStorage.setItem(textColor, "white");
         setInputColor("blue");
+        localStorage.setItem(inputColor, "blue");
         break;
       case("white"):
         setBgColor("black");
+        localStorage.setItem(bgColor, "black");
         setTextColor("orange");
+        localStorage.setItem(textColor,"orange");
         setInputColor("black");
+        localStorage.setItem(inputColor,"black");
         break;
       case("orange"):
         setBgColor("black");
+        localStorage.setItem(bgColor, "black");
         setTextColor("lime");
+        localStorage.setItem(textColor,"orange");
         setInputColor("black");
+        localStorage.setItem(inputColor,"black");
         break;
     }
 
