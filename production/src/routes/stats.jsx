@@ -71,7 +71,7 @@ export default function Stats() {
                             <li>Doubly-linked Lists</li>
                         </Link>)}
                       {users.sqUnlocked && (
-                        <Link to="/sq_home">
+                        <Link to="/stacks-n-queues">
                             <li>Stacks & Queues</li>
                           </Link>)}
                       {users.treesUnlocked && (
