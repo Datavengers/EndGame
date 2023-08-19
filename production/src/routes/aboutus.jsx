@@ -31,7 +31,7 @@ export default function AboutUs() {
           <Card className ="card" sx={{ width: 35+'vh', margin:1.5 +'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardActionArea>
               <CardContent>
-                <CardMedia><img src="https://picsum.photos/seed/seed1/300/200"/></CardMedia>
+              <CardMedia component='img' image={IMAGES.ashley} alt='Photo of Ashley Butela'/>
                 <Typography className="card_name" variant="h4" color="text.primary">
                   Ashley
                 </Typography>
@@ -41,6 +41,7 @@ export default function AboutUs() {
                 <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
                   Community College of Allegheny County grad &apos;23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience,
                   and Jihanki3000, a stylized Japanese vending machine.
+                  <a href='https://www.linkedin.com/in/ashley-butela'>LinkedIn</a>
                 </Typography>
               </CardContent>
             </CardActionArea>
@@ -48,7 +49,7 @@ export default function AboutUs() {
 
           <Card className ="card"sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia><img src="https://picsum.photos/seed/seed2/300/200"/></CardMedia>
+            <CardMedia component='img' image={IMAGES.amy} alt='Photo of Amy Ciuffoletti'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Amy
               </Typography>
@@ -56,14 +57,16 @@ export default function AboutUs() {
                 Backend Powerhouse
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quisquam facilis cum fuga?
+                CCAC anticipated grad &apos;24. Backend developer with background in Music Education. Would love career in STEAM education, 
+                LMS dev/admin, Technology education, integration, & outreach (or with NASA).
+                <a href='https://www.linkedin.com/in/amy-c-9b7a9a23b/'>LinkedIn</a>         
               </Typography>
             </CardContent>
           </Card>
 
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia><img src="https://picsum.photos/seed/seed3/300/200"/></CardMedia>
+            <CardMedia component='img' image={IMAGES.viktoriia} alt='Photo of Viktoriia Denys'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Viktoriia
               </Typography>
@@ -71,37 +74,41 @@ export default function AboutUs() {
                 Backend Ninja
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quisquam facilis cum fuga?
+                Computer Information Systems major at DMACC with a background in Accounting and Audit!                 
+                <a href='https://www.linkedin.com/in/viktoriia-denys/'>LinkedIn</a>
               </Typography>
             </CardContent>
           </Card>
 
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia><img src="https://picsum.photos/seed/seed4/300/200"/></CardMedia>
+            <CardMedia component='img' image={IMAGES.jordan} alt='Photo of Jordan Rood'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Jordan
               </Typography>
               <Typography variant="h5" color="text.secondary" component="div">
-                Title
+                Frontend Warrior
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quisquam facilis cum fuga?
+                Undergraduate student at the University of Nevada, Reno majoring in Computer Science & Engineering, and minoring in Mathematics.
+                Also, I am currently a Software Engineering Intern at IGT.  Interests include full-stack web development, artificial intelligence, and embedded system work.
+                <a href='https://www.linkedin.com/in/jordan-rood/'>LinkedIn</a>
               </Typography>
             </CardContent>
           </Card>
 
           <Card sx={{ width: 35+'vh', margin:1.5+'vw', backgroundColor:'rgba(255,255,255,0.5)',borderRadius:15+'px'}}>
             <CardContent>
-            <CardMedia><img src="https://picsum.photos/seed/seed5/300/200" onLoad={() =>setLoaded(true)}/></CardMedia>
+            <CardMedia component='img' image={IMAGES.finnly} alt='Photo of Fionnlagh Jones'/>
               <Typography className="card_name" variant="h4" color="text.primary">
                 Fionnlagh
               </Typography>
               <Typography variant="h5" color="text.secondary" component="div">
-                Title
+                Rubber Ducky (Technical Issue Support)
               </Typography>
               <Typography variant="body2" style={{fontFamily:'Maven Pro', fontSize:1.6+'vh'}}>
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia quisquam facilis cum fuga?
+                CCAC anticipated grad 2024. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense. Enjoyer of PHP.
+                <a href='https://www.linkedin.com/in/fionnlagh-jones/'>LinkedIn</a>
               </Typography>
             </CardContent>
           </Card>
