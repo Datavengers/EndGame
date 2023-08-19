@@ -9,7 +9,7 @@ export default function Sll_Home() {
 
   const fetchUserData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/api/user", {
+        const response = await fetch("/data-vengers/api/user", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('accessToken')}`
           }
@@ -32,7 +32,7 @@ export default function Sll_Home() {
     }, []);
   async function updatePoints() {
       
-    const response = await fetch(`http://localhost:3000/api/gainPoints`, {
+    const response = await fetch(`/data-vengers/api/gainPoints`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON

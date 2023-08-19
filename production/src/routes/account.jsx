@@ -86,7 +86,7 @@ export default function Account() {
   async function resetAccount() {
     console.log("You clicked reset account!");
     handleResetClose();
-    const response = await fetch(`http://localhost:3000/api/resetAccount`, {
+    const response = await fetch(`/data-vengers/resetAccount`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -107,7 +107,7 @@ export default function Account() {
 
   async function deleteAccount() {
     handleDeleteClose();
-    const response = await fetch(`http://localhost:3000/api/deleteAccount`, {
+    const response = await fetch(`/data-vengers/api/deleteAccount`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -130,7 +130,7 @@ export default function Account() {
 
   async function changeUsername(e) {
     handleNameClose();
-    const response = await fetch(`http://localhost:3000/api/changeUsername`, {
+    const response = await fetch(`/data-vengers/api/changeUsername`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
@@ -153,7 +153,7 @@ export default function Account() {
 
   async function changeEmail() {
     handleEmailClose();
-    const response = await fetch(`http://localhost:3000/api/changeEmail`, {
+    const response = await fetch(`/data-vengers/api/changeEmail`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json', //sends as JSON
