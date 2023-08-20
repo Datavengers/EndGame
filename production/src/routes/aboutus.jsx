@@ -16,7 +16,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/ashley-butela',
     github: 'https://github.com/abutela',
     bio:
-      "Community College of Allegheny County grad '23. Planning a certificate in UX/UI. Would love a creative tech job...",
+      "Community College of Allegheny County grad &apos;23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience, and Jihanki3000, a stylized Japanese vending machine.",
   },
   {
     name: 'Amy',
@@ -25,7 +25,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/amy-c-9b7a9a23b/',
     github: 'https://github.com/pghgal317',
     bio:
-      "CCAC anticipated grad '24. Backend developer with background in Music Education. Would love a career in STEAM education...",
+      "CCAC anticipated grad &apos;24. Backend developer with background in Music Education. Would love career in STEAM education, LMS dev/admin, Technology education, integration, & outreach (or with NASA).",
   },
   {
     name: 'Viktoriia',
@@ -34,7 +34,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/viktoriia-denys/',
     github: 'https://github.com/vdenys93',
     bio:
-      "Computer Information Systems major at DMACC grad '23 with a background in Accounting and Audit. Proficient in React.js, Node, Vite-Express, Java, JavaScript, and Python. A dedicated volunteer striving to make the world a better place.",
+      "Computer Information Systems major at DMACC grad &apos;23 with a background in Accounting and Audit. Proficient in React.js, Node, Vite-Express, Java, JavaScript, and Python. A dedicated volunteer striving to make the world a better place.",
   },
   {
     name: 'Jordan',
@@ -43,7 +43,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/jordan-rood/',
     github: 'https://github.com/Rood-Jordan',
     bio:
-      "Undergraduate student at the University of Nevada, Reno majoring in Computer Science & Engineering...",
+      "Undergraduate student at the University of Nevada, Reno majoring in Computer Science & Engineering, and minoring in Mathematics. Also currently a Software Engineering Intern at IGT.  Interests include full-stack web development, artificial intelligence, and embedded system work.",
   },
   {
     name: 'Fionnlagh',
@@ -52,7 +52,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/fionnlagh-jones/',
     github: 'https://github.com/FionnlaghJones',
     bio:
-      "CCAC anticipated grad 2024. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense...",
+      "CCAC anticipated grad &apos;24. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense. Enjoyer of PHP.",
   },
  
 ];
@@ -64,7 +64,8 @@ export default function AboutUs() {
       <div>
         <h1>Meet the Team</h1>
         <p id="aboutus_p">
-          For this final project of TechWise by TalentSprint, sponsored by Google, the five of us - all working, studying, or both at the same time - were able to participate in various ways and get this project off the ground. This would not have been possible without the education, guidance, and support from the educators at the Community College of Allegheny County, the Demoines Area Community College, and the University of Nevada Reno.
+        For this final project of TechWise by TalentSprint, sponsored by Google, the five of us - all working, studying, or both at the same time - were able to participate in various ways and get this project off the ground.
+            This would not have been possible without the education, guidance, and support from the educators at the Community College of Allegheny County, the Demoines Area Community College, and the University of Nevada Reno.
         </p>
 
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
