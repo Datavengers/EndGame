@@ -71,8 +71,8 @@ export default function AboutUs() {
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
           {teamMembers.map((member, index) => (
             <Card
-              key={index}
-              sx={{ minWidth: '35vh', maxWidth: '35vh', height: '100%', margin: '1.5vw', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '15px' }}
+              key={index} 
+              sx={{ width: '250px', height: '600px', margin: '1.5vw', backgroundColor: 'rgba(255,255,255,0.5)', borderRadius: '15px' }}
             >
               <CardActionArea>
                 <CardContent>
@@ -86,7 +86,7 @@ export default function AboutUs() {
                   <Typography variant="body2" style={{ fontFamily: 'Maven Pro', fontSize: '1.6vh' }}>
                     {member.bio}
                   </Typography>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.1rem' }}>
                 <Button variant="contained" color="primary" href={member.linkedin} target="_blank">
                   LinkedIn
                 </Button>
