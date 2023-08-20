@@ -16,7 +16,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/ashley-butela',
     github: 'https://github.com/abutela',
     bio:
-      "Community College of Allegheny County grad &apos;23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience, and Jihanki3000, a stylized Japanese vending machine.",
+      "Community College of Allegheny County grad `23.  Planning a certificate in UX/UI. Would love a creative tech job.  Other projects found on GitHub include NostalgiaBox, a retro tv-viewing experience, and Jihanki3000, a stylized Japanese vending machine.",
   },
   {
     name: 'Amy',
@@ -25,7 +25,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/amy-c-9b7a9a23b/',
     github: 'https://github.com/pghgal317',
     bio:
-      "CCAC anticipated grad &apos;24. Backend developer with background in Music Education. Would love career in STEAM education, LMS dev/admin, Technology education, integration, & outreach (or with NASA).",
+      "CCAC anticipated grad `24. Backend developer with background in Music Education. Would love career in STEAM education, LMS dev/admin, Technology education, integration, & outreach (or with NASA).",
   },
   {
     name: 'Viktoriia',
@@ -34,7 +34,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/viktoriia-denys/',
     github: 'https://github.com/vdenys93',
     bio:
-      "Computer Information Systems major at DMACC grad &apos;23 with a background in Accounting and Audit. Proficient in React.js, Node, Vite-Express, Java, JavaScript, and Python. A dedicated volunteer striving to make the world a better place.",
+      "Computer Information Systems major at DMACC grad `23 with a background in Accounting and Audit. Proficient in React.js, Node, Vite-Express, Java, JavaScript, and Python. A dedicated volunteer striving to make the world a better place.",
   },
   {
     name: 'Jordan',
@@ -52,7 +52,7 @@ const teamMembers = [
     linkedin: 'https://www.linkedin.com/in/fionnlagh-jones/',
     github: 'https://github.com/FionnlaghJones',
     bio:
-      "CCAC anticipated grad &apos;24. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense. Enjoyer of PHP.",
+      "CCAC anticipated grad `24. Jr Software Engineer with a background in Electrical Engineering and Aviation aerospace defense. Enjoyer of PHP.",
   },
  
 ];
@@ -86,9 +86,7 @@ export default function AboutUs() {
                   <Typography variant="body2" style={{ fontFamily: 'Maven Pro', fontSize: '1.6vh' }}>
                     {member.bio}
                   </Typography>
-                </CardContent>
-              </CardActionArea>
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', padding: '0.5rem' }}>
                 <Button variant="contained" color="primary" href={member.linkedin} target="_blank">
                   LinkedIn
                 </Button>
@@ -96,6 +94,9 @@ export default function AboutUs() {
                   GitHub
                 </Button>
               </div>
+                </CardContent>
+              </CardActionArea>
+             
             </Card>
           ))}
         </div>
