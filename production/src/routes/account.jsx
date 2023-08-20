@@ -127,8 +127,8 @@ export default function Account() {
         email:userEmail,
       }),
     })
-    .then(handleLogout())
-    .then(navigate('/'))
+    .then(handle())
+    .then(navigate('./'))
     try{
       const data = await response.json()
       console.log(data)
